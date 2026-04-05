@@ -1,0 +1,43 @@
+[project]
+name = "abstractrl"
+version = "0.1.0"
+description = "Abstract RL / AMP experiments (JAX) and vendored AbstractBeam"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "jax>=0.4.38",
+    "jaxlib>=0.4.38",
+    "jupyter>=1.1.1",
+    "jupytext>=1.18.1",
+    "matplotlib>=3.9.3",
+    "numba>=0.61.0",
+    "numpy>=2.1.3",
+    "pandas>=2.3.3",
+    "polars>=1.39.3",
+    "scipy>=1.16.3",
+    "tach>=0.16.3",
+    "tqdm>=4.67.1",
+]
+
+[project.optional-dependencies]
+cuda12 = ["jax[cuda12]>=0.4.38"]
+abstractbeam = [
+    "absl-py>=2.1.0",
+    "dill>=0.3.8",
+    "ml-collections>=0.1.1",
+    "scikit-learn>=1.3.0",
+    "seaborn>=0.13.0",
+    "stitch-core>=0.1.25",
+    "tensorboard>=2.14.0",
+    "torch>=2.2.0",
+]
+# GPU : une seule install torch (CUDA *ou* CPU) + torch-scatter assorti — voir https://pytorch.org/get-started/locally/
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+    "ruff>=0.8.2",
+]
+
+[tool.uv]
+package = false
