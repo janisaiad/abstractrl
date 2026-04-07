@@ -1,0 +1,15 @@
+# Expériences locales: ne pas versionner les poids, shards lourds et journaux
+**/*.ckpt
+**/*.pkl
+**/data/
+**/models/
+**/*.log
+**/events.out.tfevents.*
+**/logs/
+
+# Dossiers de runs denses (résultats détaillés par tâche)
+**/sort_phase_transition_gpu/from2_*/
+**/sort_phase_transition_gpu/len*_*/
+**/sort_len5_18_gpu/len_*/
+**/tsp_curriculum_gpu_quick/night_nn_vs_ab/
+**/nightly/results_sort_config_search/

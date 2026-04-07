@@ -1,0 +1,100 @@
+[
+  {
+    "length": 5,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_5/results.json"
+  },
+  {
+    "length": 6,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_6/results.json"
+  },
+  {
+    "length": 7,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_7/results.json"
+  },
+  {
+    "length": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_8/results.json"
+  },
+  {
+    "length": 9,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_9/results.json"
+  },
+  {
+    "length": 10,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_10/results.json"
+  },
+  {
+    "length": 11,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_11/results.json"
+  },
+  {
+    "length": 12,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_12/results.json"
+  },
+  {
+    "length": 13,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_13/results.json"
+  },
+  {
+    "length": 14,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_14/results.json"
+  },
+  {
+    "length": 15,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_15/results.json"
+  },
+  {
+    "length": 16,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_16/results.json"
+  },
+  {
+    "length": 17,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_17/results.json"
+  },
+  {
+    "length": 18,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_len5_18_gpu/len_18/results.json"
+  }
+]

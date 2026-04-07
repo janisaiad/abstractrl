@@ -1,0 +1,38 @@
+[
+  {
+    "seed": 41,
+    "instances": 80,
+    "ab_exact_rate": 0.275,
+    "nn_within_10pct_rate": 0.4625,
+    "nn_mean_gap_pct": 28.538571453957267,
+    "zak_bad_if_gap_gt_10pct": true,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/tsp_curriculum_gpu_quick/night_nn_vs_ab/seed_41/results.json"
+  },
+  {
+    "seed": 42,
+    "instances": 80,
+    "ab_exact_rate": 0.0,
+    "nn_within_10pct_rate": 0.3,
+    "nn_mean_gap_pct": 34.20419940072347,
+    "zak_bad_if_gap_gt_10pct": true,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/tsp_curriculum_gpu_quick/night_nn_vs_ab/seed_42/results.json"
+  },
+  {
+    "seed": 43,
+    "instances": 80,
+    "ab_exact_rate": 0.0375,
+    "nn_within_10pct_rate": 0.525,
+    "nn_mean_gap_pct": 20.076250959128895,
+    "zak_bad_if_gap_gt_10pct": true,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/tsp_curriculum_gpu_quick/night_nn_vs_ab/seed_43/results.json"
+  },
+  {
+    "seed": 44,
+    "instances": 80,
+    "ab_exact_rate": 0.05,
+    "nn_within_10pct_rate": 0.4875,
+    "nn_mean_gap_pct": 25.710124865917173,
+    "zak_bad_if_gap_gt_10pct": true,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/tsp_curriculum_gpu_quick/night_nn_vs_ab/seed_44/results.json"
+  }
+]

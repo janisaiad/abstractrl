@@ -285,6 +285,7 @@ def train_eval_loop(args, device, model, trace_gen, checkpoint, original_tasks):
 
     best_succ = -1
     for cur_step in range(starting_step, args.train_steps, args.eval_every):
+        curriculum_stage = 0
         # Evaluation
         if cur_step > starting_step:
             print('eval at step %d' % cur_step)
@@ -414,13 +415,14 @@ def train_model_mp(args, rank, model, optimizer, weighted_train_files, curriculu
                    inventions, is_distributed, cur_step):
     if args.num_proc > 1:
         torch.set_num_threads(1)
-    os.environ['MASTER_ADDR'] = '127.0.0.1'
-    os.environ['MASTER_PORT'] = args.port
-    if device == 'cpu':
-        backend = 'gloo'
-    else:
-        backend = 'gloo'
-    dist.init_process_group(backend, rank=rank, world_size=args.num_proc)
+    if args.num_proc > 1:
+        os.environ['MASTER_ADDR'] = '127.0.0.1'
+        os.environ['MASTER_PORT'] = args.port
+        if device == 'cpu':
+            backend = 'gloo'
+        else:
+            backend = 'gloo'
+        dist.init_process_group(backend, rank=rank, world_size=args.num_proc)
     train_model(args, rank, model, optimizer, weighted_train_files, curriculum_stage, trace_gen, domain, device,
                 inventions, is_distributed, cur_step)
 

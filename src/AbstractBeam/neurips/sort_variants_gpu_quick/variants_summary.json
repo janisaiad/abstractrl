@@ -1,0 +1,38 @@
+[
+  {
+    "suite": "sort_L12_random",
+    "list_len": 12,
+    "mode": "random",
+    "num_swaps": 0,
+    "solved": 18,
+    "total": 50,
+    "rate": 0.36
+  },
+  {
+    "suite": "sort_L18_random",
+    "list_len": 18,
+    "mode": "random",
+    "num_swaps": 0,
+    "solved": 0,
+    "total": 50,
+    "rate": 0.0
+  },
+  {
+    "suite": "sort_L14_nearly_adj4",
+    "list_len": 14,
+    "mode": "nearly_sorted_adjacent",
+    "num_swaps": 4,
+    "solved": 0,
+    "total": 50,
+    "rate": 0.0
+  },
+  {
+    "suite": "sort_L16_nearly_swap6",
+    "list_len": 16,
+    "mode": "nearly_sorted_swap",
+    "num_swaps": 6,
+    "solved": 0,
+    "total": 50,
+    "rate": 0.0
+  }
+]

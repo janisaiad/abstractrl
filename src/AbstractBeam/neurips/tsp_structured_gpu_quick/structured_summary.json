@@ -1,0 +1,16 @@
+[
+  {
+    "name": "hierarchical_n4",
+    "n": 4,
+    "solved": 0,
+    "total": 30,
+    "rate": 0.0
+  },
+  {
+    "name": "fractal_xor_n4",
+    "n": 4,
+    "solved": 3,
+    "total": 30,
+    "rate": 0.1
+  }
+]

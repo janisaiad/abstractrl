@@ -1,0 +1,462 @@
+{
+  "grid": [
+    {
+      "length": 5,
+      "swaps": 0,
+      "solved": 0,
+      "total": 30,
+      "rate": 0.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len5_sw0/results.json"
+    },
+    {
+      "length": 5,
+      "swaps": 2,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len5_sw2/results.json"
+    },
+    {
+      "length": 5,
+      "swaps": 4,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len5_sw4/results.json"
+    },
+    {
+      "length": 5,
+      "swaps": 6,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len5_sw6/results.json"
+    },
+    {
+      "length": 5,
+      "swaps": 8,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len5_sw8/results.json"
+    },
+    {
+      "length": 5,
+      "swaps": 10,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len5_sw10/results.json"
+    },
+    {
+      "length": 5,
+      "swaps": 12,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len5_sw12/results.json"
+    },
+    {
+      "length": 5,
+      "swaps": 16,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len5_sw16/results.json"
+    },
+    {
+      "length": 5,
+      "swaps": 20,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len5_sw20/results.json"
+    },
+    {
+      "length": 6,
+      "swaps": 0,
+      "solved": 0,
+      "total": 30,
+      "rate": 0.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len6_sw0/results.json"
+    },
+    {
+      "length": 6,
+      "swaps": 2,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len6_sw2/results.json"
+    },
+    {
+      "length": 6,
+      "swaps": 4,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len6_sw4/results.json"
+    },
+    {
+      "length": 6,
+      "swaps": 6,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len6_sw6/results.json"
+    },
+    {
+      "length": 6,
+      "swaps": 8,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len6_sw8/results.json"
+    },
+    {
+      "length": 6,
+      "swaps": 10,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len6_sw10/results.json"
+    },
+    {
+      "length": 6,
+      "swaps": 12,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len6_sw12/results.json"
+    },
+    {
+      "length": 6,
+      "swaps": 16,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len6_sw16/results.json"
+    },
+    {
+      "length": 6,
+      "swaps": 20,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len6_sw20/results.json"
+    },
+    {
+      "length": 7,
+      "swaps": 0,
+      "solved": 0,
+      "total": 30,
+      "rate": 0.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len7_sw0/results.json"
+    },
+    {
+      "length": 7,
+      "swaps": 2,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len7_sw2/results.json"
+    },
+    {
+      "length": 7,
+      "swaps": 4,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len7_sw4/results.json"
+    },
+    {
+      "length": 7,
+      "swaps": 6,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len7_sw6/results.json"
+    },
+    {
+      "length": 7,
+      "swaps": 8,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len7_sw8/results.json"
+    },
+    {
+      "length": 7,
+      "swaps": 10,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len7_sw10/results.json"
+    },
+    {
+      "length": 7,
+      "swaps": 12,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len7_sw12/results.json"
+    },
+    {
+      "length": 7,
+      "swaps": 16,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len7_sw16/results.json"
+    },
+    {
+      "length": 7,
+      "swaps": 20,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len7_sw20/results.json"
+    },
+    {
+      "length": 8,
+      "swaps": 0,
+      "solved": 0,
+      "total": 30,
+      "rate": 0.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len8_sw0/results.json"
+    },
+    {
+      "length": 8,
+      "swaps": 2,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len8_sw2/results.json"
+    },
+    {
+      "length": 8,
+      "swaps": 4,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len8_sw4/results.json"
+    },
+    {
+      "length": 8,
+      "swaps": 6,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len8_sw6/results.json"
+    },
+    {
+      "length": 8,
+      "swaps": 8,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len8_sw8/results.json"
+    },
+    {
+      "length": 8,
+      "swaps": 10,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len8_sw10/results.json"
+    },
+    {
+      "length": 8,
+      "swaps": 12,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len8_sw12/results.json"
+    },
+    {
+      "length": 8,
+      "swaps": 16,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len8_sw16/results.json"
+    },
+    {
+      "length": 8,
+      "swaps": 20,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len8_sw20/results.json"
+    },
+    {
+      "length": 9,
+      "swaps": 0,
+      "solved": 0,
+      "total": 30,
+      "rate": 0.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len9_sw0/results.json"
+    },
+    {
+      "length": 9,
+      "swaps": 2,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len9_sw2/results.json"
+    },
+    {
+      "length": 9,
+      "swaps": 4,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len9_sw4/results.json"
+    },
+    {
+      "length": 9,
+      "swaps": 6,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len9_sw6/results.json"
+    },
+    {
+      "length": 9,
+      "swaps": 8,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len9_sw8/results.json"
+    },
+    {
+      "length": 9,
+      "swaps": 10,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len9_sw10/results.json"
+    },
+    {
+      "length": 9,
+      "swaps": 12,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len9_sw12/results.json"
+    },
+    {
+      "length": 9,
+      "swaps": 16,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len9_sw16/results.json"
+    },
+    {
+      "length": 9,
+      "swaps": 20,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len9_sw20/results.json"
+    },
+    {
+      "length": 10,
+      "swaps": 0,
+      "solved": 0,
+      "total": 30,
+      "rate": 0.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len10_sw0/results.json"
+    },
+    {
+      "length": 10,
+      "swaps": 2,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len10_sw2/results.json"
+    },
+    {
+      "length": 10,
+      "swaps": 4,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len10_sw4/results.json"
+    },
+    {
+      "length": 10,
+      "swaps": 6,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len10_sw6/results.json"
+    },
+    {
+      "length": 10,
+      "swaps": 8,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len10_sw8/results.json"
+    },
+    {
+      "length": 10,
+      "swaps": 10,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len10_sw10/results.json"
+    },
+    {
+      "length": 10,
+      "swaps": 12,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len10_sw12/results.json"
+    },
+    {
+      "length": 10,
+      "swaps": 16,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len10_sw16/results.json"
+    },
+    {
+      "length": 10,
+      "swaps": 20,
+      "solved": 30,
+      "total": 30,
+      "rate": 1.0,
+      "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/sort_phase_transition_gpu/len10_sw20/results.json"
+    }
+  ],
+  "thresholds": {
+    "5": {
+      "first_not_full_success": 0,
+      "first_below_50pct": 0
+    },
+    "6": {
+      "first_not_full_success": 0,
+      "first_below_50pct": 0
+    },
+    "7": {
+      "first_not_full_success": 0,
+      "first_below_50pct": 0
+    },
+    "8": {
+      "first_not_full_success": 0,
+      "first_below_50pct": 0
+    },
+    "9": {
+      "first_not_full_success": 0,
+      "first_below_50pct": 0
+    },
+    "10": {
+      "first_not_full_success": 0,
+      "first_below_50pct": 0
+    }
+  }
+}

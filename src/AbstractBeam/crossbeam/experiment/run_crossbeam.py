@@ -109,6 +109,8 @@ def main(argv):
     else:
         config = configs_all.get_config()
         config.update(FLAGS.config)  # get_config()
+        # Allow CLI flags to override config file for runtime task selection.
+        config.synthetic_test_tasks = FLAGS.synthetic_test_tasks
         proc_args = config
         ds = "synthetic" if FLAGS.synthetic_test_tasks else "handwritten"
         config.json_results_file = config.json_results_file + f"fold{FLAGS.fold}/result{FLAGS.run}_{ds}.json"
@@ -152,6 +154,8 @@ def main(argv):
                 original_tasks = pickle.load(file)
     elif config.domain == "deepcoder":
         original_tasks = deepcoder_tasks.SYNTHETIC_TASKS if FLAGS.synthetic_test_tasks else deepcoder_tasks.HANDWRITTEN_TASKS
+        train_set = original_tasks
+        test_set = original_tasks
         if not FLAGS.synthetic_test_tasks:
             if FLAGS.fold == 1:
                 train_set, test_set = train_test_split(original_tasks, test_size=0.5, train_size=0.5, shuffle=True,
@@ -159,8 +163,6 @@ def main(argv):
             if FLAGS.fold == 2:
                 test_set, train_set = train_test_split(original_tasks, test_size=0.5, train_size=0.5, shuffle=True,
                                                        random_state=42)
-        else:
-            test_set = original_tasks
 
         # test_set = original_tasks
         if config.do_test:
@@ -172,6 +174,8 @@ def main(argv):
             original_tasks = train_set
     elif config.domain == "tsp":
         original_tasks = list(tsp_tasks_module.TSP_TASKS)
+        train_set = original_tasks
+        test_set = original_tasks
         if not FLAGS.synthetic_test_tasks:
             if FLAGS.fold == 1:
                 train_set, test_set = train_test_split(original_tasks, test_size=0.5, train_size=0.5, shuffle=True,
@@ -179,8 +183,6 @@ def main(argv):
             if FLAGS.fold == 2:
                 test_set, train_set = train_test_split(original_tasks, test_size=0.5, train_size=0.5, shuffle=True,
                                                        random_state=42)
-        else:
-            test_set = original_tasks
         if config.do_test:
             original_tasks = test_set
         else:

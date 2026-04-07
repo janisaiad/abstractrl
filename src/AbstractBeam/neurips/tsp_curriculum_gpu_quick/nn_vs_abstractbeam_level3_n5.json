@@ -1,0 +1,10 @@
+{
+  "instances": 60,
+  "abstractbeam_exact_solved": 7,
+  "abstractbeam_exact_rate": 0.11666666666666667,
+  "nn_within_10pct_count": 28,
+  "nn_within_10pct_rate": 0.4666666666666667,
+  "nn_mean_gap_pct": 25.782200418916386,
+  "ab_exact_beats_nn_count": 3,
+  "zak_rule_bad_if_gap_gt_10pct": "true"
+}

@@ -191,7 +191,12 @@ def _basic_properties(x) -> List[bool]:
   elif type_x is list:
     sorted_x = list(sorted(x))
     reverse_sorted_x = list(reversed(sorted_x))
-    num_unique = len(set(x))
+    try:
+      num_unique = len(set(x))
+    except TypeError:
+      # Lists can contain unhashable elements (e.g. list[list[int]] for TSP
+      # matrices). Fall back to a stable string representation.
+      num_unique = len(set(map(repr, x)))
     return [
         x == sorted_x,
         x == reverse_sorted_x,
@@ -215,10 +220,32 @@ def _relevant(x) -> List[Any]:
     len_x = len(x)
     if not x:
       x = DEFAULT_VALUES[type_x]
-    max_x = max(x)
-    min_x = min(x)
-    return [orig_x, len_x, len(set(x)), max_x, min_x, max_x - min_x,
-            sum(x), x[0], x[-1]]
+    try:
+      num_unique = len(set(x))
+    except TypeError:
+      num_unique = len(set(map(repr, x)))
+
+    # Keep numeric summary stats for flat int lists.
+    if all(type(v) is int for v in x):
+      max_x = max(x)
+      min_x = min(x)
+      range_x = max_x - min_x
+      sum_x = sum(x)
+      first_stat = x[0]
+      last_stat = x[-1]
+    else:
+      # For nested lists (e.g. matrices), summarize by row lengths so all
+      # derived observables remain numeric and stable.
+      row_lens = [len(v) if type(v) is list else 0 for v in x]
+      max_x = max(row_lens) if row_lens else 0
+      min_x = min(row_lens) if row_lens else 0
+      range_x = max_x - min_x
+      sum_x = sum(row_lens)
+      first_stat = row_lens[0] if row_lens else 0
+      last_stat = row_lens[-1] if row_lens else 0
+
+    return [orig_x, len_x, num_unique, max_x, min_x, range_x,
+            sum_x, first_stat, last_stat]
   else:
     raise NotImplementedError(f'x has unhandled type {type(x)}')
 

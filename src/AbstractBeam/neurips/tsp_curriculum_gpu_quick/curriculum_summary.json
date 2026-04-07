@@ -1,0 +1,26 @@
+[
+  {
+    "level": 1,
+    "n": 3,
+    "solved": 3,
+    "total": 40,
+    "rate": 0.075,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/tsp_curriculum_gpu_quick/level1_n3/results.json"
+  },
+  {
+    "level": 2,
+    "n": 4,
+    "solved": 3,
+    "total": 50,
+    "rate": 0.06,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/tsp_curriculum_gpu_quick/level2_n4/results.json"
+  },
+  {
+    "level": 3,
+    "n": 5,
+    "solved": 7,
+    "total": 60,
+    "rate": 0.11666666666666667,
+    "results": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/tsp_curriculum_gpu_quick/level3_n5/results.json"
+  }
+]
