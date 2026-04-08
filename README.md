@@ -45,6 +45,20 @@ Smoke tests for optional CUDA / `torch_scatter` (from repo root, if AbstractBeam
 make test-abstractbeam-gpu
 ```
 
+TSP difficulty reruns (from repo root):
+
+```bash
+uv run python src/AbstractBeam/neurips/tsp_difficulty_curve/run_tsp_difficulty_curve.py
+uv run python src/AbstractBeam/neurips/tsp_difficulty_curve/plot_tsp_difficulty_curve.py
+```
+
+Outputs are written under `src/AbstractBeam/neurips/tsp_difficulty_curve/`:
+- `difficulty_curve_summary_bigtrain.json`
+- `plot_base_success_curves.png`
+- `plot_base_nn_gap_distribution.png`
+- `plot_base_nn_gap_violin.png`
+- `plot_base_nn_gap_histograms.png`
+
 ## License
 
 See [LICENSE](LICENSE).

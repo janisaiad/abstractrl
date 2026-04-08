@@ -1,0 +1,2932 @@
+[
+  {
+    "length": 5,
+    "tau_target": 0.05,
+    "seed": 101,
+    "steps": 12,
+    "solved": 0,
+    "total": 30,
+    "rate": 0.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.05_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.05,
+    "seed": 202,
+    "steps": 12,
+    "solved": 0,
+    "total": 30,
+    "rate": 0.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.05_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.1,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.10_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.1,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.10_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.15,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.15_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.15,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.15_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.2,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.20_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.2,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.20_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.25,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.25_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.25,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.25_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.3,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.30_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.3,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.30_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.35,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.35_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.35,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.35_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.4,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.40_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.4,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.40_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.45,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.45_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.45,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.45_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.5,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.50_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.5,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.50_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.55,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.55_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.55,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.55_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.6,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.60_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.6,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.60_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.65,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.65_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.65,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.65_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.7,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.70_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.7,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.70_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.75,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.75_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.75,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.75_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.8,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.80_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.8,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.80_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.85,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.85_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.85,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.85_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.9,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.90_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.9,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.90_s202_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.95,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.95_s101_st12/results.json"
+  },
+  {
+    "length": 5,
+    "tau_target": 0.95,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L5_tau0.95_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.05,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.05_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.05,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.05_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.1,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.10_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.1,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.10_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.15,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.15_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.15,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.15_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.2,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.20_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.2,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.20_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.25,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.25_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.25,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.25_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.3,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.30_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.3,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.30_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.35,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.35_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.35,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.35_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.4,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.40_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.4,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.40_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.45,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.45_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.45,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.45_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.5,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.50_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.5,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.50_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.55,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.55_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.55,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.55_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.6,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.60_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.6,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.60_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.65,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.65_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.65,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.65_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.7,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.70_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.7,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.70_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.75,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.75_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.75,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.75_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.8,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.80_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.8,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.80_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.85,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.85_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.85,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.85_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.9,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.90_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.9,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.90_s202_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.95,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.95_s101_st12/results.json"
+  },
+  {
+    "length": 6,
+    "tau_target": 0.95,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L6_tau0.95_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.05,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.05_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.05,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.05_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.1,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.10_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.1,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.10_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.15,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.15_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.15,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.15_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.2,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.20_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.2,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.20_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.25,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.25_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.25,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.25_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.3,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.30_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.3,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.30_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.35,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.35_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.35,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.35_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.4,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.40_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.4,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.40_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.45,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.45_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.45,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.45_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.5,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.50_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.5,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.50_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.55,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.55_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.55,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.55_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.6,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.60_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.6,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.60_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.65,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.65_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.65,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.65_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.7,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.70_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.7,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.70_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.75,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.75_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.75,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.75_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.8,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.80_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.8,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.80_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.85,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.85_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.85,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.85_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.9,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.90_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.9,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.90_s202_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.95,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.95_s101_st12/results.json"
+  },
+  {
+    "length": 7,
+    "tau_target": 0.95,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L7_tau0.95_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.05,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.05_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.05,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.05_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.1,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.10_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.1,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.10_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.15,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.15_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.15,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.15_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.2,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.20_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.2,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.20_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.25,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.25_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.25,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.25_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.3,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.30_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.3,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.30_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.35,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.35_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.35,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.35_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.4,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.40_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.4,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.40_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.45,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.45_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.45,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.45_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.5,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.50_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.5,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.50_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.55,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.55_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.55,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.55_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.6,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.60_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.6,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.60_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.65,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.65_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.65,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.65_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.7,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.70_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.7,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.70_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.75,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.75_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.75,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.75_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.8,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.80_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.8,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.80_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.85,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.85_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.85,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.85_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.9,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.90_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.9,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.90_s202_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.95,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.95_s101_st12/results.json"
+  },
+  {
+    "length": 8,
+    "tau_target": 0.95,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L8_tau0.95_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.05,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.05_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.05,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.05_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.1,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.10_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.1,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.10_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.15,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.15_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.15,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.15_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.2,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.20_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.2,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.20_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.25,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.25_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.25,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.25_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.3,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.30_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.3,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.30_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.35,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.35_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.35,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.35_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.4,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.40_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.4,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.40_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.45,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.45_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.45,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.45_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.5,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.50_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.5,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.50_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.55,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.55_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.55,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.55_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.6,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.60_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.6,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.60_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.65,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.65_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.65,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.65_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.7,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.70_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.7,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.70_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.75,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.75_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.75,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.75_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.8,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.80_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.8,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.80_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.85,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.85_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.85,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.85_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.9,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.90_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.9,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.90_s202_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.95,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.95_s101_st12/results.json"
+  },
+  {
+    "length": 9,
+    "tau_target": 0.95,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L9_tau0.95_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.05,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.05_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.05,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.05_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.1,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.10_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.1,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.10_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.15,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.15_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.15,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.15_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.2,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.20_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.2,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.20_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.25,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.25_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.25,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.25_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.3,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.30_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.3,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.30_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.35,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.35_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.35,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.35_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.4,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.40_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.4,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.40_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.45,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.45_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.45,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.45_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.5,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.50_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.5,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.50_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.55,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.55_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.55,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.55_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.6,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.60_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.6,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.60_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.65,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.65_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.65,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.65_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.7,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.70_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.7,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.70_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.75,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.75_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.75,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.75_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.8,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.80_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.8,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.80_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.85,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.85_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.85,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.85_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.9,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.90_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.9,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.90_s202_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.95,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.95_s101_st12/results.json"
+  },
+  {
+    "length": 10,
+    "tau_target": 0.95,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L10_tau0.95_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.05,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.05_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.05,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.05_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.1,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.10_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.1,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.10_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.15,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.15_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.15,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.15_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.2,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.20_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.2,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.20_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.25,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.25_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.25,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.25_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.3,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.30_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.3,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.30_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.35,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.35_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.35,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.35_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.4,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.40_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.4,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.40_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.45,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.45_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.45,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.45_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.5,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.50_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.5,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.50_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.55,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.55_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.55,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.55_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.6,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.60_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.6,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.60_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.65,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.65_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.65,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.65_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.7,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.70_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.7,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.70_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.75,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.75_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.75,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.75_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.8,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.80_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.8,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.80_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.85,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.85_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.85,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.85_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.9,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.90_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.9,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.90_s202_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.95,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.95_s101_st12/results.json"
+  },
+  {
+    "length": 11,
+    "tau_target": 0.95,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L11_tau0.95_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.05,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.05_s101_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.05,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.05_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.1,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.10_s101_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.1,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.10_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.15,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.15_s101_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.15,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.15_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.2,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.20_s101_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.2,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.20_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.25,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.25_s101_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.25,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.25_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.3,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.30_s101_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.3,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.30_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.35,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.35_s101_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.35,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.35_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.4,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.40_s101_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.4,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.40_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.45,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.45_s101_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.45,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.45_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.5,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.50_s101_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.5,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.50_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.55,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.55_s101_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.55,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.55_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.6,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.60_s101_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.6,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.60_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.65,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.65_s101_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.65,
+    "seed": 202,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.65_s202_st12/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.7,
+    "seed": 101,
+    "steps": 12,
+    "solved": 30,
+    "total": 30,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/full_sweep/L12_tau0.70_s101_st12/results.json"
+  }
+]

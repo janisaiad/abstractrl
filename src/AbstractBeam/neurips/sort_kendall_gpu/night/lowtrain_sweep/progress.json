@@ -1,0 +1,1802 @@
+[
+  {
+    "length": 12,
+    "tau_target": 0.05,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.05_s101_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.05,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.05_s202_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.05,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.05_s303_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.1,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.10_s101_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.1,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.10_s202_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.1,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.10_s303_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.15,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.15_s101_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.15,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.15_s202_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.15,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.15_s303_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.2,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.20_s101_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.2,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.20_s202_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.2,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.20_s303_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.3,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.30_s101_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.3,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.30_s202_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.3,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.30_s303_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.4,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.40_s101_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.4,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.40_s202_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.4,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.40_s303_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.5,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.50_s101_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.5,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.50_s202_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.5,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.50_s303_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.6,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.60_s101_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.6,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.60_s202_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.6,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.60_s303_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.7,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.70_s101_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.7,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.70_s202_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.7,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.70_s303_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.8,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.80_s101_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.8,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.80_s202_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.8,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.80_s303_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.9,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.90_s101_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.9,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.90_s202_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.9,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.90_s303_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.95,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.95_s101_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.95,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.95_s202_st8/results.json"
+  },
+  {
+    "length": 12,
+    "tau_target": 0.95,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L12_tau0.95_s303_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.05,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.05_s101_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.05,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.05_s202_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.05,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.05_s303_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.1,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.10_s101_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.1,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.10_s202_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.1,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.10_s303_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.15,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.15_s101_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.15,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.15_s202_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.15,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.15_s303_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.2,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.20_s101_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.2,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.20_s202_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.2,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.20_s303_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.3,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.30_s101_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.3,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.30_s202_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.3,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.30_s303_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.4,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.40_s101_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.4,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.40_s202_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.4,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.40_s303_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.5,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.50_s101_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.5,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.50_s202_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.5,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.50_s303_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.6,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.60_s101_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.6,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.60_s202_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.6,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.60_s303_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.7,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.70_s101_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.7,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.70_s202_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.7,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.70_s303_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.8,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.80_s101_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.8,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.80_s202_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.8,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.80_s303_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.9,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.90_s101_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.9,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.90_s202_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.9,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.90_s303_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.95,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.95_s101_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.95,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.95_s202_st8/results.json"
+  },
+  {
+    "length": 14,
+    "tau_target": 0.95,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L14_tau0.95_s303_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.05,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.05_s101_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.05,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.05_s202_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.05,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.05_s303_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.1,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.10_s101_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.1,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.10_s202_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.1,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.10_s303_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.15,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.15_s101_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.15,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.15_s202_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.15,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.15_s303_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.2,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.20_s101_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.2,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.20_s202_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.2,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.20_s303_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.3,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.30_s101_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.3,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.30_s202_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.3,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.30_s303_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.4,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.40_s101_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.4,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.40_s202_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.4,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.40_s303_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.5,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.50_s101_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.5,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.50_s202_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.5,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.50_s303_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.6,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.60_s101_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.6,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.60_s202_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.6,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.60_s303_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.7,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.70_s101_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.7,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.70_s202_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.7,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.70_s303_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.8,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.80_s101_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.8,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.80_s202_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.8,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.80_s303_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.9,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.90_s101_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.9,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.90_s202_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.9,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.90_s303_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.95,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.95_s101_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.95,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.95_s202_st8/results.json"
+  },
+  {
+    "length": 16,
+    "tau_target": 0.95,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L16_tau0.95_s303_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.05,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.05_s101_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.05,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.05_s202_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.05,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.05_s303_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.1,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.10_s101_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.1,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.10_s202_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.1,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.10_s303_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.15,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.15_s101_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.15,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.15_s202_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.15,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.15_s303_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.2,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.20_s101_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.2,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.20_s202_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.2,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.20_s303_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.3,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.30_s101_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.3,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.30_s202_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.3,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.30_s303_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.4,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.40_s101_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.4,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.40_s202_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.4,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.40_s303_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.5,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.50_s101_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.5,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.50_s202_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.5,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.50_s303_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.6,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.60_s101_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.6,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.60_s202_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.6,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.60_s303_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.7,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.70_s101_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.7,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.70_s202_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.7,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.70_s303_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.8,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.80_s101_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.8,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.80_s202_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.8,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.80_s303_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.9,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.90_s101_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.9,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.90_s202_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.9,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.90_s303_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.95,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.95_s101_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.95,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.95_s202_st8/results.json"
+  },
+  {
+    "length": 18,
+    "tau_target": 0.95,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L18_tau0.95_s303_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.05,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.05_s101_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.05,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.05_s202_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.05,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.05_s303_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.1,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.10_s101_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.1,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.10_s202_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.1,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.10_s303_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.15,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.15_s101_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.15,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.15_s202_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.15,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.15_s303_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.2,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.20_s101_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.2,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.20_s202_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.2,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.20_s303_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.3,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.30_s101_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.3,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.30_s202_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.3,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.30_s303_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.4,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.40_s101_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.4,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.40_s202_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.4,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.40_s303_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.5,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.50_s101_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.5,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.50_s202_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.5,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.50_s303_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.6,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.60_s101_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.6,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.60_s202_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.6,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.60_s303_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.7,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.70_s101_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.7,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.70_s202_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.7,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.70_s303_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.8,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.80_s101_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.8,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.80_s202_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.8,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.80_s303_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.9,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.90_s101_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.9,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.90_s202_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.9,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.90_s303_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.95,
+    "seed": 101,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.95_s101_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.95,
+    "seed": 202,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.95_s202_st8/results.json"
+  },
+  {
+    "length": 20,
+    "tau_target": 0.95,
+    "seed": 303,
+    "steps": 8,
+    "solved": 40,
+    "total": 40,
+    "rate": 1.0,
+    "results": "neurips/sort_kendall_gpu/night/lowtrain_sweep/L20_tau0.95_s303_st8/results.json"
+  }
+]

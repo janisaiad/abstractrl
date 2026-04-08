@@ -2,7 +2,7 @@
   {
     "seed": 41,
     "instances": 80,
-    "ab_exact_rate": 0.275,
+    "ab_exact_rate": 0.225,
     "nn_within_10pct_rate": 0.4625,
     "nn_mean_gap_pct": 28.538571453957267,
     "zak_bad_if_gap_gt_10pct": true,
@@ -20,7 +20,7 @@
   {
     "seed": 43,
     "instances": 80,
-    "ab_exact_rate": 0.0375,
+    "ab_exact_rate": 0.15,
     "nn_within_10pct_rate": 0.525,
     "nn_mean_gap_pct": 20.076250959128895,
     "zak_bad_if_gap_gt_10pct": true,

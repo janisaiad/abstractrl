@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "lengths": [
+      5,
+      10,
+      20
+    ],
+    "taus": [
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      0.9
+    ],
+    "seeds": [
+      101
+    ],
+    "steps": 10,
+    "train_tasks": 60,
+    "eval_tasks": 25
+  },
+  "rows": [
+    {
+      "length": 5,
+      "tau_target": 0.1,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L5_tau0.10_s101_st10/results.json"
+    },
+    {
+      "length": 5,
+      "tau_target": 0.3,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L5_tau0.30_s101_st10/results.json"
+    },
+    {
+      "length": 5,
+      "tau_target": 0.5,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L5_tau0.50_s101_st10/results.json"
+    },
+    {
+      "length": 5,
+      "tau_target": 0.7,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L5_tau0.70_s101_st10/results.json"
+    },
+    {
+      "length": 5,
+      "tau_target": 0.9,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L5_tau0.90_s101_st10/results.json"
+    },
+    {
+      "length": 10,
+      "tau_target": 0.1,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L10_tau0.10_s101_st10/results.json"
+    },
+    {
+      "length": 10,
+      "tau_target": 0.3,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L10_tau0.30_s101_st10/results.json"
+    },
+    {
+      "length": 10,
+      "tau_target": 0.5,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L10_tau0.50_s101_st10/results.json"
+    },
+    {
+      "length": 10,
+      "tau_target": 0.7,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L10_tau0.70_s101_st10/results.json"
+    },
+    {
+      "length": 10,
+      "tau_target": 0.9,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L10_tau0.90_s101_st10/results.json"
+    },
+    {
+      "length": 20,
+      "tau_target": 0.1,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L20_tau0.10_s101_st10/results.json"
+    },
+    {
+      "length": 20,
+      "tau_target": 0.3,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L20_tau0.30_s101_st10/results.json"
+    },
+    {
+      "length": 20,
+      "tau_target": 0.5,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L20_tau0.50_s101_st10/results.json"
+    },
+    {
+      "length": 20,
+      "tau_target": 0.7,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L20_tau0.70_s101_st10/results.json"
+    },
+    {
+      "length": 20,
+      "tau_target": 0.9,
+      "seed": 101,
+      "steps": 10,
+      "solved": 25,
+      "total": 25,
+      "rate": 1.0,
+      "results": "neurips/sort_kendall_gpu/kendall_pilot/L20_tau0.90_s101_st10/results.json"
+    }
+  ]
+}

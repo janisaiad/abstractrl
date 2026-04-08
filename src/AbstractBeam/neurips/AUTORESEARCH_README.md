@@ -84,3 +84,35 @@ Résumé rapide hiérarchique vs XOR: `tsp_structured_gpu_quick/structured_summa
 
 - Tri: mesurer **inversions / tau de Kendall** après génération plutôt que « nombre de swaps ».
 - TSP: augmenter $n$ ou le budget de recherche; reporter **gap relatif** des programmes trouvés quand l’optimal exact n’est pas atteint; comparer NN à d’autres baselines (2-opt léger sur petit $n$).
+
+## 5. Commandes pour rerun les expériences
+
+Depuis `src/AbstractBeam`, lancer:
+
+```bash
+# 1) Sweep TSP difficulté (config actuelle: variante big-train sur niveaux durs)
+uv run python neurips/tsp_difficulty_curve/run_tsp_difficulty_curve.py
+```
+
+Sortie principale:
+
+- `neurips/tsp_difficulty_curve/difficulty_curve_summary_bigtrain.json`
+- un dossier par niveau dans `neurips/tsp_difficulty_curve/lvl*_*/`
+
+Puis générer les plots:
+
+```bash
+# 2) Génération des figures (courbes, box/violin, histogrammes + mini-graphes d'instances)
+uv run python neurips/tsp_difficulty_curve/plot_tsp_difficulty_curve.py
+```
+
+PNGs générés dans `neurips/tsp_difficulty_curve/`:
+
+- `plot_base_success_curves.png`
+- `plot_base_nn_gap_distribution.png`
+- `plot_base_nn_gap_violin.png`
+- `plot_base_nn_gap_histograms.png`
+- `plot_bigtrain_success_curves.png` (si le summary big-train existe)
+- `plot_bigtrain_nn_gap_distribution.png` (si le summary big-train existe)
+- `plot_bigtrain_nn_gap_violin.png` (si le summary big-train existe)
+- `plot_bigtrain_nn_gap_histograms.png` (si le summary big-train existe)

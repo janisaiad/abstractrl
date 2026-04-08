@@ -1,0 +1,59 @@
+[
+  {
+    "name": "lvl1_very_easy_n5",
+    "n": 5,
+    "intra": [
+      1,
+      4
+    ],
+    "inter": [
+      90,
+      160
+    ],
+    "difficulty_index": 1,
+    "ab_exact_rate": 0.0,
+    "nn_within_10pct_rate": 0.45,
+    "nn_mean_gap_pct": 14.663005848053903,
+    "zak_bad_mean_gap_gt_10pct": true,
+    "instances_eval": 220,
+    "results_json": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/tsp_difficulty_curve/lvl1_very_easy_n5/results.json"
+  },
+  {
+    "name": "lvl2_easy_n5",
+    "n": 5,
+    "intra": [
+      1,
+      8
+    ],
+    "inter": [
+      60,
+      140
+    ],
+    "difficulty_index": 2,
+    "ab_exact_rate": 0.05909090909090909,
+    "nn_within_10pct_rate": 0.38636363636363635,
+    "nn_mean_gap_pct": 20.866456795436942,
+    "zak_bad_mean_gap_gt_10pct": true,
+    "instances_eval": 220,
+    "results_json": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/tsp_difficulty_curve/lvl2_easy_n5/results.json"
+  },
+  {
+    "name": "lvl3_medium_n6",
+    "n": 6,
+    "intra": [
+      1,
+      12
+    ],
+    "inter": [
+      35,
+      95
+    ],
+    "difficulty_index": 3,
+    "ab_exact_rate": 0.0,
+    "nn_within_10pct_rate": 0.27307692307692305,
+    "nn_mean_gap_pct": 27.877948228828423,
+    "zak_bad_mean_gap_gt_10pct": true,
+    "instances_eval": 260,
+    "results_json": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/tsp_difficulty_curve/lvl3_medium_n6/results.json"
+  }
+]

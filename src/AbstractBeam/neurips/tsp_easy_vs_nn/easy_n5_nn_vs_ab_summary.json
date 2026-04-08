@@ -1,0 +1,25 @@
+{
+  "instances": 300,
+  "ab_exact_solved": 0,
+  "ab_exact_rate": 0.0,
+  "nn_within_10pct_count": 85,
+  "nn_within_10pct_rate": 0.2833333333333333,
+  "nn_mean_gap_pct": 23.40475716042789,
+  "ab_exact_beats_nn_count": 0,
+  "zak_rule_bad_if_gap_gt_10pct": true,
+  "config": {
+    "n": 5,
+    "instances_eval": 300,
+    "easy_structure": "hierarchical clusters (2) with strong inter-cluster penalty",
+    "intra_range": [
+      1,
+      6
+    ],
+    "inter_range": [
+      60,
+      140
+    ],
+    "train_steps": 80
+  },
+  "results_json": "/Data/janis.aiad/abstractrl/src/AbstractBeam/neurips/tsp_easy_vs_nn/easy_n5_run/results.json"
+}
