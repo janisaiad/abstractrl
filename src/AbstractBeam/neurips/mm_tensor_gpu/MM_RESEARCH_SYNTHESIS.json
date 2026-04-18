@@ -1,0 +1,91 @@
+{
+  "tensor_cp_report": {
+    "tensor_shape": [
+      4,
+      4,
+      4
+    ],
+    "tensor_frobenius_norm": 2.8284271247461903,
+    "known_bilinear_rank_2x2x2_real": 7,
+    "cp_als_sweeps": [
+      {
+        "rank": 4,
+        "best_relative_fro_error": 0.6701434972226564
+      },
+      {
+        "rank": 5,
+        "best_relative_fro_error": 0.5010416477012094
+      },
+      {
+        "rank": 6,
+        "best_relative_fro_error": 0.353553516112293
+      },
+      {
+        "rank": 7,
+        "best_relative_fro_error": 3.6738532873474756e-07
+      },
+      {
+        "rank": 8,
+        "best_relative_fro_error": 3.187928217936894e-05
+      }
+    ],
+    "notes": "r=7 erreur ~0 attendue en pr\u00e9cision machine; r<7 borne inf\u00e9rieure Strassen."
+  },
+  "tensor_evolve_report": {
+    "rank7_evolution": {
+      "rank": 7,
+      "best_relative_fro_error": 0.4343567925473512,
+      "generations": 500
+    }
+  },
+  "combined_tensor_baselines": {
+    "cp_als": {
+      "tensor_shape": [
+        4,
+        4,
+        4
+      ],
+      "tensor_frobenius_norm": 2.8284271247461903,
+      "known_bilinear_rank_2x2x2_real": 7,
+      "cp_als_sweeps": [
+        {
+          "rank": 4,
+          "best_relative_fro_error": 0.6701434972226564
+        },
+        {
+          "rank": 5,
+          "best_relative_fro_error": 0.5010416477012094
+        },
+        {
+          "rank": 6,
+          "best_relative_fro_error": 0.353553516112293
+        },
+        {
+          "rank": 7,
+          "best_relative_fro_error": 3.6738532873474756e-07
+        },
+        {
+          "rank": 8,
+          "best_relative_fro_error": 3.187928217936894e-05
+        }
+      ],
+      "notes": "r=7 erreur ~0 attendue en pr\u00e9cision machine; r<7 borne inf\u00e9rieure Strassen."
+    },
+    "evolution_rank7": {
+      "rank7_evolution": {
+        "rank": 7,
+        "best_relative_fro_error": 0.4343567925473512,
+        "generations": 500
+      }
+    }
+  },
+  "abstract_beam_summaries": [
+    {
+      "tag": "smoke",
+      "from_results_json": true,
+      "solved": 0,
+      "total": 8
+    }
+  ],
+  "interpretation": "Baselines CP: erreur quasi nulle \u00e0 partir du rang 7 = borne Strassen \u27e82,2,2\u27e9. Abstract Beam optimise la probabilit\u00e9 de programmes DSL exacts sur des I/O (cellules C_ij), pas la d\u00e9composition CP du tenseur; comparer le taux de succ\u00e8s beam au seuil d\u2019erreur relative CP par rang."
+}

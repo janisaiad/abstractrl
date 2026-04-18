@@ -246,7 +246,7 @@ def train_eval_loop(args, device, model, trace_gen, checkpoint, original_tasks):
         if args.domain == "dreamcoder":
             higher_order_functions = {"Map": [1, 0], "Fold": [2, 0, 0]}
             base_function_dict = get_function_dict()
-        elif args.domain in ("deepcoder", "tsp"):
+        elif args.domain in ("deepcoder", "tsp", "mm_tensor"):
             higher_order_functions = {"Map": [1, 0], "Filter": [1, 0], "Count": [1, 0], "ZipWith": [2, 0, 0],
                                       "Scanl1": [2, 0]}
             base_function_dict = get_lambdabeam_function_dict()

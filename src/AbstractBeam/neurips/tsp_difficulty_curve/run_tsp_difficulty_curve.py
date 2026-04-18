@@ -23,6 +23,7 @@ from crossbeam.experiment.run_crossbeam import init_model
 from crossbeam.experiment.train_eval import main_train_eval
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+RUN_TAG = "abstrue"
 
 
 def nearest_neighbor_tour_cost(mat: List[List[int]]) -> int:
@@ -62,7 +63,7 @@ def run_level(level: dict, port: int):
   set_global_seed(seed)
   rng = random.Random(seed)
 
-  out_dir = os.path.join(ROOT, name)
+  out_dir = os.path.join(ROOT, f"{name}_{RUN_TAG}")
   data_dir = os.path.join(out_dir, "data")
   os.makedirs(data_dir, exist_ok=True)
   for fn in os.listdir(data_dir):
@@ -99,7 +100,16 @@ def run_level(level: dict, port: int):
   cfg.json_results_file = os.path.join(out_dir, "results.json")
   cfg.do_test = False
   cfg.dynamic_tasks = False
-  cfg.abstraction = False
+  cfg.abstraction = True
+  cfg.num_starting_ops = 28
+  cfg.initialization_method = "top"
+  cfg.abstraction_pruning = True
+  cfg.abstraction_refinement = True
+  cfg.top_k = 2
+  cfg.num_inventions_per_iter = 20
+  cfg.invention_arity = 3
+  cfg.max_invention = 20
+  cfg.castrate_macros = False
   cfg.train_steps = level["train_steps"]
   cfg.eval_every = max(10, level["train_steps"] // 2)
   cfg.grad_accumulate = 4
@@ -107,7 +117,7 @@ def run_level(level: dict, port: int):
   cfg.gpu_list = "0"
   cfg.gpu = 0
   cfg.use_ur = False
-  cfg.use_ur_in_valid = False
+  cfg.use_ur_in_valid = True
   cfg.timeout = 1.0
   cfg.max_search_weight = max(15, n * 4)
   cfg.beam_size = 10
@@ -186,7 +196,7 @@ def main():
     print(row)
     # Keep running all levels to verify whether larger train sets help hard regimes.
 
-  out_path = os.path.join(ROOT, "difficulty_curve_summary_bigtrain.json")
+  out_path = os.path.join(ROOT, "difficulty_curve_summary_bigtrain_abstrue.json")
   with open(out_path, "w") as f:
     json.dump(out, f, indent=2)
   print(json.dumps(out, indent=2))

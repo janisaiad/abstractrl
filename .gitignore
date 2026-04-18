@@ -36,3 +36,10 @@ pip-wheel-metadata/
 # End of Selection
 *.pyc
 *.npz
+*.pt
+*.pth
+*.ckpt
+
+# Heavy experiment artifacts
+src/AbstractBeam/crossbeam/experiment/runs/
+src/AbstractBeam/neurips/**/runs/

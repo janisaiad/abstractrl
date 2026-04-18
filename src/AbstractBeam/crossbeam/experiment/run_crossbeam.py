@@ -27,6 +27,7 @@ import random
 from crossbeam.dsl import task as task_module
 from crossbeam.data.deepcoder import deepcoder_tasks
 from crossbeam.data.tsp import tsp_tasks as tsp_tasks_module
+from crossbeam.data.mm_tensor import mm_tasks as mm_tasks_module
 from ml_collections import config_flags
 from crossbeam.datasets import data_gen
 from crossbeam.common import configs_all
@@ -183,6 +184,22 @@ def main(argv):
             if FLAGS.fold == 2:
                 test_set, train_set = train_test_split(original_tasks, test_size=0.5, train_size=0.5, shuffle=True,
                                                        random_state=42)
+        if config.do_test:
+            original_tasks = test_set
+        else:
+            original_tasks = train_set
+    elif config.domain == "mm_tensor":
+        rng = random.Random(int(getattr(config, "seed", 0)))
+        _mm_n = int(getattr(config, "mm_n", 4))
+        train_set, test_set = mm_tasks_module.make_mm_train_eval_split(
+            rng,
+            _mm_n,
+            num_train_pairs=6,
+            num_eval_pairs=6,
+            tasks_per_split=1,
+            lo=-2,
+            hi=2,
+        )
         if config.do_test:
             original_tasks = test_set
         else:

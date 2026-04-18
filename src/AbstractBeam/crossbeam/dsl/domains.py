@@ -177,6 +177,24 @@ TSP_DOMAIN = Domain(
     small_value_filter=deepcoder_operations.deepcoder_small_value_filter,
     checker_function=checker.check_solution)
 
+MM_TENSOR_DOMAIN = Domain(
+    name='mm_tensor',
+    operations=deepcoder_operations.get_operations_(),
+    inventions=[],
+    constants=[-1, 0, 1, 2, 3, 4],
+    constants_extractor=None,
+    inputs_dict_generator=deepcoder_data.deepcoder_inputs_dict_generator,
+    input_charset=None,
+    input_max_len=None,
+    output_charset=None,
+    output_max_len=None,
+    value_charset=None,
+    value_max_len=None,
+    program_tokens=None,
+    output_type=(int, list),
+    small_value_filter=deepcoder_operations.deepcoder_small_value_filter,
+    checker_function=checker.check_solution)
+
 
 def get_domain(domain_str):
   if domain_str == 'tuple':
@@ -193,5 +211,7 @@ def get_domain(domain_str):
     return DEEPCODER_DOMAIN
   elif domain_str == 'tsp':
     return TSP_DOMAIN
+  elif domain_str == 'mm_tensor':
+    return MM_TENSOR_DOMAIN
   else:
     raise ValueError('Unknown domain: {}'.format(domain_str))

@@ -143,16 +143,57 @@ def _gap_examples(results_json: str) -> Dict[str, Dict]:
   }
 
 
-def _draw_tour_edges(ax, pts, matrix: List[List[int]], tour: List[int], color: str, ls: str, lw: float):
+def _draw_tour_edges(
+    ax,
+    pts,
+    matrix: List[List[int]],
+    tour: List[int],
+    color: str,
+    ls: str,
+    lw: float,
+    offset_sign: float,
+    label_side_sign: float,
+):
   for i in range(len(tour) - 1):
     a = tour[i]
     b = tour[i + 1]
     x0, y0 = pts[a]
     x1, y1 = pts[b]
-    ax.plot([x0, x1], [y0, y1], color=color, linestyle=ls, linewidth=lw, alpha=0.95, zorder=3)
-    mx = (x0 + x1) / 2.0
-    my = (y0 + y1) / 2.0
-    ax.text(mx, my, str(matrix[a][b]), fontsize=6, color=color, ha="center", va="center", zorder=4)
+    dx = x1 - x0
+    dy = y1 - y0
+    norm = math.sqrt(dx * dx + dy * dy) + 1e-8
+    nx = -dy / norm
+    ny = dx / norm
+    # Small visual shift so red/green tours do not overlap exactly.
+    eps = 0.085 * offset_sign
+    sx0 = x0 + eps * nx
+    sy0 = y0 + eps * ny
+    sx1 = x1 + eps * nx
+    sy1 = y1 + eps * ny
+    ax.annotate(
+        "",
+        xy=(sx1, sy1),
+        xytext=(sx0, sy0),
+        arrowprops={
+            "arrowstyle": "-|>",
+            "color": color,
+            "linestyle": ls,
+            "lw": lw,
+            "alpha": 0.95,
+            "mutation_scale": 8.5,
+            "shrinkA": 8,
+            "shrinkB": 8,
+        },
+        zorder=4,
+    )
+    mx = (sx0 + sx1) / 2.0
+    my = (sy0 + sy1) / 2.0
+    # Separate text labels for overlapping tours:
+    # negative => left side, positive => right side (w.r.t. edge direction).
+    l_eps = 0.075 * label_side_sign
+    tx = mx + l_eps * nx
+    ty = my + l_eps * ny
+    ax.text(tx, ty, str(matrix[a][b]), fontsize=6, color=color, ha="center", va="center", zorder=5)
 
 
 def _draw_instance_graph(ax, matrix: List[List[int]], title: str, opt_tour: List[int], nn_tour: List[int], opt_cost: int, nn_cost: int):
@@ -169,9 +210,11 @@ def _draw_instance_graph(ax, matrix: List[List[int]], title: str, opt_tour: List
   vmin = min(vals) if vals else 0.0
   vmax = max(vals) if vals else 1.0
   denom = max(vmax - vmin, 1e-8)
+  edge_items = []
   for i in range(n):
     for j in range(i + 1, n):
       w = 0.5 * (matrix[i][j] + matrix[j][i])
+      edge_items.append((w, i, j))
       t = (w - vmin) / denom
       alpha = 0.12 + 0.68 * t
       lw = 0.4 + 1.4 * t
@@ -182,11 +225,38 @@ def _draw_instance_graph(ax, matrix: List[List[int]], title: str, opt_tour: List
           alpha=alpha,
           linewidth=lw,
       )
+
+  # Show only a few blue values (not all): smallest/largest average edges.
+  edge_items.sort(key=lambda x: x[0])
+  label_edges = []
+  if len(edge_items) <= 4:
+    label_edges = edge_items
+  else:
+    label_edges = edge_items[:2] + edge_items[-2:]
+  for w, i, j in label_edges:
+    x0, y0 = pts[i]
+    x1, y1 = pts[j]
+    dx = x1 - x0
+    dy = y1 - y0
+    norm = math.sqrt(dx * dx + dy * dy) + 1e-8
+    nx = -dy / norm
+    ny = dx / norm
+    mx = (x0 + x1) / 2.0
+    my = (y0 + y1) / 2.0
+    # Alternate side for readability.
+    side = -1.0 if ((i + j) % 2 == 0) else 1.0
+    tx = mx + side * 0.06 * nx
+    ty = my + side * 0.06 * ny
+    ax.text(tx, ty, f"{w:.0f}", fontsize=5.5, color="#1f77b4", ha="center", va="center", zorder=2)
   # Overlay tours:
   # - Optimal tour in green solid.
   # - Found NN tour in red dashed.
-  _draw_tour_edges(ax, pts, matrix, opt_tour, color="#2ca02c", ls="-", lw=2.2)
-  _draw_tour_edges(ax, pts, matrix, nn_tour, color="#d62728", ls="--", lw=2.0)
+  _draw_tour_edges(
+      ax, pts, matrix, opt_tour, color="#2ca02c", ls="-", lw=2.2, offset_sign=1.0, label_side_sign=1.0
+  )
+  _draw_tour_edges(
+      ax, pts, matrix, nn_tour, color="#d62728", ls="--", lw=2.0, offset_sign=-1.0, label_side_sign=-1.0
+  )
 
   for idx, (x, y) in enumerate(pts):
     ax.scatter([x], [y], s=28, color="black")
