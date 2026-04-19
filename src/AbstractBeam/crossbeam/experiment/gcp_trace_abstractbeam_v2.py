@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-Graph Coloring trace training + repair search in one file.
+Graph Coloring trace training + repair search in one file (v2).
 
 Designed to live inside janisaiad/abstractrl, e.g.:
   src/AbstractBeam/crossbeam/experiment/gcp_trace_abstractbeam.py
 
 What this file does:
   * parses solved GCP datasets (JSON/JSONL/PKL/PT/DIMACS)
-  * builds dense-reward repair traces from solved examples
+  * builds teacher traces from solved examples and solver-generated traces from self-solving episodes
   * trains a TRM-style policy/value prior with torchrun/DDP
-  * mines AbstractBeam-style macros from traces (frequent primitive-family ngrams)
+  * mines lightweight parameterized macros from traces
   * solves new instances with a deterministic single-player MCTS over GCP primitives
 
 This is intentionally self-contained: it does not modify CrossBeam internals.
@@ -27,7 +27,6 @@ import glob
 import hashlib
 import json
 import math
-import contextlib
 import os
 import pickle
 import random
@@ -39,6 +38,11 @@ from typing import Any, Dict, Iterable, Iterator, List, Optional, Sequence, Tupl
 
 import numpy as np
 import torch
+torch.set_num_threads(1)
+try:
+    torch.set_num_interop_threads(1)
+except RuntimeError:
+    pass
 import torch.distributed as dist
 import torch.multiprocessing as mp
 import torch.nn as nn
@@ -139,11 +143,9 @@ class GCGraph:
         self.degrees = np.asarray([len(xs) for xs in neighs], dtype=np.int32)
         self.max_degree = int(self.degrees.max()) if self.n else 0
         self.density = 0.0 if self.n <= 1 else (2.0 * self.m) / (self.n * (self.n - 1))
-        # Degeneracy +1 is NOT a lower bound on the chromatic number (e.g. K_{5,5}).
-        # Keep it only as a structural / feature signal; valid cheap LB is clique-based here.
-        self.degeneracy_plus_one = degeneracy_plus_one(self.adj_list)
+        self.degeneracy_hint = degeneracy_plus_one(self.adj_list)
         self.clique_lb = greedy_clique_lower_bound(self.adj_list, self.degrees)
-        self.lower_bound = int(self.clique_lb)
+        self.lower_bound = self.clique_lb
         self.dsatur_ub = dsatur_upper_bound(self)
 
 
@@ -170,6 +172,11 @@ class StateMetrics:
     core_mask: np.ndarray
     same_color_neighbors: np.ndarray
     distinct_neighbor_colors: np.ndarray
+    legal_color_counts: np.ndarray
+    zero_slack_vertices: int
+    one_slack_vertices: int
+    mean_legal_colors: float
+    patchable_score: float
     entropy: float
 
 
@@ -194,11 +201,12 @@ class TraceSample:
     action_tokens: np.ndarray
     action_mask: np.ndarray
     target_action: int
-    value_target: float
-    reward: float
-    chosen_family: str
-    episode_id: str
-    step: int
+    target_policy: Optional[np.ndarray] = None
+    value_target: float = 0.0
+    reward: float = 0.0
+    chosen_family: str = PrimitiveFamily.VERTEX_RECOLOR.value
+    episode_id: str = ''
+    step: int = 0
 
 
 @dataclasses.dataclass
@@ -278,27 +286,24 @@ def degeneracy_plus_one(adj_list: List[np.ndarray]) -> int:
         return 0
     n = len(adj_list)
     deg = np.asarray([len(xs) for xs in adj_list], dtype=np.int32)
-    bins: List[List[int]] = [[] for _ in range(int(deg.max()) + 1 if n else 1)]
-    for v, d in enumerate(deg.tolist()):
-        bins[d].append(v)
+    remaining = deg.copy()
     removed = np.zeros(n, dtype=np.bool_)
+    import heapq
+    heap: List[Tuple[int, int]] = [(int(remaining[v]), int(v)) for v in range(n)]
+    heapq.heapify(heap)
     core = 0
-    for k in range(len(bins)):
-        stack = bins[k]
-        idx = 0
-        while idx < len(stack):
-            v = stack[idx]
-            idx += 1
-            if removed[v] or deg[v] != k:
-                continue
-            removed[v] = True
-            core = max(core, k + 1)
-            for u in adj_list[v]:
-                if not removed[u] and deg[u] > 0:
-                    du = int(deg[u])
-                    deg[u] -= 1
-                    bins[du - 1].append(int(u))
-    return int(core)
+    while heap:
+        d, v = heapq.heappop(heap)
+        if removed[v] or d != int(remaining[v]):
+            continue
+        removed[v] = True
+        core = max(core, int(d))
+        for u in adj_list[v]:
+            u = int(u)
+            if not removed[u]:
+                remaining[u] -= 1
+                heapq.heappush(heap, (int(remaining[u]), u))
+    return int(core + 1)
 
 
 def greedy_clique_lower_bound(adj_list: List[np.ndarray], degrees: np.ndarray) -> int:
@@ -347,10 +352,16 @@ def greedy_k_assignment(graph: GCGraph, k: int, order: Optional[np.ndarray] = No
     for v in order.tolist():
         penalties = np.zeros(k, dtype=np.int32)
         for u in graph.adj_list[v]:
-            cu = int(colors[u])
+            cu = int(colors[int(u)])
             if cu >= 0:
                 penalties[cu] += 1
-        best_color = int(np.argmin(penalties))
+        best_pen = int(penalties.min())
+        best_colors = np.where(penalties == best_pen)[0]
+        if best_colors.size > 1:
+            class_sizes = np.bincount(np.clip(colors.astype(np.int64), 0, max(k - 1, 0)), minlength=k).astype(np.int32)
+            best_color = int(best_colors[np.argmin(class_sizes[best_colors])])
+        else:
+            best_color = int(best_colors[0])
         colors[v] = best_color
     return canonicalize_colors(colors)
 
@@ -397,6 +408,7 @@ def compute_state_metrics(graph: GCGraph, state: RepairState, core_radius: int =
             conflict_mask[int(v)] = True
             class_conflicts[cu] += 1
     distinct_neighbor_colors = np.asarray([len(s) for s in distinct_sets], dtype=np.int32)
+    legal_color_counts = np.maximum(state.k - distinct_neighbor_colors, 0).astype(np.int32)
     conflicts = int(local_conflicts.sum() // 2)
     conflict_vertices = int(conflict_mask.sum())
     core_mask = conflict_mask.copy()
@@ -413,6 +425,10 @@ def compute_state_metrics(graph: GCGraph, state: RepairState, core_radius: int =
             if not frontier:
                 break
     core_size = int(core_mask.sum())
+    zero_slack_vertices = int((legal_color_counts == 0).sum())
+    one_slack_vertices = int((legal_color_counts == 1).sum())
+    mean_legal_colors = float(legal_color_counts.mean()) if legal_color_counts.size else 0.0
+    patchable_score = 1.0 if core_size == 0 else min(1.0, 12.0 / max(core_size, 1))
     probs = class_sizes.astype(np.float64) / max(int(class_sizes.sum()), 1)
     entropy = float(-(probs[probs > 0] * np.log(probs[probs > 0] + EPS)).sum())
     return StateMetrics(
@@ -426,13 +442,18 @@ def compute_state_metrics(graph: GCGraph, state: RepairState, core_radius: int =
         core_mask=core_mask,
         same_color_neighbors=same_color,
         distinct_neighbor_colors=distinct_neighbor_colors,
+        legal_color_counts=legal_color_counts,
+        zero_slack_vertices=zero_slack_vertices,
+        one_slack_vertices=one_slack_vertices,
+        mean_legal_colors=mean_legal_colors,
+        patchable_score=patchable_score,
         entropy=entropy,
     )
 
 
 def state_key(state: RepairState) -> bytes:
     colors = canonicalize_colors(state.colors)
-    header = np.asarray([state.k, state.plateau], dtype=np.int16).tobytes()
+    header = np.asarray([state.k], dtype=np.int16).tobytes()
     return header + colors.tobytes()
 
 
@@ -665,6 +686,26 @@ def apply_candidate_action(
     raise ValueError(f"unknown family: {fam}")
 
 
+def transition_state(
+    graph: GCGraph,
+    state: RepairState,
+    metrics: StateMetrics,
+    action: CandidateAction,
+    macros: Optional[Dict[str, MacroProgram]] = None,
+    exact_patch_limit: int = 12,
+) -> Tuple[RepairState, StateMetrics, float]:
+    nxt = apply_candidate_action(graph, state, metrics, action, macros=macros, exact_patch_limit=exact_patch_limit)
+    nxt_metrics = compute_state_metrics(graph, nxt)
+    improved = (nxt_metrics.conflicts < metrics.conflicts) or (
+        nxt_metrics.conflicts == metrics.conflicts and nxt_metrics.conflict_vertices < metrics.conflict_vertices
+    ) or (
+        nxt_metrics.conflicts == metrics.conflicts and nxt_metrics.conflict_vertices == metrics.conflict_vertices and nxt_metrics.core_size < metrics.core_size
+    )
+    nxt.plateau = 0 if improved else min(int(state.plateau) + 1, 255)
+    reward = dense_reward(graph, metrics, nxt_metrics, action_cost=action.est_cost)
+    return nxt, nxt_metrics, reward
+
+
 def dense_reward(
     graph: GCGraph,
     before: StateMetrics,
@@ -673,10 +714,13 @@ def dense_reward(
     terminal_bonus: float = 1.0,
 ) -> float:
     r = 0.0
-    r += 1.0 * (before.conflicts - after.conflicts) / max(graph.m, 1)
-    r += 0.40 * (before.conflict_vertices - after.conflict_vertices) / max(graph.n, 1)
+    r += 1.00 * (before.conflicts - after.conflicts) / max(graph.m, 1)
+    r += 0.35 * (before.conflict_vertices - after.conflict_vertices) / max(graph.n, 1)
     r += 0.20 * (before.core_size - after.core_size) / max(graph.n, 1)
     r += 0.05 * (after.entropy - before.entropy) / max(math.log(max(after.class_sizes.sum(), 2)), 1.0)
+    r += 0.08 * (after.mean_legal_colors - before.mean_legal_colors) / max(after.class_sizes.sum(), 1)
+    r += 0.08 * (before.zero_slack_vertices - after.zero_slack_vertices) / max(graph.n, 1)
+    r += 0.04 * (after.patchable_score - before.patchable_score)
     r -= 0.02 * action_cost
     if after.conflicts == 0:
         r += terminal_bonus
@@ -687,36 +731,8 @@ def color_alignment_score(cur: np.ndarray, target: np.ndarray, k: int) -> float:
     cur = canonicalize_colors(cur)
     target = canonicalize_colors(target)
     if linear_sum_assignment is None:
-        # Fallback: greedy one-to-one class matching by confusion counts.
-        # This approximates Hungarian without depending on SciPy.
-        K = max(k, int(cur.max()) + 1 if cur.size else 0, int(target.max()) + 1 if target.size else 0)
-        conf = np.zeros((K, K), dtype=np.int32)
-        for a, b in zip(cur.tolist(), target.tolist()):
-            conf[int(a), int(b)] += 1
-        used_r = np.zeros(K, dtype=np.bool_)
-        used_c = np.zeros(K, dtype=np.bool_)
-        matched = 0
-        # Repeatedly pick the largest remaining confusion entry.
-        for _ in range(K):
-            best = -1
-            best_rc = (-1, -1)
-            for r in range(K):
-                if used_r[r]:
-                    continue
-                for c in range(K):
-                    if used_c[c]:
-                        continue
-                    v = int(conf[r, c])
-                    if v > best:
-                        best = v
-                        best_rc = (r, c)
-            r, c = best_rc
-            if r < 0 or c < 0:
-                break
-            used_r[r] = True
-            used_c[c] = True
-            matched += max(0, int(conf[r, c]))
-        return float(matched) / max(cur.shape[0], 1)
+        eq = cur[:, None] == target[None, :]
+        return float(np.trace(eq.astype(np.float64)[: min(eq.shape[0], eq.shape[1]), : min(eq.shape[0], eq.shape[1])])) / max(cur.shape[0], 1)
     K = max(k, int(cur.max()) + 1 if cur.size else 0, int(target.max()) + 1 if target.size else 0)
     conf = np.zeros((K, K), dtype=np.int32)
     for a, b in zip(cur.tolist(), target.tolist()):
@@ -734,6 +750,10 @@ def macro_applicable(macro: MacroProgram, metrics: StateMetrics, graph: GCGraph)
     cr = metrics.conflicts / max(graph.m, 1)
     hr = metrics.core_size / max(graph.n, 1)
     return macro.min_conflict_ratio <= cr <= macro.max_conflict_ratio and macro.min_core_ratio <= hr <= macro.max_core_ratio
+
+
+def color_signature(metrics: StateMetrics, c: int) -> Tuple[int, int]:
+    return int(metrics.class_sizes[c]), int(metrics.class_conflicts[c])
 
 
 def generate_candidate_actions(
@@ -776,7 +796,7 @@ def generate_candidate_actions(
                         est_delta_conflicts=float(de),
                         est_delta_vertices=float(dv),
                         est_cost=1.0,
-                        token=(PrimitiveFamily.VERTEX_RECOLOR.value, int(v), int(c)),
+                        token=(PrimitiveFamily.VERTEX_RECOLOR.value, int(v), color_signature(metrics, int(c))),
                     )
                 )
 
@@ -795,7 +815,7 @@ def generate_candidate_actions(
                         est_delta_conflicts=float(max(0, de)),
                         est_delta_vertices=float(dv),
                         est_cost=2.0,
-                        token=(PrimitiveFamily.KEMPE_SWAP.value, int(v), int(c)),
+                        token=(PrimitiveFamily.KEMPE_SWAP.value, int(v), color_signature(metrics, int(c))),
                     )
                 )
 
@@ -871,6 +891,9 @@ def candidate_feature_vector(
         x[base + 11] = float(metrics.core_mask[v])
         x[base + 12] = float(state.colors[v]) / max(state.k - 1, 1)
         x[base + 13] = float(c) / max(state.k - 1, 1)
+        x[base + 14] = float(metrics.legal_color_counts[v]) / max(state.k, 1)
+        x[base + 15] = float(metrics.zero_slack_vertices) / max(graph.n, 1)
+        x[base + 16] = float(metrics.patchable_score)
     elif action.family == PrimitiveFamily.MACRO.value and action.meta:
         macro = macros.get(str(action.meta[0])) if macros else None
         if macro is not None:
@@ -902,8 +925,8 @@ def vertex_feature_matrix(graph: GCGraph, state: RepairState, metrics: StateMetr
         feats[i, 11] = float(metrics.entropy) / max(math.log(max(state.k, 2)), 1.0)
         feats[i, 12] = float(state.plateau) / 16.0
         feats[i, 13] = float(metrics.conflicts) / max(graph.m, 1)
-        feats[i, 14] = float(metrics.conflict_vertices) / max(graph.n, 1)
-        feats[i, 15] = 1.0
+        feats[i, 14] = float(metrics.legal_color_counts[v]) / max(state.k, 1)
+        feats[i, 15] = float(metrics.legal_color_counts[v] <= 1)
     return feats, mask
 
 
@@ -916,6 +939,8 @@ def class_feature_matrix(graph: GCGraph, state: RepairState, metrics: StateMetri
     max_conf = max(int(metrics.class_conflicts.max()) if metrics.class_conflicts.size else 1, 1)
     for i, c in enumerate(order.tolist()):
         mask[i] = True
+        member_mask = state.colors == int(c)
+        member_legal = float(metrics.legal_color_counts[member_mask].mean()) if member_mask.any() else 0.0
         feats[i, 0] = float(metrics.class_sizes[c]) / max(graph.n, 1)
         feats[i, 1] = float(metrics.class_conflicts[c]) / max(graph.m, 1)
         feats[i, 2] = float(metrics.class_sizes[c]) / max_size
@@ -926,9 +951,19 @@ def class_feature_matrix(graph: GCGraph, state: RepairState, metrics: StateMetri
         feats[i, 7] = float(metrics.class_conflicts[c] > 0)
         feats[i, 8] = float(metrics.entropy) / max(math.log(max(state.k, 2)), 1.0)
         feats[i, 9] = float(graph.lower_bound) / max(state.k, 1)
-        feats[i, 10] = float(metrics.conflicts) / max(graph.m, 1)
-        feats[i, 11] = 1.0
+        feats[i, 10] = member_legal / max(state.k, 1)
+        feats[i, 11] = float(metrics.patchable_score)
     return feats, mask
+
+
+def regime_bucket(graph: GCGraph) -> int:
+    if graph.n == 0:
+        return 0
+    if graph.density >= 0.35:
+        return 2
+    if graph.density <= 0.08:
+        return 0
+    return 1
 
 
 def global_feature_vector(graph: GCGraph, state: RepairState, metrics: StateMetrics, candidate_count: int) -> np.ndarray:
@@ -954,9 +989,9 @@ def global_feature_vector(graph: GCGraph, state: RepairState, metrics: StateMetr
     x[18] = float(metrics.conflicts == 0)
     x[19] = float(metrics.core_size <= 12)
     x[20] = float(graph.clique_lb) / max(state.k, 1)
-    x[21] = float(graph.degeneracy_plus_one) / max(state.k, 1)
-    x[22] = float(metrics.class_sizes.var() / max(graph.n, 1))
-    x[23] = 1.0
+    x[21] = float(graph.degeneracy_hint) / max(state.k, 1)
+    x[22] = float(metrics.zero_slack_vertices) / max(graph.n, 1)
+    x[23] = float(regime_bucket(graph)) / 2.0
     return x
 
 
@@ -1004,10 +1039,9 @@ def evaluate_candidates(
     if oracle_solution is not None:
         align_before = color_alignment_score(state.colors, oracle_solution, state.k)
     for i, cand in enumerate(candidates):
-        nxt = apply_candidate_action(graph, state, metrics, cand, macros=macros, exact_patch_limit=exact_patch_limit)
-        nxt_metrics = compute_state_metrics(graph, nxt)
-        rewards[i] = dense_reward(graph, metrics, nxt_metrics, action_cost=cand.est_cost)
-        score = float(rewards[i])
+        nxt, nxt_metrics, reward = transition_state(graph, state, metrics, cand, macros=macros, exact_patch_limit=exact_patch_limit)
+        rewards[i] = reward
+        score = float(reward)
         if align_before is not None:
             align_after = color_alignment_score(nxt.colors, oracle_solution, nxt.k)
             score += 0.15 * (align_after - align_before)
@@ -1027,6 +1061,16 @@ def collate_trace_samples(batch: List[TraceSample]) -> Dict[str, torch.Tensor]:
     out["action_tokens"] = torch.from_numpy(np.stack([x.action_tokens for x in batch])).float()
     out["action_mask"] = torch.from_numpy(np.stack([x.action_mask for x in batch])).bool()
     out["target_action"] = torch.tensor([x.target_action for x in batch], dtype=torch.long)
+    policies: List[np.ndarray] = []
+    for x in batch:
+        if x.target_policy is None:
+            p = np.zeros(x.action_mask.shape[0], dtype=np.float32)
+            if 0 <= int(x.target_action) < p.shape[0]:
+                p[int(x.target_action)] = 1.0
+        else:
+            p = np.asarray(x.target_policy, dtype=np.float32)
+        policies.append(p)
+    out["target_policy"] = torch.from_numpy(np.stack(policies)).float()
     out["value_target"] = torch.tensor([x.value_target for x in batch], dtype=torch.float32)
     out["reward"] = torch.tensor([x.reward for x in batch], dtype=torch.float32)
     out["step"] = torch.tensor([x.step for x in batch], dtype=torch.long)
@@ -1092,8 +1136,8 @@ class GatedPool(nn.Module):
 
     def forward(self, x: torch.Tensor, mask: torch.Tensor) -> torch.Tensor:
         score = self.gate(x).squeeze(-1)
-        neg_inf = torch.finfo(score.dtype).min
-        score = score.masked_fill(~mask, neg_inf)
+        # FP16-safe masking: -1e9 overflows to -inf in half on some PyTorch builds.
+        score = score.masked_fill(~mask, torch.finfo(score.dtype).min)
         attn = torch.softmax(score, dim=-1)
         attn = attn * mask.float()
         denom = attn.sum(dim=-1, keepdim=True).clamp_min(EPS)
@@ -1146,8 +1190,7 @@ class TRMPolicyValue(nn.Module):
             z = self.norm(self.cell(inp, z))
             z_expand = z[:, None, :].expand(-1, a.shape[1], -1)
             logits = self.policy_head(torch.cat([z_expand, a], dim=-1)).squeeze(-1)
-            neg_inf = torch.finfo(logits.dtype).min
-            logits = logits.masked_fill(~am, neg_inf)
+            logits = logits.masked_fill(~am, torch.finfo(logits.dtype).min)
             probs = torch.softmax(logits, dim=-1)
             probs = probs * am.float()
             denom = probs.sum(dim=-1, keepdim=True).clamp_min(EPS)
@@ -1174,9 +1217,11 @@ def compute_loss(
     family_coef: float = 0.1,
 ) -> Tuple[torch.Tensor, Dict[str, float]]:
     target_action = batch["target_action"]
+    target_policy = batch["target_policy"]
     logits = outputs["logits"]
     value = outputs["value"]
-    ce = F.cross_entropy(logits, target_action)
+    log_probs = F.log_softmax(logits, dim=-1)
+    ce = -(target_policy * log_probs).sum(dim=-1).mean()
     value_loss = F.mse_loss(value, batch["value_target"])
     probs = torch.softmax(logits, dim=-1)
     entropy = -(probs * torch.log(probs.clamp_min(EPS))).sum(dim=-1).mean()
@@ -1184,7 +1229,8 @@ def compute_loss(
     family_loss = F.cross_entropy(outputs["family_logits"], chosen_families)
     aux = 0.0
     for aux_logits, aux_value in zip(outputs["aux_logits"][:-1], outputs["aux_values"][:-1]):
-        aux = aux + 0.5 * F.cross_entropy(aux_logits, target_action) + 0.25 * F.mse_loss(aux_value, batch["value_target"])
+        aux_log_probs = F.log_softmax(aux_logits, dim=-1)
+        aux = aux + 0.5 * (-(target_policy * aux_log_probs).sum(dim=-1).mean()) + 0.25 * F.mse_loss(aux_value, batch["value_target"])
     loss = ce + value_coef * value_loss - entropy_coef * entropy + family_coef * family_loss + 0.5 * aux
     metrics = {
         "loss": float(loss.detach().cpu()),
@@ -1273,10 +1319,10 @@ def build_teacher_traces_for_record(
             scored = evaluate_candidates(graph, cur, metrics, candidates, oracle_solution=graph.solution, macros=macros, exact_patch_limit=exact_patch_limit)
             target = int(np.argmax(scored["teacher_scores"]))
             chosen = candidates[target]
-            nxt = apply_candidate_action(graph, cur, metrics, chosen, macros=macros, exact_patch_limit=exact_patch_limit)
-            nxt_metrics = compute_state_metrics(graph, nxt)
-            reward = dense_reward(graph, metrics, nxt_metrics, chosen.est_cost)
+            nxt, nxt_metrics, reward = transition_state(graph, cur, metrics, chosen, macros=macros, exact_patch_limit=exact_patch_limit)
             rewards_ep.append(float(reward))
+            target_policy = np.zeros(action_budget, dtype=np.float32)
+            target_policy[target] = 1.0
             samples_ep.append(
                 TraceSample(
                     global_feats=obs["global_feats"],
@@ -1287,6 +1333,7 @@ def build_teacher_traces_for_record(
                     action_tokens=obs["action_tokens"],
                     action_mask=obs["action_mask"],
                     target_action=target,
+                    target_policy=target_policy,
                     value_target=0.0,
                     reward=float(reward),
                     chosen_family=chosen.family,
@@ -1294,14 +1341,108 @@ def build_teacher_traces_for_record(
                     step=step,
                 )
             )
-            if nxt_metrics.conflicts < metrics.conflicts:
-                nxt.plateau = 0
-            else:
-                nxt.plateau = cur.plateau + 1
             cur = nxt
             if nxt_metrics.conflicts == 0:
                 break
-        # reward-to-go / value target
+        rtg = 0.0
+        for sample, reward in zip(reversed(samples_ep), reversed(rewards_ep)):
+            rtg = float(reward) + rtg
+            sample.value_target = float(rtg)
+        out.extend(samples_ep)
+    return out
+
+
+def choose_k_for_graph(graph: GCGraph, solution: Optional[np.ndarray], policy: str, explicit_k: Optional[int], offset: int = 1) -> int:
+    if explicit_k is not None:
+        return int(explicit_k)
+    policy = str(policy)
+    if policy == "solution" and solution is not None:
+        return max(graph.clique_lb, int(solution.max()) + 1)
+    if policy == "solution_minus_one" and solution is not None:
+        return max(graph.clique_lb, int(solution.max()) + 1 - max(offset, 0))
+    if policy == "dsatur":
+        return max(graph.clique_lb, graph.dsatur_ub)
+    if policy == "dsatur_minus_one":
+        return max(graph.clique_lb, graph.dsatur_ub - max(offset, 0))
+    return max(graph.clique_lb, graph.dsatur_ub)
+
+
+def build_solve_traces_for_record(
+    graph: GCGraph,
+    episodes_per_graph: int,
+    max_steps: int,
+    model: Optional[TRMPolicyValue],
+    device: torch.device,
+    macros: Optional[Dict[str, MacroProgram]],
+    cfg: SearchConfig,
+    vertex_budget: int,
+    class_budget: int,
+    action_budget: int,
+    k_policy: str,
+    explicit_k: Optional[int],
+    k_offset: int,
+    seed: int,
+) -> List[TraceSample]:
+    out: List[TraceSample] = []
+    rng = np.random.default_rng(seed)
+    for epi in range(episodes_per_graph):
+        k = choose_k_for_graph(graph, graph.solution, k_policy, explicit_k, offset=k_offset)
+        order = np.argsort(-(graph.degrees + rng.random(graph.n) * 1e-3))
+        seed_colors = greedy_k_assignment(graph, int(k), order=order)
+        cur = RepairState(seed_colors, k=int(k), plateau=0, step=0)
+        seed_metrics = compute_state_metrics(graph, cur)
+        if seed_metrics.conflicts == 0:
+            # Force a non-trivial repair episode by perturbing a few vertices.
+            num = max(1, int(round(0.08 * graph.n)))
+            idx = rng.choice(graph.n, size=num, replace=False)
+            cur.colors[idx] = rng.integers(0, int(k), size=num, dtype=np.int16)
+            cur.colors = canonicalize_colors(cur.colors)
+        rewards_ep: List[float] = []
+        samples_ep: List[TraceSample] = []
+        episode_id = f"{graph.name}::solve{epi}"
+        for step in range(max_steps):
+            metrics = compute_state_metrics(graph, cur)
+            if metrics.conflicts == 0:
+                break
+            mcts = GCPMCTS(graph, model, device, macros, cfg)
+            root = mcts.run_search(cur)
+            if root.metrics is None:
+                break
+            if not root.candidates:
+                break
+            obs = build_observation(graph, cur, root.metrics, root.candidates, macros=macros, vertex_budget=vertex_budget, class_budget=class_budget, action_budget=action_budget)
+            counts = root.nsa.astype(np.float64)
+            if counts.sum() <= 0:
+                counts = root.priors.astype(np.float64)
+            probs = counts + 1e-6
+            probs = probs / max(probs.sum(), EPS)
+            target = int(np.argmax(probs[: len(root.candidates)]))
+            chosen = root.candidates[target]
+            nxt, nxt_metrics, reward = transition_state(graph, cur, root.metrics, chosen, macros=macros, exact_patch_limit=cfg.exact_patch_limit)
+            target_policy = np.zeros(action_budget, dtype=np.float32)
+            target_policy[: len(root.candidates)] = probs[: len(root.candidates)].astype(np.float32)
+            samples_ep.append(
+                TraceSample(
+                    global_feats=obs["global_feats"],
+                    vertex_tokens=obs["vertex_tokens"],
+                    vertex_mask=obs["vertex_mask"],
+                    class_tokens=obs["class_tokens"],
+                    class_mask=obs["class_mask"],
+                    action_tokens=obs["action_tokens"],
+                    action_mask=obs["action_mask"],
+                    target_action=target,
+                    target_policy=target_policy,
+                    value_target=0.0,
+                    reward=float(reward),
+                    chosen_family=chosen.family,
+                    episode_id=episode_id,
+                    step=step,
+                )
+            )
+            rewards_ep.append(float(reward))
+            cur = nxt
+            if nxt_metrics.conflicts == 0:
+                break
         rtg = 0.0
         for sample, reward in zip(reversed(samples_ep), reversed(rewards_ep)):
             rtg = float(reward) + rtg
@@ -1385,9 +1526,27 @@ def parse_dimacs_col(path: str) -> GraphRecord:
     return GraphRecord(name=name, n=n, edges=np.asarray(edges, dtype=np.int64), solution=solution)
 
 
+def _sanitize_checkpoint_args(args: Dict[str, Any]) -> Dict[str, Any]:
+    out: Dict[str, Any] = {}
+    for k, v in args.items():
+        if callable(v):
+            continue
+        if isinstance(v, (str, int, float, bool)) or v is None:
+            out[k] = v
+        elif isinstance(v, Path):
+            out[k] = str(v)
+        else:
+            try:
+                json.dumps(v)
+                out[k] = v
+            except Exception:
+                out[k] = str(v)
+    return out
+
+
 def save_checkpoint(path: str, model: nn.Module, optimizer: torch.optim.Optimizer, epoch: int, args: Dict[str, Any]) -> None:
     model_state = model.module.state_dict() if isinstance(model, DDP) else model.state_dict()
-    torch.save({"model": model_state, "optimizer": optimizer.state_dict(), "epoch": epoch, "args": args}, path)
+    torch.save({"model": model_state, "optimizer": optimizer.state_dict(), "epoch": epoch, "args": _sanitize_checkpoint_args(args)}, path)
 
 
 def load_model_checkpoint(path: str, device: torch.device) -> Tuple[TRMPolicyValue, Dict[str, Any]]:
@@ -1402,8 +1561,6 @@ def load_model_checkpoint(path: str, device: torch.device) -> Tuple[TRMPolicyVal
 
 def train_loop(args: argparse.Namespace) -> None:
     device, distributed = init_distributed(args.backend)
-    if device.type == "cuda":
-        torch.backends.cudnn.benchmark = True
     set_seed(args.seed + get_rank())
     train_ds = ShardedTraceDataset(args.train, shuffle_shards=True, seed=args.seed)
     valid_ds = ShardedTraceDataset(args.valid, shuffle_shards=False, seed=args.seed + 1) if args.valid else None
@@ -1428,53 +1585,35 @@ def train_loop(args: argparse.Namespace) -> None:
             prefetch_factor=4 if args.num_workers > 0 else None,
         )
     model = TRMPolicyValue(d_model=args.d_model, refine_steps=args.refine_steps, dropout=args.dropout).to(device)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    start_epoch = 0
+    if args.init_ckpt:
+        ckpt = torch.load(args.init_ckpt, map_location=device, weights_only=False)
+        model.load_state_dict(ckpt["model"], strict=True)
+        if args.resume_optimizer and "optimizer" in ckpt:
+            optimizer.load_state_dict(ckpt["optimizer"])
+            start_epoch = int(ckpt.get("epoch", -1)) + 1
     if args.compile and hasattr(torch, "compile"):
         model = torch.compile(model)  # type: ignore
     if distributed:
         model = DDP(model, device_ids=[device.index] if device.type == "cuda" else None, find_unused_parameters=False)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
-    scheduler = None
-    if getattr(args, "lr_scheduler", "none") == "cosine":
-        eta_min = float(getattr(args, "lr_min", 1e-6))
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=max(1, args.epochs), eta_min=eta_min)
-    elif getattr(args, "lr_scheduler", "none") == "plateau":
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-            optimizer,
-            mode="min",
-            factor=float(getattr(args, "plateau_factor", 0.5)),
-            patience=int(getattr(args, "plateau_patience", 2)),
-            min_lr=float(getattr(args, "lr_min", 1e-6)),
-        )
     amp_enabled = bool(device.type == "cuda" and args.amp)
-    if amp_enabled:
-        if hasattr(torch, "amp") and hasattr(torch.amp, "GradScaler"):
-            scaler = torch.amp.GradScaler("cuda", enabled=True)
-            autocast_ctx = lambda: torch.amp.autocast("cuda", enabled=True)
-        else:
-            scaler = torch.cuda.amp.GradScaler(enabled=True)
-            autocast_ctx = lambda: torch.cuda.amp.autocast(enabled=True)
+    # AMP API compatibility across PyTorch versions.
+    if hasattr(torch, "amp") and hasattr(torch.amp, "GradScaler") and hasattr(torch.amp, "autocast"):
+        grad_scaler_ctor = lambda: torch.amp.GradScaler("cuda", enabled=amp_enabled)
+        autocast_ctx = lambda: torch.amp.autocast("cuda", enabled=amp_enabled)
+    elif hasattr(torch.cuda, "amp") and hasattr(torch.cuda.amp, "GradScaler") and hasattr(torch.cuda.amp, "autocast"):
+        grad_scaler_ctor = lambda: torch.cuda.amp.GradScaler(enabled=amp_enabled)
+        autocast_ctx = lambda: torch.cuda.amp.autocast(enabled=amp_enabled)
     else:
-        scaler = None
-        autocast_ctx = contextlib.nullcontext
+        grad_scaler_ctor = lambda: None
+        autocast_ctx = lambda: contextlib.nullcontext()
+        amp_enabled = False
+    scaler = grad_scaler_ctor()
     out_dir = Path(args.out_dir)
     if is_main_process():
         out_dir.mkdir(parents=True, exist_ok=True)
     best_valid = float("inf")
-    start_epoch = 0
-    if getattr(args, "load", ""):
-        ckpt = torch.load(args.load, map_location=device, weights_only=False)
-        model_state = ckpt.get("model", {})
-        if model_state:
-            if isinstance(model, DDP):
-                model.module.load_state_dict(model_state)
-            else:
-                model.load_state_dict(model_state)
-        opt_state = ckpt.get("optimizer", None)
-        if opt_state:
-            optimizer.load_state_dict(opt_state)
-        start_epoch = int(ckpt.get("epoch", -1)) + 1
-        if is_main_process():
-            print(json.dumps({"event": "loaded_checkpoint", "path": args.load, "start_epoch": start_epoch}), flush=True)
     history_path = out_dir / "train_log.jsonl"
 
     for epoch in range(start_epoch, start_epoch + args.epochs):
@@ -1534,18 +1673,7 @@ def train_loop(args: argparse.Namespace) -> None:
             valid_metrics = {f"valid_{k}": vrunning[k] / max(vcount, 1) for k in vrunning}
             valid_metrics = reduce_metrics(valid_metrics)
         metrics = {**{f"train_{k}": v for k, v in train_metrics.items()}, **valid_metrics, "epoch": epoch, "time_sec": time.time() - t0}
-        if "train_ce" in metrics and "valid_ce" in metrics:
-            metrics["ce_valid_minus_train"] = float(metrics["valid_ce"]) - float(metrics["train_ce"])
         if is_main_process():
-            if scheduler is not None:
-                if getattr(args, "lr_scheduler", "none") == "plateau" and valid_metrics:
-                    scheduler.step(float(valid_metrics.get("valid_loss", metrics.get("train_loss", 0.0))))
-                elif getattr(args, "lr_scheduler", "none") == "cosine":
-                    scheduler.step()
-            try:
-                metrics["lr"] = float(optimizer.param_groups[0]["lr"])
-            except Exception:
-                metrics["lr"] = float(args.lr)
             with history_path.open("a") as f:
                 f.write(json.dumps(metrics) + "\n")
             print(json.dumps(metrics), flush=True)
@@ -1630,10 +1758,12 @@ class GCPMCTS:
 
     def evaluate_with_model(self, state: RepairState, metrics: StateMetrics, candidates: List[CandidateAction]) -> Tuple[np.ndarray, float]:
         if self.model is None:
-            scores = np.asarray([c.est_delta_conflicts + 0.25 * c.est_delta_vertices - 0.05 * c.est_cost for c in candidates], dtype=np.float32)
+            scores = np.asarray([
+                c.est_delta_conflicts + 0.25 * c.est_delta_vertices - 0.05 * c.est_cost for c in candidates
+            ], dtype=np.float32)
             priors = np.exp(scores - scores.max())
             priors = priors / max(priors.sum(), EPS)
-            value = float(1.0 - metrics.conflicts / max(self.graph.m, 1))
+            value = float(1.0 - metrics.conflicts / max(self.graph.m, 1) + 0.1 * metrics.mean_legal_colors / max(state.k, 1) + 0.05 * metrics.patchable_score)
             return priors, value
         obs = build_observation(self.graph, state, metrics, candidates, macros=self.macros, action_budget=self.cfg.action_budget)
         batch = {
@@ -1733,7 +1863,7 @@ class GCPMCTS:
                 best_a = int(valid[0]) if valid.size else 0
         return int(best_a)
 
-    def search(self, root_state: RepairState) -> RepairState:
+    def run_search(self, root_state: RepairState) -> MCTSNode:
         self.nodes = [MCTSNode(root_state.copy())]
         self.best_state = root_state.copy()
         self.best_metrics = compute_state_metrics(self.graph, root_state)
@@ -1746,7 +1876,7 @@ class GCPMCTS:
                 leaf_value = self.maybe_expand(node_id)
                 node.visit += 1
                 if node.terminal or depth >= self.cfg.max_depth:
-                    value = float(leaf_value)
+                    backup = float(leaf_value)
                     break
                 a = self.select_action(node_id)
                 if a in node.children:
@@ -1754,9 +1884,7 @@ class GCPMCTS:
                     reward = self.nodes[child_id].reward_from_parent
                 else:
                     metrics = node.metrics if node.metrics is not None else compute_state_metrics(self.graph, node.state)
-                    nxt_state = apply_candidate_action(self.graph, node.state, metrics, node.candidates[a], macros=self.macros, exact_patch_limit=self.cfg.exact_patch_limit)
-                    nxt_metrics = compute_state_metrics(self.graph, nxt_state)
-                    reward = dense_reward(self.graph, metrics, nxt_metrics, node.candidates[a].est_cost)
+                    nxt_state, nxt_metrics, reward = transition_state(self.graph, node.state, metrics, node.candidates[a], macros=self.macros, exact_patch_limit=self.cfg.exact_patch_limit)
                     child_id = len(self.nodes)
                     self.nodes.append(MCTSNode(nxt_state, parent=node_id, parent_action=a, reward_from_parent=reward))
                     node.children[a] = child_id
@@ -1766,19 +1894,19 @@ class GCPMCTS:
                 path.append((node_id, a, reward))
                 node_id = child_id
                 depth += 1
-            # Backup: leaf bootstrap `value` only (no path rewards inside it), then
-            # G_t = r_t + gamma * G_{t+1}. Do not accumulate rewards while descending
-            # and add them again here (double-count).
-            backup = value
             for nid, a, r in reversed(path):
+                backup = r + self.cfg.gamma * backup
                 node = self.nodes[nid]
                 node.nsa[a] += 1
                 node.wsa[a] += backup
                 node.qsa[a] = node.wsa[a] / max(node.nsa[a], 1)
                 node.value_sum += backup
-                backup = r + self.cfg.gamma * backup
             if self.best_metrics is not None and self.best_metrics.conflicts == 0:
                 break
+        return self.nodes[0]
+
+    def search(self, root_state: RepairState) -> RepairState:
+        self.run_search(root_state)
         return self.best_state if self.best_state is not None else root_state
 
 
@@ -1791,9 +1919,7 @@ def solve_instance(
     args: argparse.Namespace,
 ) -> Dict[str, Any]:
     if k is None:
-        # Feasible default: DSATUR produces a proper coloring with dsatur_ub colors, so chi <= dsatur_ub.
-        # clique_lb <= chi, so max(clique_lb, dsatur_ub) == dsatur_ub in consistent graphs.
-        k = max(1, int(graph.dsatur_ub))
+        k = max(graph.clique_lb, graph.dsatur_ub)
     seed_colors = greedy_k_assignment(graph, int(k))
     state = RepairState(seed_colors, k=int(k), plateau=0, step=0)
     mcts = GCPMCTS(graph, model, device, macros, SearchConfig(
@@ -1893,6 +2019,55 @@ def command_build_traces(args: argparse.Namespace) -> None:
     print(f"done: wrote {total} samples to {args.out_dir}", flush=True)
 
 
+def command_build_solve_traces(args: argparse.Namespace) -> None:
+    set_seed(args.seed)
+    device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
+    model = None
+    if args.ckpt:
+        model, _ = load_model_checkpoint(args.ckpt, device)
+    macros: Dict[str, MacroProgram] = load_macros(args.macros) if args.macros else {}
+    cfg = SearchConfig(
+        cpuct=args.cpuct,
+        gamma=args.gamma,
+        simulations=args.simulations,
+        max_depth=args.max_depth,
+        prune_every=args.prune_every,
+        prune_min_visits=args.prune_min_visits,
+        prune_keep_topk=args.prune_keep_topk,
+        confidence_beta=args.confidence_beta,
+        action_budget=args.action_budget,
+        exact_patch_limit=args.exact_patch_limit,
+    )
+    records = load_records(args.input)
+    writer = TraceShardWriter(args.out_dir, prefix=args.prefix, samples_per_shard=args.samples_per_shard)
+    total = 0
+    for ridx, rec in enumerate(records):
+        graph = rec.to_runtime()
+        samples = build_solve_traces_for_record(
+            graph,
+            episodes_per_graph=args.episodes_per_graph,
+            max_steps=args.max_steps,
+            model=model,
+            device=device,
+            macros=macros,
+            cfg=cfg,
+            vertex_budget=args.vertex_budget,
+            class_budget=args.class_budget,
+            action_budget=args.action_budget,
+            k_policy=args.k_policy,
+            explicit_k=args.k,
+            k_offset=args.k_offset,
+            seed=args.seed + ridx,
+        )
+        for s in samples:
+            writer.add(s)
+        total += len(samples)
+        if (ridx + 1) % max(args.log_every_records, 1) == 0:
+            print(f"[{ridx + 1}/{len(records)}] wrote {total} solve-trace samples", flush=True)
+    writer.flush()
+    print(f"done: wrote {total} solve-trace samples to {args.out_dir}", flush=True)
+
+
 def command_train(args: argparse.Namespace) -> None:
     train_loop(args)
 
@@ -1962,6 +2137,35 @@ def build_parser() -> argparse.ArgumentParser:
     b.add_argument("--log-every-records", type=int, default=25)
     b.set_defaults(func=command_build_traces)
 
+    bs = sub.add_parser("build-solve-traces", help="build solve traces from solver-generated root policies")
+    bs.add_argument("--input", required=True, help="graph dataset: directory, jsonl/json/pkl/pt/col")
+    bs.add_argument("--out-dir", required=True)
+    bs.add_argument("--prefix", default="gcp-solve-trace")
+    bs.add_argument("--samples-per-shard", type=int, default=5000)
+    bs.add_argument("--episodes-per-graph", type=int, default=2)
+    bs.add_argument("--max-steps", type=int, default=24)
+    bs.add_argument("--vertex-budget", type=int, default=DEFAULT_VERTEX_BUDGET)
+    bs.add_argument("--class-budget", type=int, default=DEFAULT_CLASS_BUDGET)
+    bs.add_argument("--action-budget", type=int, default=DEFAULT_ACTION_BUDGET)
+    bs.add_argument("--exact-patch-limit", type=int, default=12)
+    bs.add_argument("--macros", default="")
+    bs.add_argument("--ckpt", default="")
+    bs.add_argument("--k", type=int, default=None)
+    bs.add_argument("--k-policy", choices=["solution","solution_minus_one","dsatur","dsatur_minus_one"], default="dsatur_minus_one")
+    bs.add_argument("--k-offset", type=int, default=1)
+    bs.add_argument("--cpu", action="store_true")
+    bs.add_argument("--cpuct", type=float, default=1.25)
+    bs.add_argument("--gamma", type=float, default=1.0)
+    bs.add_argument("--simulations", type=int, default=128)
+    bs.add_argument("--max-depth", type=int, default=48)
+    bs.add_argument("--prune-every", type=int, default=32)
+    bs.add_argument("--prune-min-visits", type=int, default=4)
+    bs.add_argument("--prune-keep-topk", type=int, default=4)
+    bs.add_argument("--confidence-beta", type=float, default=1.5)
+    bs.add_argument("--seed", type=int, default=0)
+    bs.add_argument("--log-every-records", type=int, default=25)
+    bs.set_defaults(func=command_build_solve_traces)
+
     t = sub.add_parser("train", help="ddp training over trace shards")
     t.add_argument("--train", required=True, help="glob pattern for train shards, e.g. data/train/gcp-trace-*.pt")
     t.add_argument("--valid", default="", help="glob pattern for valid shards")
@@ -1984,19 +2188,10 @@ def build_parser() -> argparse.ArgumentParser:
     t.add_argument("--amp", action="store_true")
     t.add_argument("--compile", action="store_true")
     t.add_argument("--backend", default="")
+    t.add_argument("--init-ckpt", default="")
+    t.add_argument("--resume-optimizer", action="store_true")
     t.add_argument("--seed", type=int, default=0)
     t.add_argument("--log-every", type=int, default=100)
-    t.add_argument("--load", default="", help="Optional checkpoint path to resume model/optimizer from")
-    t.add_argument(
-        "--lr-scheduler",
-        type=str,
-        default="none",
-        choices=("none", "cosine", "plateau"),
-        help="cosine: CosineAnnealingLR over all epochs; plateau: ReduceLROnPlateau on valid_loss",
-    )
-    t.add_argument("--lr-min", type=float, default=1e-6, dest="lr_min", help="Min LR for cosine / plateau")
-    t.add_argument("--plateau-factor", type=float, default=0.5, dest="plateau_factor")
-    t.add_argument("--plateau-patience", type=int, default=2, dest="plateau_patience")
     t.set_defaults(func=command_train)
 
     m = sub.add_parser("mine-macros", help="mine frequent primitive-family macros from traces")

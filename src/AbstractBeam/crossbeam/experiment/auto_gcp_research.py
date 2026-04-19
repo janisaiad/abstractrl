@@ -22,6 +22,10 @@ TRACE_DIR = DATA / "gcp_traces"
 RUNS_DIR = ROOT / "runs" / "gcp_trm_auto"
 TRAIN_JSONL = DATA / "gcp_train.jsonl"
 SMALL_JSONL = DATA / "gcp_small.jsonl"
+TRAIN_SPLIT_JSONL = DATA / "gcp_train_split.jsonl"
+VALID_SPLIT_JSONL = DATA / "gcp_valid_split.jsonl"
+# Optional: disjoint validation graphs (different file = no shared records with TRAIN_JSONL).
+VALID_EXTERNAL_JSONL = DATA / "gcp_valid_external.jsonl"
 
 
 @dataclass
@@ -44,12 +48,40 @@ def run_cmd(cmd: list[str], cwd: Path) -> None:
 def ensure_small_jsonl() -> None:
     if SMALL_JSONL.exists():
         return
+    ensure_train_valid_jsonl_split(seed=0)
+    lines = [ln for ln in TRAIN_SPLIT_JSONL.read_text().splitlines() if ln.strip()]
+    if len(lines) < 2:
+        raise RuntimeError("Need at least 2 records in train split to build gcp_small.jsonl")
+    SMALL_JSONL.write_text("\n".join(lines[:2]) + "\n")
+
+
+def ensure_train_valid_jsonl_split(seed: int) -> tuple[Path, Path]:
+    if TRAIN_SPLIT_JSONL.exists() and VALID_SPLIT_JSONL.exists():
+        return TRAIN_SPLIT_JSONL, VALID_SPLIT_JSONL
     if not TRAIN_JSONL.exists():
         raise FileNotFoundError(f"Missing {TRAIN_JSONL}")
+    if VALID_EXTERNAL_JSONL.exists():
+        train_lines = [ln for ln in TRAIN_JSONL.read_text().splitlines() if ln.strip()]
+        ext_lines = [ln for ln in VALID_EXTERNAL_JSONL.read_text().splitlines() if ln.strip()]
+        if not train_lines or not ext_lines:
+            raise RuntimeError("gcp_valid_external.jsonl mode requires non-empty train and external valid files")
+        TRAIN_SPLIT_JSONL.write_text("\n".join(train_lines) + "\n")
+        VALID_SPLIT_JSONL.write_text("\n".join(ext_lines) + "\n")
+        return TRAIN_SPLIT_JSONL, VALID_SPLIT_JSONL
     lines = [ln for ln in TRAIN_JSONL.read_text().splitlines() if ln.strip()]
-    if len(lines) < 2:
-        raise RuntimeError("Need at least 2 records in gcp_train.jsonl to build gcp_small.jsonl")
-    SMALL_JSONL.write_text("\n".join(lines[:2]) + "\n")
+    if len(lines) < 4:
+        raise RuntimeError("Need at least 4 records in gcp_train.jsonl for train/valid split")
+    rng = random.Random(seed + 4242)
+    rng.shuffle(lines)
+    n_valid = max(1, int(round(0.2 * len(lines))))
+    valid_lines = lines[:n_valid]
+    train_lines = lines[n_valid:]
+    if not train_lines:
+        train_lines = valid_lines[1:]
+        valid_lines = valid_lines[:1]
+    TRAIN_SPLIT_JSONL.write_text("\n".join(train_lines) + "\n")
+    VALID_SPLIT_JSONL.write_text("\n".join(valid_lines) + "\n")
+    return TRAIN_SPLIT_JSONL, VALID_SPLIT_JSONL
 
 
 def count_shards(pattern: str) -> int:
@@ -62,13 +94,14 @@ def ensure_valid_split(seed: int) -> str:
     pat = str(valid_dir / "gcp-valid-*.pt")
     if count_shards(pat) > 0:
         return pat
+    _, valid_jsonl = ensure_train_valid_jsonl_split(seed=seed)
     run_cmd(
         [
             "python",
             "gcp_trace_abstractbeam.py",
             "build-traces",
             "--input",
-            str(TRAIN_JSONL),
+            str(valid_jsonl),
             "--out-dir",
             str(valid_dir),
             "--prefix",
@@ -90,6 +123,7 @@ def ensure_valid_split(seed: int) -> str:
 
 
 def ensure_train_data(seed: int, stage: str, min_shards: int) -> str:
+    train_jsonl, _ = ensure_train_valid_jsonl_split(seed=seed)
     if stage == "small":
         out_dir = TRACE_DIR / "train_small_auto"
         out_dir.mkdir(parents=True, exist_ok=True)
@@ -136,7 +170,7 @@ def ensure_train_data(seed: int, stage: str, min_shards: int) -> str:
             "gcp_trace_abstractbeam.py",
             "build-traces",
             "--input",
-            str(TRAIN_JSONL),
+            str(train_jsonl),
             "--out-dir",
             str(out_dir),
             "--prefix",

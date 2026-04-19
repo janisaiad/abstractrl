@@ -89,6 +89,45 @@ def best_ckpt_from_session(session: Path) -> Path:
     return ckpt
 
 
+def _dsatur_ub_on_rec(rec: dict[str, Any]) -> int:
+    import numpy as np
+
+    import gcp_trace_abstractbeam as gtr
+
+    edges = rec.get("edges") or []
+    arr = np.asarray(edges, dtype=np.int64)
+    if arr.size == 0:
+        arr = arr.reshape(0, 2)
+    sol = rec.get("solution")
+    gr = gtr.GraphRecord(
+        name=str(rec.get("name", "tmp")),
+        n=int(rec["n"]),
+        edges=arr,
+        solution=np.asarray(sol, dtype=np.int16) if sol is not None else None,
+    ).to_runtime()
+    return int(gr.dsatur_ub)
+
+
+def harden_planted_until_dsatur_k(rec: dict[str, Any], k: int, rng: random.Random, max_extra: int) -> None:
+    """Add cross-class edges until DSATUR needs at least k colors (graph stays k-colorable by the planted coloring)."""
+    colors: list[int] = [int(c) for c in rec["solution"]]
+    n = int(rec["n"])
+    edge_set: set[tuple[int, int]] = {tuple(sorted((int(u), int(v)))) for u, v in rec["edges"]}
+    for _ in range(max_extra):
+        rec["edges"] = [[a, b] for a, b in sorted(edge_set)]
+        if _dsatur_ub_on_rec(rec) >= k:
+            break
+        u = rng.randrange(n)
+        v = rng.randrange(n)
+        if u == v or colors[u] == colors[v]:
+            continue
+        a, b = (u, v) if u < v else (v, u)
+        if (a, b) in edge_set:
+            continue
+        edge_set.add((a, b))
+    rec["edges"] = [[a, b] for a, b in sorted(edge_set)]
+
+
 def make_colored_graph(n: int, k: int, p: float, rng: random.Random, name: str) -> dict[str, Any]:
     # Build a k-colorable graph by only adding edges across color classes.
     colors = [rng.randrange(k) for _ in range(n)]
@@ -101,7 +140,10 @@ def make_colored_graph(n: int, k: int, p: float, rng: random.Random, name: str) 
         for j in range(i + 1, n):
             if colors[i] != colors[j] and rng.random() < p:
                 edges.append([i, j])
-    return {"name": name, "n": n, "edges": edges, "solution": colors}
+    rec: dict[str, Any] = {"name": name, "n": n, "edges": edges, "solution": colors}
+    budget = min(500_000, max(1, n * n * 4))
+    harden_planted_until_dsatur_k(rec, k, rng, max_extra=budget)
+    return rec
 
 
 def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
@@ -189,7 +231,8 @@ def train_stage(stage: StageCfg, train_glob: str, valid_glob: str, out_dir: Path
         "--seed",
         str(seed),
     ]
-    # Current trainer has no explicit --load; we keep fine-tuning through data curriculum only.
+    if init_ckpt is not None and init_ckpt.exists():
+        cmd.extend(["--load", str(init_ckpt)])
     run_cmd(cmd, ROOT)
     ckpt = out_dir / "model-best.pt"
     if not ckpt.exists():
@@ -221,6 +264,8 @@ def eval_stage(stage: StageCfg, eval_jsonl: Path, ckpt: Path, out_dir: Path) -> 
                 str(tmp),
                 "--ckpt",
                 str(ckpt),
+                "--k",
+                str(stage.k),
             ],
             cwd=str(ROOT),
             text=True,
