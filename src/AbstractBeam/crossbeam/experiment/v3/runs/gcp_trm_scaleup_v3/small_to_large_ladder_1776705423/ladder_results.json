@@ -1,0 +1,825 @@
+{
+  "config": {
+    "session_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_1776705423",
+    "seed": 20260420,
+    "small_train_globs": [
+      "runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt",
+      "runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt"
+    ],
+    "small_valid_globs": [
+      "runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt",
+      "runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt"
+    ],
+    "curriculum_ckpt": "runs/gcp_trm_scaleup_v2/session_1776550919/n80/train_run/model-best.pt",
+    "sizes": [
+      100,
+      200
+    ],
+    "per_size": 2,
+    "budget_ladder": [
+      "12:24"
+    ],
+    "timeout_sec": 40.0,
+    "profile_every": 4,
+    "include_macro_method": false,
+    "methods": [
+      "greedy_best_of_orders",
+      "fixed_tabu_recolor",
+      "mcts_no_model",
+      "mcts_untrained",
+      "mcts_trained_small"
+    ],
+    "train_rows": 0,
+    "valid_rows": 0,
+    "trained_small_ckpt": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_1776705423/trained_small/model-last.pt",
+    "small_macros": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_1776705423/small_macros.json",
+    "untrained_ckpt": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_1776705423/untrained_trm.pt"
+  },
+  "budgets": {
+    "12:24": {
+      "rows": [
+        {
+          "instance_id": "hard_n100_000_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 28,
+          "method": "greedy_best_of_orders",
+          "budget": "12:24",
+          "conflicts": 28,
+          "reported_conflicts": 28,
+          "solved": false,
+          "time_sec": 0.045014142990112305,
+          "primitive_calls": 0,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 0,
+              "primitive_calls": 0,
+              "best_conflicts": 28,
+              "elapsed_sec": 0.045014142990112305
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_000_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 28,
+          "method": "fixed_tabu_recolor",
+          "budget": "12:24",
+          "conflicts": 13,
+          "reported_conflicts": 13,
+          "solved": false,
+          "time_sec": 0.40191650390625,
+          "primitive_calls": 25,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 0,
+              "primitive_calls": 0,
+              "best_conflicts": 28,
+              "elapsed_sec": 0.0
+            },
+            {
+              "simulation": 4,
+              "primitive_calls": 11,
+              "best_conflicts": 19,
+              "elapsed_sec": 0.12041497230529785
+            },
+            {
+              "simulation": 8,
+              "primitive_calls": 15,
+              "best_conflicts": 16,
+              "elapsed_sec": 0.13908886909484863
+            },
+            {
+              "simulation": 12,
+              "primitive_calls": 21,
+              "best_conflicts": 15,
+              "elapsed_sec": 0.24037408828735352
+            },
+            {
+              "simulation": 16,
+              "primitive_calls": 25,
+              "best_conflicts": 13,
+              "elapsed_sec": 0.2573363780975342
+            },
+            {
+              "simulation": 20,
+              "primitive_calls": 28,
+              "best_conflicts": 13,
+              "elapsed_sec": 0.3107919692993164
+            },
+            {
+              "simulation": 24,
+              "primitive_calls": 30,
+              "best_conflicts": 13,
+              "elapsed_sec": 0.4019153118133545
+            },
+            {
+              "simulation": 24,
+              "primitive_calls": 25,
+              "best_conflicts": 13,
+              "elapsed_sec": 0.40191650390625
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_000_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 28,
+          "method": "mcts_no_model",
+          "budget": "12:24",
+          "conflicts": 25,
+          "reported_conflicts": 25,
+          "solved": false,
+          "time_sec": 2.323110580444336,
+          "primitive_calls": 4,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 26,
+              "elapsed_sec": 0.22832202911376953
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 25,
+              "elapsed_sec": 0.46624755859375
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 25,
+              "elapsed_sec": 0.7140741348266602
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_000_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 28,
+          "method": "mcts_untrained",
+          "budget": "12:24",
+          "conflicts": 22,
+          "reported_conflicts": 22,
+          "solved": false,
+          "time_sec": 4.2443671226501465,
+          "primitive_calls": 8,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 22,
+              "elapsed_sec": 1.0733659267425537
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 22,
+              "elapsed_sec": 1.541576623916626
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 22,
+              "elapsed_sec": 2.113079309463501
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_000_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 28,
+          "method": "mcts_trained_small",
+          "budget": "12:24",
+          "conflicts": 16,
+          "reported_conflicts": 16,
+          "solved": false,
+          "time_sec": 16.332175493240356,
+          "primitive_calls": 17,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 17,
+              "elapsed_sec": 5.1478431224823
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 17,
+              "elapsed_sec": 9.641747236251831
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 16,
+              "elapsed_sec": 14.1861732006073
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_001_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 29,
+          "method": "greedy_best_of_orders",
+          "budget": "12:24",
+          "conflicts": 29,
+          "reported_conflicts": 29,
+          "solved": false,
+          "time_sec": 0.045094966888427734,
+          "primitive_calls": 0,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 0,
+              "primitive_calls": 0,
+              "best_conflicts": 29,
+              "elapsed_sec": 0.045094966888427734
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_001_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 29,
+          "method": "fixed_tabu_recolor",
+          "budget": "12:24",
+          "conflicts": 18,
+          "reported_conflicts": 18,
+          "solved": false,
+          "time_sec": 0.4355506896972656,
+          "primitive_calls": 16,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 0,
+              "primitive_calls": 0,
+              "best_conflicts": 29,
+              "elapsed_sec": 0.0
+            },
+            {
+              "simulation": 4,
+              "primitive_calls": 4,
+              "best_conflicts": 23,
+              "elapsed_sec": 0.06592917442321777
+            },
+            {
+              "simulation": 8,
+              "primitive_calls": 13,
+              "best_conflicts": 19,
+              "elapsed_sec": 0.13442564010620117
+            },
+            {
+              "simulation": 12,
+              "primitive_calls": 16,
+              "best_conflicts": 18,
+              "elapsed_sec": 0.19892144203186035
+            },
+            {
+              "simulation": 16,
+              "primitive_calls": 19,
+              "best_conflicts": 18,
+              "elapsed_sec": 0.2638559341430664
+            },
+            {
+              "simulation": 20,
+              "primitive_calls": 22,
+              "best_conflicts": 18,
+              "elapsed_sec": 0.3271012306213379
+            },
+            {
+              "simulation": 24,
+              "primitive_calls": 24,
+              "best_conflicts": 18,
+              "elapsed_sec": 0.4355497360229492
+            },
+            {
+              "simulation": 24,
+              "primitive_calls": 16,
+              "best_conflicts": 18,
+              "elapsed_sec": 0.4355506896972656
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_001_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 29,
+          "method": "mcts_no_model",
+          "budget": "12:24",
+          "conflicts": 22,
+          "reported_conflicts": 22,
+          "solved": false,
+          "time_sec": 2.2939207553863525,
+          "primitive_calls": 5,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 22,
+              "elapsed_sec": 0.24593067169189453
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 22,
+              "elapsed_sec": 0.4522063732147217
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 22,
+              "elapsed_sec": 0.6758315563201904
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_001_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 29,
+          "method": "mcts_untrained",
+          "budget": "12:24",
+          "conflicts": 20,
+          "reported_conflicts": 20,
+          "solved": false,
+          "time_sec": 4.403981685638428,
+          "primitive_calls": 8,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 20,
+              "elapsed_sec": 1.1768789291381836
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 20,
+              "elapsed_sec": 1.618912935256958
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 20,
+              "elapsed_sec": 2.2734696865081787
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_001_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 29,
+          "method": "mcts_trained_small",
+          "budget": "12:24",
+          "conflicts": 19,
+          "reported_conflicts": 19,
+          "solved": false,
+          "time_sec": 17.55336904525757,
+          "primitive_calls": 11,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 19,
+              "elapsed_sec": 5.541832447052002
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 19,
+              "elapsed_sec": 10.523927450180054
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 19,
+              "elapsed_sec": 15.468352317810059
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n200_000_try0",
+          "n": 200,
+          "tight_k": 8,
+          "greedy_k_best_conflicts": 83,
+          "method": "greedy_best_of_orders",
+          "budget": "12:24",
+          "conflicts": 88,
+          "reported_conflicts": 88,
+          "solved": false,
+          "time_sec": 0.12389087677001953,
+          "primitive_calls": 0,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 0,
+              "primitive_calls": 0,
+              "best_conflicts": 88,
+              "elapsed_sec": 0.12389087677001953
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n200_000_try0",
+          "n": 200,
+          "tight_k": 8,
+          "greedy_k_best_conflicts": 83,
+          "method": "fixed_tabu_recolor",
+          "budget": "12:24",
+          "conflicts": 59,
+          "reported_conflicts": 59,
+          "solved": false,
+          "time_sec": 0.9586644172668457,
+          "primitive_calls": 34,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 0,
+              "primitive_calls": 0,
+              "best_conflicts": 79,
+              "elapsed_sec": 0.0
+            },
+            {
+              "simulation": 4,
+              "primitive_calls": 4,
+              "best_conflicts": 74,
+              "elapsed_sec": 0.1647930145263672
+            },
+            {
+              "simulation": 8,
+              "primitive_calls": 8,
+              "best_conflicts": 71,
+              "elapsed_sec": 0.20037102699279785
+            },
+            {
+              "simulation": 12,
+              "primitive_calls": 17,
+              "best_conflicts": 65,
+              "elapsed_sec": 0.389462947845459
+            },
+            {
+              "simulation": 16,
+              "primitive_calls": 23,
+              "best_conflicts": 64,
+              "elapsed_sec": 0.5782711505889893
+            },
+            {
+              "simulation": 20,
+              "primitive_calls": 27,
+              "best_conflicts": 61,
+              "elapsed_sec": 0.6139097213745117
+            },
+            {
+              "simulation": 24,
+              "primitive_calls": 34,
+              "best_conflicts": 59,
+              "elapsed_sec": 0.9586629867553711
+            },
+            {
+              "simulation": 24,
+              "primitive_calls": 34,
+              "best_conflicts": 59,
+              "elapsed_sec": 0.9586644172668457
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n200_000_try0",
+          "n": 200,
+          "tight_k": 8,
+          "greedy_k_best_conflicts": 83,
+          "method": "mcts_no_model",
+          "budget": "12:24",
+          "conflicts": 81,
+          "reported_conflicts": 81,
+          "solved": false,
+          "time_sec": 3.518867254257202,
+          "primitive_calls": 5,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 81,
+              "elapsed_sec": 0.620539665222168
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 81,
+              "elapsed_sec": 1.1340763568878174
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 81,
+              "elapsed_sec": 1.6601781845092773
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n200_000_try0",
+          "n": 200,
+          "tight_k": 8,
+          "greedy_k_best_conflicts": 83,
+          "method": "mcts_untrained",
+          "budget": "12:24",
+          "conflicts": 80,
+          "reported_conflicts": 80,
+          "solved": false,
+          "time_sec": 6.034147024154663,
+          "primitive_calls": 8,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 88,
+              "elapsed_sec": 1.4622600078582764
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 88,
+              "elapsed_sec": 2.5431883335113525
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 80,
+              "elapsed_sec": 3.843315362930298
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n200_000_try0",
+          "n": 200,
+          "tight_k": 8,
+          "greedy_k_best_conflicts": 83,
+          "method": "mcts_trained_small",
+          "budget": "12:24",
+          "conflicts": null,
+          "reported_conflicts": null,
+          "solved": false,
+          "time_sec": 40.157634019851685,
+          "primitive_calls": null,
+          "timeout": true,
+          "anytime_trace": []
+        },
+        {
+          "instance_id": "hard_n200_001_try0",
+          "n": 200,
+          "tight_k": 8,
+          "greedy_k_best_conflicts": 80,
+          "method": "greedy_best_of_orders",
+          "budget": "12:24",
+          "conflicts": 92,
+          "reported_conflicts": 92,
+          "solved": false,
+          "time_sec": 0.12678885459899902,
+          "primitive_calls": 0,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 0,
+              "primitive_calls": 0,
+              "best_conflicts": 92,
+              "elapsed_sec": 0.12678885459899902
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n200_001_try0",
+          "n": 200,
+          "tight_k": 8,
+          "greedy_k_best_conflicts": 80,
+          "method": "fixed_tabu_recolor",
+          "budget": "12:24",
+          "conflicts": 70,
+          "reported_conflicts": 70,
+          "solved": false,
+          "time_sec": 1.6483030319213867,
+          "primitive_calls": 29,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 0,
+              "primitive_calls": 0,
+              "best_conflicts": 90,
+              "elapsed_sec": 0.0
+            },
+            {
+              "simulation": 4,
+              "primitive_calls": 4,
+              "best_conflicts": 82,
+              "elapsed_sec": 0.16768550872802734
+            },
+            {
+              "simulation": 8,
+              "primitive_calls": 8,
+              "best_conflicts": 76,
+              "elapsed_sec": 0.20509910583496094
+            },
+            {
+              "simulation": 12,
+              "primitive_calls": 18,
+              "best_conflicts": 71,
+              "elapsed_sec": 0.4071531295776367
+            },
+            {
+              "simulation": 16,
+              "primitive_calls": 28,
+              "best_conflicts": 70,
+              "elapsed_sec": 0.6057837009429932
+            },
+            {
+              "simulation": 20,
+              "primitive_calls": 30,
+              "best_conflicts": 70,
+              "elapsed_sec": 0.9636015892028809
+            },
+            {
+              "simulation": 24,
+              "primitive_calls": 30,
+              "best_conflicts": 70,
+              "elapsed_sec": 1.648301601409912
+            },
+            {
+              "simulation": 24,
+              "primitive_calls": 29,
+              "best_conflicts": 70,
+              "elapsed_sec": 1.6483030319213867
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n200_001_try0",
+          "n": 200,
+          "tight_k": 8,
+          "greedy_k_best_conflicts": 80,
+          "method": "mcts_no_model",
+          "budget": "12:24",
+          "conflicts": 87,
+          "reported_conflicts": 87,
+          "solved": false,
+          "time_sec": 4.023048639297485,
+          "primitive_calls": 3,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 92,
+              "elapsed_sec": 0.7812213897705078
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 88,
+              "elapsed_sec": 1.3400323390960693
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 87,
+              "elapsed_sec": 2.3587112426757812
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n200_001_try0",
+          "n": 200,
+          "tight_k": 8,
+          "greedy_k_best_conflicts": 80,
+          "method": "mcts_untrained",
+          "budget": "12:24",
+          "conflicts": 89,
+          "reported_conflicts": 89,
+          "solved": false,
+          "time_sec": 6.028187274932861,
+          "primitive_calls": 5,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 89,
+              "elapsed_sec": 1.6777503490447998
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 89,
+              "elapsed_sec": 2.7695765495300293
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 89,
+              "elapsed_sec": 3.868626594543457
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n200_001_try0",
+          "n": 200,
+          "tight_k": 8,
+          "greedy_k_best_conflicts": 80,
+          "method": "mcts_trained_small",
+          "budget": "12:24",
+          "conflicts": null,
+          "reported_conflicts": null,
+          "solved": false,
+          "time_sec": 40.15603017807007,
+          "primitive_calls": null,
+          "timeout": true,
+          "anytime_trace": []
+        }
+      ],
+      "summary_by_method": {
+        "greedy_best_of_orders": {
+          "n": 4,
+          "n_finished": 4,
+          "solved_rate": 0.0,
+          "timeout_rate": 0.0,
+          "mean_conflicts": 59.25,
+          "median_conflicts": 58.5,
+          "mean_time_sec": 0.08519721031188965,
+          "mean_primitive_calls": null,
+          "delta_mean_vs_baseline": 0.0,
+          "delta_mean_vs_baseline_ci95": [
+            0.0,
+            0.0
+          ],
+          "win_rate_vs_baseline": 0.5,
+          "compute_normalized_gain_per_sec": 0.0,
+          "compute_normalized_gain_per_primitive": null,
+          "anytime_improvement_per_sec": 0.0
+        },
+        "fixed_tabu_recolor": {
+          "n": 4,
+          "n_finished": 4,
+          "solved_rate": 0.0,
+          "timeout_rate": 0.0,
+          "mean_conflicts": 40.0,
+          "median_conflicts": 38.5,
+          "mean_time_sec": 0.861108660697937,
+          "mean_primitive_calls": 26.0,
+          "delta_mean_vs_baseline": -19.25,
+          "delta_mean_vs_baseline_ci95": [
+            -25.5,
+            -13.0
+          ],
+          "win_rate_vs_baseline": 1.0,
+          "compute_normalized_gain_per_sec": 26.5435119257808,
+          "compute_normalized_gain_per_primitive": 0.7247654665314403,
+          "anytime_improvement_per_sec": 23.893154402937707
+        },
+        "mcts_no_model": {
+          "n": 4,
+          "n_finished": 4,
+          "solved_rate": 0.0,
+          "timeout_rate": 0.0,
+          "mean_conflicts": 53.75,
+          "median_conflicts": 53.0,
+          "mean_time_sec": 3.039736807346344,
+          "mean_primitive_calls": 4.25,
+          "delta_mean_vs_baseline": -5.5,
+          "delta_mean_vs_baseline_ci95": [
+            -7.0,
+            -4.0
+          ],
+          "win_rate_vs_baseline": 1.0,
+          "compute_normalized_gain_per_sec": 1.8937577628374636,
+          "compute_normalized_gain_per_primitive": 1.3041666666666667,
+          "anytime_improvement_per_sec": 1.3070639320075288
+        },
+        "mcts_untrained": {
+          "n": 4,
+          "n_finished": 4,
+          "solved_rate": 0.0,
+          "timeout_rate": 0.0,
+          "mean_conflicts": 52.75,
+          "median_conflicts": 51.0,
+          "mean_time_sec": 5.177670776844025,
+          "mean_primitive_calls": 7.25,
+          "delta_mean_vs_baseline": -6.5,
+          "delta_mean_vs_baseline_ci95": [
+            -8.75,
+            -4.25
+          ],
+          "win_rate_vs_baseline": 1.0,
+          "compute_normalized_gain_per_sec": 1.3201734094464208,
+          "compute_normalized_gain_per_primitive": 0.86875,
+          "anytime_improvement_per_sec": 0.8399636723017322
+        },
+        "mcts_trained_small": {
+          "n": 4,
+          "n_finished": 2,
+          "solved_rate": 0.0,
+          "timeout_rate": 0.5,
+          "mean_conflicts": 17.5,
+          "median_conflicts": 17.5,
+          "mean_time_sec": 28.54980218410492,
+          "mean_primitive_calls": 14.0,
+          "delta_mean_vs_baseline": -11.0,
+          "delta_mean_vs_baseline_ci95": [
+            -12.0,
+            -10.0
+          ],
+          "win_rate_vs_baseline": 0.5,
+          "compute_normalized_gain_per_sec": 0.6522185847216313,
+          "compute_normalized_gain_per_primitive": 0.8074866310160428,
+          "anytime_improvement_per_sec": 0.05531995353988277
+        }
+      }
+    }
+  }
+}

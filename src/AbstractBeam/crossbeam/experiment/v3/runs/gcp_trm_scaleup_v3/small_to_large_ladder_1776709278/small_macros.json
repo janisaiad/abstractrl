@@ -1,0 +1,199 @@
+[
+  {
+    "name": "macro_0000",
+    "families": [
+      "vertex_recolor",
+      "vertex_recolor",
+      "vertex_recolor",
+      "vertex_recolor",
+      "vertex_recolor"
+    ],
+    "support": 881,
+    "score": 3524.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0001",
+    "families": [
+      "vertex_recolor",
+      "vertex_recolor",
+      "vertex_recolor",
+      "vertex_recolor"
+    ],
+    "support": 965,
+    "score": 2895.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0002",
+    "families": [
+      "vertex_recolor",
+      "vertex_recolor",
+      "vertex_recolor"
+    ],
+    "support": 1071,
+    "score": 2142.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0003",
+    "families": [
+      "vertex_recolor",
+      "vertex_recolor"
+    ],
+    "support": 1308,
+    "score": 1308.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0004",
+    "families": [
+      "kempe_swap",
+      "kempe_swap",
+      "kempe_swap",
+      "kempe_swap",
+      "kempe_swap"
+    ],
+    "support": 28,
+    "score": 112.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0005",
+    "families": [
+      "kempe_swap",
+      "kempe_swap",
+      "kempe_swap",
+      "kempe_swap"
+    ],
+    "support": 31,
+    "score": 93.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0006",
+    "families": [
+      "kempe_swap",
+      "kempe_swap",
+      "kempe_swap"
+    ],
+    "support": 34,
+    "score": 68.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0007",
+    "families": [
+      "tabu_short",
+      "vertex_recolor",
+      "vertex_recolor"
+    ],
+    "support": 20,
+    "score": 40.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0008",
+    "families": [
+      "kempe_swap",
+      "kempe_swap"
+    ],
+    "support": 37,
+    "score": 37.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0009",
+    "families": [
+      "vertex_recolor",
+      "tabu_short"
+    ],
+    "support": 36,
+    "score": 36.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0010",
+    "families": [
+      "tabu_short",
+      "vertex_recolor"
+    ],
+    "support": 35,
+    "score": 35.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0011",
+    "families": [
+      "vertex_recolor",
+      "vertex_recolor",
+      "tabu_short"
+    ],
+    "support": 16,
+    "score": 32.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0012",
+    "families": [
+      "tabu_short",
+      "vertex_recolor",
+      "tabu_short"
+    ],
+    "support": 10,
+    "score": 20.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0013",
+    "families": [
+      "tabu_short",
+      "exact_patch"
+    ],
+    "support": 15,
+    "score": 15.0,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  }
+]

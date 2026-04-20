@@ -1,0 +1,416 @@
+{
+  "config": {
+    "session_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_1776708524",
+    "seed": 20260420,
+    "small_train_globs": [
+      "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt",
+      "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt"
+    ],
+    "small_valid_globs": [
+      "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt",
+      "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt"
+    ],
+    "curriculum_ckpt": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n80/train_run/model-best.pt",
+    "sizes": [
+      100
+    ],
+    "per_size": 1,
+    "budget_ladder": [
+      "12:24"
+    ],
+    "timeout_sec": 30.0,
+    "profile_every": 4,
+    "include_macro_method": false,
+    "methods": [
+      "greedy_best_of_orders",
+      "fixed_tabu_recolor",
+      "mcts_no_model",
+      "mcts_untrained",
+      "mcts_trained_small",
+      "mcts_trained_curriculum"
+    ],
+    "train_rows": 6226,
+    "valid_rows": 919,
+    "trained_small_ckpt": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_1776708524/trained_small/model-best.pt",
+    "small_macros": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_1776708524/small_macros.json",
+    "untrained_ckpt": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_1776708524/untrained_trm.pt"
+  },
+  "budgets": {
+    "12:24": {
+      "rows": [
+        {
+          "instance_id": "hard_n100_000_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 28,
+          "method": "greedy_best_of_orders",
+          "budget": "12:24",
+          "conflicts": 28,
+          "reported_conflicts": 28,
+          "solved": false,
+          "time_sec": 0.048308372497558594,
+          "primitive_calls": 0,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 0,
+              "primitive_calls": 0,
+              "best_conflicts": 28,
+              "elapsed_sec": 0.048308372497558594
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_000_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 28,
+          "method": "fixed_tabu_recolor",
+          "budget": "12:24",
+          "conflicts": 13,
+          "reported_conflicts": 13,
+          "solved": false,
+          "time_sec": 0.4259486198425293,
+          "primitive_calls": 25,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 0,
+              "primitive_calls": 0,
+              "best_conflicts": 28,
+              "elapsed_sec": 0.0
+            },
+            {
+              "simulation": 4,
+              "primitive_calls": 11,
+              "best_conflicts": 19,
+              "elapsed_sec": 0.12647724151611328
+            },
+            {
+              "simulation": 8,
+              "primitive_calls": 15,
+              "best_conflicts": 16,
+              "elapsed_sec": 0.14610719680786133
+            },
+            {
+              "simulation": 12,
+              "primitive_calls": 21,
+              "best_conflicts": 15,
+              "elapsed_sec": 0.2528269290924072
+            },
+            {
+              "simulation": 16,
+              "primitive_calls": 25,
+              "best_conflicts": 13,
+              "elapsed_sec": 0.27068257331848145
+            },
+            {
+              "simulation": 20,
+              "primitive_calls": 28,
+              "best_conflicts": 13,
+              "elapsed_sec": 0.32677292823791504
+            },
+            {
+              "simulation": 24,
+              "primitive_calls": 30,
+              "best_conflicts": 13,
+              "elapsed_sec": 0.4259471893310547
+            },
+            {
+              "simulation": 24,
+              "primitive_calls": 25,
+              "best_conflicts": 13,
+              "elapsed_sec": 0.4259486198425293
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_000_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 28,
+          "method": "mcts_no_model",
+          "budget": "12:24",
+          "conflicts": 25,
+          "reported_conflicts": 25,
+          "solved": false,
+          "time_sec": 2.3335671424865723,
+          "primitive_calls": 4,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 26,
+              "elapsed_sec": 0.22461199760437012
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 25,
+              "elapsed_sec": 0.45835018157958984
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 25,
+              "elapsed_sec": 0.7021474838256836
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_000_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 28,
+          "method": "mcts_untrained",
+          "budget": "12:24",
+          "conflicts": 26,
+          "reported_conflicts": 26,
+          "solved": false,
+          "time_sec": 3.808332920074463,
+          "primitive_calls": 2,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 26,
+              "elapsed_sec": 0.7755661010742188
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 26,
+              "elapsed_sec": 1.2540438175201416
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 26,
+              "elapsed_sec": 1.719160795211792
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_000_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 28,
+          "method": "mcts_trained_small",
+          "budget": "12:24",
+          "conflicts": 16,
+          "reported_conflicts": 16,
+          "solved": false,
+          "time_sec": 13.61651349067688,
+          "primitive_calls": 18,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 16,
+              "elapsed_sec": 3.8335297107696533
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 16,
+              "elapsed_sec": 6.897267818450928
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 16,
+              "elapsed_sec": 11.502640724182129
+            }
+          ]
+        },
+        {
+          "instance_id": "hard_n100_000_try0",
+          "n": 100,
+          "tight_k": 6,
+          "greedy_k_best_conflicts": 28,
+          "method": "mcts_trained_curriculum",
+          "budget": "12:24",
+          "conflicts": 16,
+          "reported_conflicts": 16,
+          "solved": false,
+          "time_sec": 13.653609037399292,
+          "primitive_calls": 18,
+          "timeout": false,
+          "anytime_trace": [
+            {
+              "simulation": 4,
+              "best_conflicts": 16,
+              "elapsed_sec": 3.867861032485962
+            },
+            {
+              "simulation": 8,
+              "best_conflicts": 16,
+              "elapsed_sec": 7.124603748321533
+            },
+            {
+              "simulation": 12,
+              "best_conflicts": 16,
+              "elapsed_sec": 11.55947232246399
+            }
+          ]
+        }
+      ],
+      "summary_by_method": {
+        "greedy_best_of_orders": {
+          "n": 1,
+          "n_finished": 1,
+          "solved_rate": 0.0,
+          "timeout_rate": 0.0,
+          "mean_conflicts": 28.0,
+          "median_conflicts": 28.0,
+          "mean_time_sec": 0.048308372497558594,
+          "mean_primitive_calls": null,
+          "delta_mean_vs_baseline": 0.0,
+          "delta_mean_vs_baseline_ci95": [
+            0.0,
+            0.0
+          ],
+          "win_rate_vs_baseline": 0.5,
+          "compute_normalized_gain_per_sec": 0.0,
+          "compute_normalized_gain_per_primitive": null,
+          "anytime_improvement_per_sec": 0.0
+        },
+        "fixed_tabu_recolor": {
+          "n": 1,
+          "n_finished": 1,
+          "solved_rate": 0.0,
+          "timeout_rate": 0.0,
+          "mean_conflicts": 13.0,
+          "median_conflicts": 13.0,
+          "mean_time_sec": 0.4259486198425293,
+          "mean_primitive_calls": 25.0,
+          "delta_mean_vs_baseline": -15.0,
+          "delta_mean_vs_baseline_ci95": [
+            -15.0,
+            -15.0
+          ],
+          "win_rate_vs_baseline": 1.0,
+          "compute_normalized_gain_per_sec": 35.21551497348533,
+          "compute_normalized_gain_per_primitive": 0.6,
+          "anytime_improvement_per_sec": 35.21551497348533
+        },
+        "mcts_no_model": {
+          "n": 1,
+          "n_finished": 1,
+          "solved_rate": 0.0,
+          "timeout_rate": 0.0,
+          "mean_conflicts": 25.0,
+          "median_conflicts": 25.0,
+          "mean_time_sec": 2.3335671424865723,
+          "mean_primitive_calls": 4.0,
+          "delta_mean_vs_baseline": -3.0,
+          "delta_mean_vs_baseline_ci95": [
+            -3.0,
+            -3.0
+          ],
+          "win_rate_vs_baseline": 1.0,
+          "compute_normalized_gain_per_sec": 1.2855854650075758,
+          "compute_normalized_gain_per_primitive": 0.75,
+          "anytime_improvement_per_sec": 2.094085212206723
+        },
+        "mcts_untrained": {
+          "n": 1,
+          "n_finished": 1,
+          "solved_rate": 0.0,
+          "timeout_rate": 0.0,
+          "mean_conflicts": 26.0,
+          "median_conflicts": 26.0,
+          "mean_time_sec": 3.808332920074463,
+          "mean_primitive_calls": 2.0,
+          "delta_mean_vs_baseline": -2.0,
+          "delta_mean_vs_baseline_ci95": [
+            -2.0,
+            -2.0
+          ],
+          "win_rate_vs_baseline": 1.0,
+          "compute_normalized_gain_per_sec": 0.525164170773414,
+          "compute_normalized_gain_per_primitive": 1.0,
+          "anytime_improvement_per_sec": 0.0
+        },
+        "mcts_trained_small": {
+          "n": 1,
+          "n_finished": 1,
+          "solved_rate": 0.0,
+          "timeout_rate": 0.0,
+          "mean_conflicts": 16.0,
+          "median_conflicts": 16.0,
+          "mean_time_sec": 13.61651349067688,
+          "mean_primitive_calls": 18.0,
+          "delta_mean_vs_baseline": -12.0,
+          "delta_mean_vs_baseline_ci95": [
+            -12.0,
+            -12.0
+          ],
+          "win_rate_vs_baseline": 1.0,
+          "compute_normalized_gain_per_sec": 0.8812828635036646,
+          "compute_normalized_gain_per_primitive": 0.6666666666666666,
+          "anytime_improvement_per_sec": 0.0
+        },
+        "mcts_trained_curriculum": {
+          "n": 1,
+          "n_finished": 1,
+          "solved_rate": 0.0,
+          "timeout_rate": 0.0,
+          "mean_conflicts": 16.0,
+          "median_conflicts": 16.0,
+          "mean_time_sec": 13.653609037399292,
+          "mean_primitive_calls": 18.0,
+          "delta_mean_vs_baseline": -12.0,
+          "delta_mean_vs_baseline_ci95": [
+            -12.0,
+            -12.0
+          ],
+          "win_rate_vs_baseline": 1.0,
+          "compute_normalized_gain_per_sec": 0.8788885024560313,
+          "compute_normalized_gain_per_primitive": 0.6666666666666666,
+          "anytime_improvement_per_sec": 0.0
+        }
+      },
+      "pairwise": {
+        "mcts_trained_small_vs_greedy_best_of_orders": {
+          "a": "mcts_trained_small",
+          "b": "greedy_best_of_orders",
+          "n_pairs": 1,
+          "win_rate_a_over_b": 1.0,
+          "delta_mean_a_minus_b": -12.0,
+          "delta_ci95_a_minus_b": [
+            -12.0,
+            -12.0
+          ]
+        },
+        "mcts_trained_small_vs_mcts_untrained": {
+          "a": "mcts_trained_small",
+          "b": "mcts_untrained",
+          "n_pairs": 1,
+          "win_rate_a_over_b": 1.0,
+          "delta_mean_a_minus_b": -10.0,
+          "delta_ci95_a_minus_b": [
+            -10.0,
+            -10.0
+          ]
+        },
+        "mcts_trained_small_vs_mcts_no_model": {
+          "a": "mcts_trained_small",
+          "b": "mcts_no_model",
+          "n_pairs": 1,
+          "win_rate_a_over_b": 1.0,
+          "delta_mean_a_minus_b": -9.0,
+          "delta_ci95_a_minus_b": [
+            -9.0,
+            -9.0
+          ]
+        },
+        "mcts_trained_curriculum_vs_mcts_trained_small": {
+          "a": "mcts_trained_curriculum",
+          "b": "mcts_trained_small",
+          "n_pairs": 1,
+          "win_rate_a_over_b": 0.5,
+          "delta_mean_a_minus_b": 0.0,
+          "delta_ci95_a_minus_b": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  }
+}

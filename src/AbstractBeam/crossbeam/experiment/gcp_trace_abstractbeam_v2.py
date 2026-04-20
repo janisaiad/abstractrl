@@ -221,6 +221,7 @@ class SearchConfig:
     confidence_beta: float = 1.5
     action_budget: int = DEFAULT_ACTION_BUDGET
     exact_patch_limit: int = 12
+    profile_every: int = 0
 
 
 def set_seed(seed: int) -> None:
@@ -1755,6 +1756,7 @@ class GCPMCTS:
         self.cache: Dict[bytes, CacheEntry] = {}
         self.best_state: Optional[RepairState] = None
         self.best_metrics: Optional[StateMetrics] = None
+        self.anytime_trace: List[Dict[str, float]] = []
 
     def evaluate_with_model(self, state: RepairState, metrics: StateMetrics, candidates: List[CandidateAction]) -> Tuple[np.ndarray, float]:
         if self.model is None:
@@ -1867,7 +1869,10 @@ class GCPMCTS:
         self.nodes = [MCTSNode(root_state.copy())]
         self.best_state = root_state.copy()
         self.best_metrics = compute_state_metrics(self.graph, root_state)
-        for _ in range(self.cfg.simulations):
+        self.anytime_trace = []
+        t0 = time.time()
+        profile_every = max(1, int(getattr(self.cfg, "profile_every", 0) or 0))
+        for sim_idx in range(self.cfg.simulations):
             path: List[Tuple[int, int, float]] = []
             node_id = 0
             depth = 0
@@ -1901,6 +1906,15 @@ class GCPMCTS:
                 node.wsa[a] += backup
                 node.qsa[a] = node.wsa[a] / max(node.nsa[a], 1)
                 node.value_sum += backup
+            if profile_every > 0 and ((sim_idx + 1) % profile_every == 0 or (self.best_metrics is not None and self.best_metrics.conflicts == 0)):
+                best_conf = int(self.best_metrics.conflicts) if self.best_metrics is not None else int(10**9)
+                self.anytime_trace.append(
+                    {
+                        "simulation": int(sim_idx + 1),
+                        "best_conflicts": int(best_conf),
+                        "elapsed_sec": float(time.time() - t0),
+                    }
+                )
             if self.best_metrics is not None and self.best_metrics.conflicts == 0:
                 break
         return self.nodes[0]
@@ -1933,10 +1947,11 @@ def solve_instance(
         confidence_beta=args.confidence_beta,
         action_budget=args.action_budget,
         exact_patch_limit=args.exact_patch_limit,
+        profile_every=int(getattr(args, "profile_every", 0)),
     ))
     best = mcts.search(state)
     metrics = compute_state_metrics(graph, best)
-    return {
+    result = {
         "name": graph.name,
         "k": int(k),
         "colors": best.colors.tolist(),
@@ -1944,7 +1959,25 @@ def solve_instance(
         "conflict_vertices": metrics.conflict_vertices,
         "core_size": metrics.core_size,
         "solved": bool(metrics.conflicts == 0),
+        "primitive_calls": int(best.step),
+        "anytime_trace": mcts.anytime_trace,
     }
+    profile_out = str(getattr(args, "profile_out", "") or "")
+    if profile_out:
+        with open(profile_out, "w") as f:
+            json.dump(
+                {
+                    "name": graph.name,
+                    "k": int(k),
+                    "solved": bool(metrics.conflicts == 0),
+                    "final_conflicts": int(metrics.conflicts),
+                    "primitive_calls": int(best.step),
+                    "anytime_trace": mcts.anytime_trace,
+                },
+                f,
+                indent=2,
+            )
+    return result
 
 
 def mine_macros_from_samples(samples: Iterable[TraceSample], min_support: int, max_len: int, top_k: int) -> List[MacroProgram]:
@@ -2037,6 +2070,7 @@ def command_build_solve_traces(args: argparse.Namespace) -> None:
         confidence_beta=args.confidence_beta,
         action_budget=args.action_budget,
         exact_patch_limit=args.exact_patch_limit,
+        profile_every=0,
     )
     records = load_records(args.input)
     writer = TraceShardWriter(args.out_dir, prefix=args.prefix, samples_per_shard=args.samples_per_shard)
@@ -2219,6 +2253,8 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("--confidence-beta", type=float, default=1.5)
     s.add_argument("--action-budget", type=int, default=DEFAULT_ACTION_BUDGET)
     s.add_argument("--exact-patch-limit", type=int, default=12)
+    s.add_argument("--profile-every", type=int, default=8)
+    s.add_argument("--profile-out", default="")
     s.set_defaults(func=command_solve)
 
     return p
