@@ -1,0 +1,83 @@
+[
+  {
+    "name": "macro_0005",
+    "families": [
+      "vertex_recolor",
+      "tabu_short"
+    ],
+    "support": 36,
+    "score": 56.25,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0006",
+    "families": [
+      "tabu_short",
+      "vertex_recolor"
+    ],
+    "support": 35,
+    "score": 54.6875,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0009",
+    "families": [
+      "tabu_short",
+      "exact_patch"
+    ],
+    "support": 15,
+    "score": 23.4375,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0003",
+    "families": [
+      "tabu_short",
+      "vertex_recolor",
+      "vertex_recolor"
+    ],
+    "support": 20,
+    "score": 15.625,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0007",
+    "families": [
+      "vertex_recolor",
+      "vertex_recolor",
+      "tabu_short"
+    ],
+    "support": 16,
+    "score": 12.5,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  },
+  {
+    "name": "macro_0008",
+    "families": [
+      "tabu_short",
+      "vertex_recolor",
+      "tabu_short"
+    ],
+    "support": 10,
+    "score": 7.8125,
+    "min_conflict_ratio": 0.0,
+    "max_conflict_ratio": 1.0,
+    "min_core_ratio": 0.0,
+    "max_core_ratio": 1.0
+  }
+]

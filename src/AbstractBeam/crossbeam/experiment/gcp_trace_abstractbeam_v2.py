@@ -674,14 +674,46 @@ def apply_candidate_action(
         macro = macros.get(macro_name)
         if macro is None:
             return state.copy()
+        # Cheap macro execution knobs (controlled by the caller via env vars, to keep v2 API stable):
+        #   GCP_MACRO_ACTION_BUDGET (int, default 32): internal candidate generation budget per family step
+        #   GCP_MACRO_MAX_STEPS     (int, default 0 = len(families)): cap on executed macro steps
+        #   GCP_MACRO_CHEAP         ("1"/"true" enables): skip full evaluate_candidates, pick candidate by greedy delta
+        try:
+            macro_budget = int(os.environ.get("GCP_MACRO_ACTION_BUDGET", "32"))
+        except ValueError:
+            macro_budget = 32
+        try:
+            macro_max_steps = int(os.environ.get("GCP_MACRO_MAX_STEPS", "0"))
+        except ValueError:
+            macro_max_steps = 0
+        if macro_max_steps <= 0:
+            macro_max_steps = len(macro.families)
+        cheap = str(os.environ.get("GCP_MACRO_CHEAP", "0")).lower() in ("1", "true", "yes")
         cur = state.copy()
-        for family in macro.families:
+        for fam_i, family in enumerate(macro.families[: int(macro_max_steps)]):
             cur_metrics = compute_state_metrics(graph, cur)
-            cands = generate_candidate_actions(graph, cur, cur_metrics, list(macros.values()), action_budget=32, restrict_families={family}, exact_patch_limit=exact_patch_limit)
+            cands = generate_candidate_actions(
+                graph,
+                cur,
+                cur_metrics,
+                list(macros.values()),
+                action_budget=int(macro_budget),
+                restrict_families={family},
+                exact_patch_limit=exact_patch_limit,
+            )
             if not cands:
                 continue
-            scored = evaluate_candidates(graph, cur, cur_metrics, cands, macros=macros, exact_patch_limit=exact_patch_limit)
-            best_idx = int(np.argmax(scored["teacher_scores"]))
+            if cheap:
+                # Cheap path: prefer biggest expected drop in conflicts (no network re-eval, no teacher scoring).
+                best_idx = int(
+                    max(
+                        range(len(cands)),
+                        key=lambda j: (float(cands[j].est_delta_conflicts), float(cands[j].est_delta_vertices), -float(cands[j].est_cost)),
+                    )
+                )
+            else:
+                scored = evaluate_candidates(graph, cur, cur_metrics, cands, macros=macros, exact_patch_limit=exact_patch_limit)
+                best_idx = int(np.argmax(scored["teacher_scores"]))
             cur = apply_candidate_action(graph, cur, cur_metrics, cands[best_idx], macros=macros, exact_patch_limit=exact_patch_limit)
         return cur
     raise ValueError(f"unknown family: {fam}")

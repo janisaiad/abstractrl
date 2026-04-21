@@ -144,6 +144,9 @@ def _train_small_model(
     return ckpt
 
 
+STRUCTURAL_FAMILIES = {"tabu_short", "tabu_long", "exact_patch", "focus_core", "perturb_soft"}
+
+
 def _mine_macros(trace_pt: Path, out_path: Path, min_support: int, max_len: int, top_k: int) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     cmd = [
@@ -162,6 +165,45 @@ def _mine_macros(trace_pt: Path, out_path: Path, min_support: int, max_len: int,
         str(int(top_k)),
     ]
     subprocess.run(cmd, cwd=str(ROOT), check=True)
+
+
+def _filter_macros_in_place(macros_path: Path, min_distinct_families: int, require_structural: bool, top_k: int) -> Dict[str, Any]:
+    if not macros_path.exists():
+        return {"input": 0, "kept": 0, "dropped_mono_family": 0, "dropped_missing_structural": 0}
+    payload = json.loads(macros_path.read_text())
+    kept: List[Dict[str, Any]] = []
+    dropped_mono = 0
+    dropped_struct = 0
+    for m in payload:
+        fams = tuple(m.get("families", ()))
+        if not fams:
+            continue
+        distinct = set(fams)
+        if len(distinct) < int(min_distinct_families):
+            dropped_mono += 1
+            continue
+        if require_structural and not (distinct & STRUCTURAL_FAMILIES):
+            dropped_struct += 1
+            continue
+        # utility-weighted score: support * (1 + distinct bonus) * (1 + structural bonus)
+        support = float(m.get("support", 1.0))
+        length_penalty = 1.0 / max(1.0, float(len(fams)) - 1.0)  # prefer shorter, still length>=2
+        distinct_bonus = 1.0 + 0.25 * float(len(distinct) - 1)
+        structural_bonus = 1.25 if (distinct & STRUCTURAL_FAMILIES) else 1.0
+        m["score"] = float(support * length_penalty * distinct_bonus * structural_bonus)
+        kept.append(m)
+    kept.sort(key=lambda x: float(x.get("score", 0.0)), reverse=True)
+    kept = kept[: max(1, int(top_k))]
+    macros_path.write_text(json.dumps(kept, indent=2))
+    stats = {
+        "input": len(payload),
+        "kept": len(kept),
+        "dropped_mono_family": int(dropped_mono),
+        "dropped_missing_structural": int(dropped_struct),
+    }
+    stats_path = macros_path.with_suffix(".filter_stats.json")
+    stats_path.write_text(json.dumps(stats, indent=2))
+    return stats
 
 
 def _best_greedy_solution(graph: gcp.GCGraph, k: int, rng: random.Random, num_random_orders: int) -> Tuple[np.ndarray, int]:
@@ -293,6 +335,7 @@ def _run_mcts_solve(
     ckpt: Optional[Path] = None,
     macros: Optional[Path] = None,
     profile_every: int = 4,
+    env_overrides: Optional[Dict[str, str]] = None,
 ) -> Dict[str, Any]:
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as fprof:
         profile_path = Path(fprof.name)
@@ -317,9 +360,13 @@ def _run_mcts_solve(
         cmd.extend(["--ckpt", str(ckpt)])
     if macros is not None:
         cmd.extend(["--macros", str(macros)])
+    proc_env = os.environ.copy()
+    if env_overrides:
+        for k_env, v_env in env_overrides.items():
+            proc_env[str(k_env)] = str(v_env)
     t0 = time.time()
     try:
-        out = subprocess.check_output(cmd, cwd=str(ROOT), text=True, timeout=float(timeout_sec))
+        out = subprocess.check_output(cmd, cwd=str(ROOT), text=True, timeout=float(timeout_sec), env=proc_env)
         payload = json.loads(out)
         payload["time_sec"] = float(time.time() - t0)
         payload["timeout"] = False
@@ -394,16 +441,24 @@ def _anytime_improvement_per_sec(trace: Sequence[Dict[str, Any]]) -> Optional[fl
     return float((c0 - c1) / dt)
 
 
-def _aggregate_budget_results(rows: List[Dict[str, Any]], baseline_method: str, seed: int) -> Dict[str, Any]:
+def _aggregate_budget_results(rows: List[Dict[str, Any]], baseline_method: str, seed: int, penalty_lambda: float = 20.0) -> Dict[str, Any]:
     by_method: Dict[str, List[Dict[str, Any]]] = {}
     for r in rows:
         by_method.setdefault(str(r["method"]), []).append(r)
     baseline_rows = {str(r["instance_id"]): r for r in by_method.get(baseline_method, [])}
 
+    def _penalized_conf(r: Dict[str, Any], inst_id: str) -> Optional[float]:  # timeout-aware score
+        if not bool(r.get("timeout", False)) and r.get("conflicts") is not None:
+            return float(r["conflicts"])  # finished
+        b = baseline_rows.get(inst_id)
+        if b is None or b.get("conflicts") is None:
+            return None  # cannot anchor without baseline
+        return float(b["conflicts"]) + float(penalty_lambda)
+
     summary: Dict[str, Any] = {}
     for method, mrows in by_method.items():
         finished = [r for r in mrows if not bool(r.get("timeout", False)) and r.get("conflicts") is not None]
-        confs = [float(r["conflicts"]) for r in finished]
+        confs_finished = [float(r["conflicts"]) for r in finished]
         times = [float(r.get("time_sec", 0.0)) for r in mrows]
         prims = [float(r["primitive_calls"]) for r in finished if r.get("primitive_calls") not in (None, 0)]
         pair_deltas: List[float] = []
@@ -411,8 +466,12 @@ def _aggregate_budget_results(rows: List[Dict[str, Any]], baseline_method: str, 
         gain_per_sec: List[float] = []
         gain_per_prim: List[float] = []
         anytime_rates: List[float] = []
+        penalized_vals: List[float] = []
         for r in mrows:
             bid = str(r["instance_id"])
+            pv = _penalized_conf(r, bid)
+            if pv is not None:
+                penalized_vals.append(pv)
             b = baseline_rows.get(bid)
             if b is not None:
                 win_scores.append(_paired_outcome(r.get("conflicts"), bool(r.get("timeout", False)), b.get("conflicts"), bool(b.get("timeout", False))))
@@ -433,8 +492,10 @@ def _aggregate_budget_results(rows: List[Dict[str, Any]], baseline_method: str, 
             "n_finished": len(finished),
             "solved_rate": float(sum(1 for r in mrows if bool(r.get("solved", False))) / max(len(mrows), 1)),
             "timeout_rate": float(sum(1 for r in mrows if bool(r.get("timeout", False))) / max(len(mrows), 1)),
-            "mean_conflicts": float(np.mean(confs)) if confs else None,
-            "median_conflicts": float(np.median(confs)) if confs else None,
+            "mean_conflicts_finished": float(np.mean(confs_finished)) if confs_finished else None,
+            "median_conflicts_finished": float(np.median(confs_finished)) if confs_finished else None,
+            "penalized_conflicts_mean": float(np.mean(penalized_vals)) if penalized_vals else None,
+            "penalized_conflicts_median": float(np.median(penalized_vals)) if penalized_vals else None,
             "mean_time_sec": float(np.mean(times)) if times else None,
             "mean_primitive_calls": float(np.mean(prims)) if prims else None,
             "delta_mean_vs_baseline": float(np.mean(pair_deltas)) if pair_deltas else None,
@@ -445,12 +506,16 @@ def _aggregate_budget_results(rows: List[Dict[str, Any]], baseline_method: str, 
             "anytime_improvement_per_sec": float(np.mean(anytime_rates)) if anytime_rates else None,
         }
 
-    # Explicit paired comparisons requested for scientific reporting.
+    # Explicit paired comparisons — central baseline is now fixed_tabu_recolor, the strongest hand-coded local repair baseline.
     pair_specs = [
+        ("mcts_trained_small", "fixed_tabu_recolor"),
+        ("mcts_trained_curriculum", "fixed_tabu_recolor"),
         ("mcts_trained_small", "greedy_best_of_orders"),
         ("mcts_trained_small", "mcts_untrained"),
         ("mcts_trained_small", "mcts_no_model"),
         ("mcts_trained_curriculum", "mcts_trained_small"),
+        ("mcts_trained_small_macros", "mcts_trained_small"),
+        ("mcts_trained_small_macros", "fixed_tabu_recolor"),
     ]
     pairwise: Dict[str, Any] = {}
     rows_by_method_inst: Dict[Tuple[str, str], Dict[str, Any]] = {}
@@ -459,6 +524,7 @@ def _aggregate_budget_results(rows: List[Dict[str, Any]], baseline_method: str, 
     for a, b in pair_specs:
         outcomes: List[float] = []
         deltas: List[float] = []
+        penalized_deltas: List[float] = []
         insts = sorted({iid for (_, iid) in rows_by_method_inst.keys()})
         for iid in insts:
             ra = rows_by_method_inst.get((a, iid))
@@ -468,7 +534,12 @@ def _aggregate_budget_results(rows: List[Dict[str, Any]], baseline_method: str, 
             outcomes.append(_paired_outcome(ra.get("conflicts"), bool(ra.get("timeout", False)), rb.get("conflicts"), bool(rb.get("timeout", False))))
             if (not bool(ra.get("timeout", False))) and (not bool(rb.get("timeout", False))) and ra.get("conflicts") is not None and rb.get("conflicts") is not None:
                 deltas.append(float(ra["conflicts"]) - float(rb["conflicts"]))
+            pv_a = _penalized_conf(ra, iid)
+            pv_b = _penalized_conf(rb, iid)
+            if pv_a is not None and pv_b is not None:
+                penalized_deltas.append(float(pv_a) - float(pv_b))
         lo, hi = _bootstrap_ci(deltas, seed=seed + abs(hash((a, b))) % 100000)
+        plo, phi = _bootstrap_ci(penalized_deltas, seed=seed + abs(hash((a, b, "pen"))) % 100000)
         key = f"{a}_vs_{b}"
         pairwise[key] = {
             "a": a,
@@ -477,6 +548,8 @@ def _aggregate_budget_results(rows: List[Dict[str, Any]], baseline_method: str, 
             "win_rate_a_over_b": float(np.mean(outcomes)) if outcomes else None,
             "delta_mean_a_minus_b": float(np.mean(deltas)) if deltas else None,
             "delta_ci95_a_minus_b": [lo, hi],
+            "penalized_delta_mean_a_minus_b": float(np.mean(penalized_deltas)) if penalized_deltas else None,
+            "penalized_delta_ci95_a_minus_b": [plo, phi],
         }
     return {"summary_by_method": summary, "pairwise": pairwise}
 
@@ -495,11 +568,15 @@ def _markdown_report(payload: Dict[str, Any]) -> str:
     lines.append(f"- timeout_sec: `{cfg['timeout_sec']}`")
     lines.append(f"- profile_every: `{cfg['profile_every']}`")
     lines.append("")
+    baseline_label = str(payload.get("config", {}).get("baseline_method", "greedy_best_of_orders"))
     for budget_tag, block in payload["budgets"].items():
         lines.append(f"## Budget {budget_tag}")
         lines.append("")
-        lines.append("| Method | solved_rate | timeout_rate | mean_conf | median_conf | mean_time_s | mean_primitive_calls | win_rate_vs_greedy | delta_mean_vs_greedy |")
-        lines.append("|---|---:|---:|---:|---:|---:|---:|---:|---:|")
+        lines.append(
+            "| Method | solved_rate | timeout_rate | mean_conf_finished | penalized_conf_mean | median_conf_finished | mean_time_s | mean_primitive_calls | "
+            f"win_rate_vs_{baseline_label} | delta_mean_vs_{baseline_label} |"
+        )
+        lines.append("|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|")
         for method, s in sorted(block["summary_by_method"].items()):
             def fmt(v: Any) -> str:
                 if v is None:
@@ -512,8 +589,9 @@ def _markdown_report(payload: Dict[str, Any]) -> str:
                     method,
                     fmt(s.get("solved_rate")),
                     fmt(s.get("timeout_rate")),
-                    fmt(s.get("mean_conflicts")),
-                    fmt(s.get("median_conflicts")),
+                    fmt(s.get("mean_conflicts_finished")),
+                    fmt(s.get("penalized_conflicts_mean")),
+                    fmt(s.get("median_conflicts_finished")),
                     fmt(s.get("mean_time_sec")),
                     fmt(s.get("mean_primitive_calls")),
                     fmt(s.get("win_rate_vs_baseline")),
@@ -541,10 +619,10 @@ def _markdown_report(payload: Dict[str, Any]) -> str:
                 ]) + " |"
             )
         lines.append("")
-        lines.append("### Paired Comparisons")
+        lines.append("### Paired Comparisons (timeout-aware)")
         lines.append("")
-        lines.append("| Pair | n_pairs | win_rate(a>b) | delta_mean(a-b) | delta_ci95(a-b) |")
-        lines.append("|---|---:|---:|---:|---:|")
+        lines.append("| Pair | n_pairs | win_rate(a>b) | delta_mean(a-b) | delta_ci95(a-b) | penalized_delta_mean(a-b) | penalized_delta_ci95(a-b) |")
+        lines.append("|---|---:|---:|---:|---:|---:|---:|")
         for key, pair in sorted(block.get("pairwise", {}).items()):
             def fmtp(v: Any) -> str:
                 if v is None:
@@ -556,6 +634,10 @@ def _markdown_report(payload: Dict[str, Any]) -> str:
             ci_txt = "-"
             if isinstance(ci, list) and len(ci) == 2 and ci[0] is not None and ci[1] is not None:
                 ci_txt = f"[{float(ci[0]):.4f}, {float(ci[1]):.4f}]"
+            pci = pair.get("penalized_delta_ci95_a_minus_b", [None, None])
+            pci_txt = "-"
+            if isinstance(pci, list) and len(pci) == 2 and pci[0] is not None and pci[1] is not None:
+                pci_txt = f"[{float(pci[0]):.4f}, {float(pci[1]):.4f}]"
             lines.append(
                 "| " + " | ".join([
                     key,
@@ -563,6 +645,8 @@ def _markdown_report(payload: Dict[str, Any]) -> str:
                     fmtp(pair.get("win_rate_a_over_b")),
                     fmtp(pair.get("delta_mean_a_minus_b")),
                     ci_txt,
+                    fmtp(pair.get("penalized_delta_mean_a_minus_b")),
+                    pci_txt,
                 ]) + " |"
             )
         lines.append("")
@@ -597,8 +681,15 @@ def main() -> None:
     ap.add_argument("--dropout", type=float, default=0.1)
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--macro-min-support", type=int, default=8)
-    ap.add_argument("--macro-max-len", type=int, default=5)
-    ap.add_argument("--macro-top-k", type=int, default=64)
+    ap.add_argument("--macro-max-len", type=int, default=3)  # default reduced: avoid k=5 chains of vertex_recolor
+    ap.add_argument("--macro-top-k", type=int, default=32)
+    ap.add_argument("--macro-min-distinct-families", type=int, default=2)  # filter mono-family repetitions
+    ap.add_argument("--macro-require-structural", action="store_true")  # require at least one structural family
+    ap.add_argument("--macro-action-budget", type=int, default=8)  # cheap internal exec
+    ap.add_argument("--macro-max-steps", type=int, default=2)  # cut macro depth
+    ap.add_argument("--macro-cheap", action="store_true")  # skip full evaluate_candidates inside macros
+    ap.add_argument("--penalty-lambda", type=float, default=20.0)  # timeout penalty over baseline conflicts
+    ap.add_argument("--baseline-method", type=str, default="fixed_tabu_recolor")  # central baseline for reporting
     args = ap.parse_args()
 
     RUNS_ROOT.mkdir(parents=True, exist_ok=True)
@@ -638,6 +729,13 @@ def main() -> None:
 
     macros_path = session_dir / "small_macros.json"
     _mine_macros(train_pt, macros_path, min_support=int(args.macro_min_support), max_len=int(args.macro_max_len), top_k=int(args.macro_top_k))
+    macro_filter_stats = _filter_macros_in_place(
+        macros_path,
+        min_distinct_families=int(args.macro_min_distinct_families),
+        require_structural=bool(args.macro_require_structural),
+        top_k=int(args.macro_top_k),
+    )
+    print(f"[macros] filter_stats = {json.dumps(macro_filter_stats)}", flush=True)
 
     untrained_ckpt = session_dir / "untrained_trm.pt"
     _save_untrained_ckpt(untrained_ckpt, int(args.d_model), int(args.refine_steps), float(args.dropout))
@@ -709,7 +807,23 @@ def main() -> None:
                     elif method == "mcts_trained_small":
                         pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=trained_small_ckpt, macros=None, profile_every=int(args.profile_every))
                     elif method == "mcts_trained_small_macros":
-                        pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=trained_small_ckpt, macros=macros_path, profile_every=int(args.profile_every))
+                        macro_env = {
+                            "GCP_MACRO_ACTION_BUDGET": str(int(args.macro_action_budget)),
+                            "GCP_MACRO_MAX_STEPS": str(int(args.macro_max_steps)),
+                            "GCP_MACRO_CHEAP": "1" if bool(args.macro_cheap) else "0",
+                        }
+                        pred = _run_mcts_solve(
+                            method,
+                            graph_json,
+                            k,
+                            budget.simulations,
+                            budget.max_depth,
+                            timeout_sec=float(args.timeout_sec),
+                            ckpt=trained_small_ckpt,
+                            macros=macros_path,
+                            profile_every=int(args.profile_every),
+                            env_overrides=macro_env,
+                        )
                     elif method == "mcts_trained_curriculum":
                         assert curriculum_ckpt is not None
                         pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=curriculum_ckpt, macros=None, profile_every=int(args.profile_every))
@@ -742,7 +856,12 @@ def main() -> None:
                 )
         results_by_budget[budget.tag] = {
             "rows": rows,
-            **_aggregate_budget_results(rows, baseline_method="greedy_best_of_orders", seed=int(args.seed) + abs(hash(budget.tag)) % 10000),
+            **_aggregate_budget_results(
+                rows,
+                baseline_method=str(args.baseline_method),
+                seed=int(args.seed) + abs(hash(budget.tag)) % 10000,
+                penalty_lambda=float(args.penalty_lambda),
+            ),
         }
 
     payload: Dict[str, Any] = {
@@ -764,6 +883,13 @@ def main() -> None:
             "trained_small_ckpt": str(trained_small_ckpt),
             "small_macros": str(macros_path),
             "untrained_ckpt": str(untrained_ckpt),
+            "baseline_method": str(args.baseline_method),
+            "penalty_lambda": float(args.penalty_lambda),
+            "macro_min_distinct_families": int(args.macro_min_distinct_families),
+            "macro_require_structural": bool(args.macro_require_structural),
+            "macro_action_budget": int(args.macro_action_budget),
+            "macro_max_steps": int(args.macro_max_steps),
+            "macro_cheap": bool(args.macro_cheap),
         },
         "budgets": results_by_budget,
     }
