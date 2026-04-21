@@ -13,6 +13,7 @@ import tempfile
 import time
 from dataclasses import dataclass, asdict
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
 import numpy as np
@@ -101,6 +102,7 @@ def _train_small_model(
     refine_steps: int,
     dropout: float,
     lr: float,
+    init_ckpt: Optional[Path] = None,
 ) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
     cmd = [
@@ -135,6 +137,8 @@ def _train_small_model(
         str(float(lr)),
         "--amp",
     ]
+    if init_ckpt is not None:
+        cmd.extend(["--init-ckpt", str(init_ckpt)])
     subprocess.run(cmd, cwd=str(ROOT), check=True)
     ckpt = out_dir / "model-best.pt"
     if not ckpt.exists():
@@ -396,6 +400,129 @@ def _run_mcts_solve(
         profile_path.unlink(missing_ok=True)
 
 
+class _InProcessSolverCache:
+    def __init__(self) -> None:
+        self._model_cache: Dict[str, Tuple[Any, float]] = {}
+        self._macro_cache: Dict[str, Tuple[Dict[str, Any], float]] = {}
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    def load_model(self, ckpt: Optional[Path]) -> Tuple[Optional[Any], float]:
+        if ckpt is None:
+            return None, 0.0
+        key = str(ckpt.resolve())
+        if key in self._model_cache:
+            return self._model_cache[key][0], 0.0
+        t0 = time.time()
+        model, _ = gcp.load_model_checkpoint(str(ckpt), self.device)
+        dt = float(time.time() - t0)
+        self._model_cache[key] = (model, dt)
+        return model, dt
+
+    def load_macros(self, macros: Optional[Path]) -> Tuple[Optional[Dict[str, Any]], float]:
+        if macros is None:
+            return None, 0.0
+        key = str(macros.resolve())
+        if key in self._macro_cache:
+            return self._macro_cache[key][0], 0.0
+        t0 = time.time()
+        m = gcp.load_macros(str(macros))
+        dt = float(time.time() - t0)
+        self._macro_cache[key] = (m, dt)
+        return m, dt
+
+
+def _run_mcts_solve_inprocess(
+    method: str,
+    graph_public_json: Dict[str, Any],
+    k: int,
+    simulations: int,
+    max_depth: int,
+    timeout_sec: float,
+    ckpt: Optional[Path],
+    macros: Optional[Path],
+    profile_every: int,
+    macro_action_budget: int,
+    macro_max_steps: int,
+    macro_cheap: bool,
+    cache: _InProcessSolverCache,
+) -> Dict[str, Any]:
+    # In-process solve: avoids subprocess startup overhead per instance.
+    rec = gcp.GraphRecord(
+        name=str(graph_public_json["name"]),
+        n=int(graph_public_json["n"]),
+        edges=np.asarray(graph_public_json["edges"], dtype=np.int64),
+        solution=None,
+        metadata={},
+    )
+    graph = rec.to_runtime()
+    model, load_model_sec = cache.load_model(ckpt)
+    macros_map, load_macro_sec = cache.load_macros(macros)
+    # Pass macro execution knobs through env to v2 internals.
+    prev_env = {
+        "GCP_MACRO_ACTION_BUDGET": os.environ.get("GCP_MACRO_ACTION_BUDGET"),
+        "GCP_MACRO_MAX_STEPS": os.environ.get("GCP_MACRO_MAX_STEPS"),
+        "GCP_MACRO_CHEAP": os.environ.get("GCP_MACRO_CHEAP"),
+    }
+    os.environ["GCP_MACRO_ACTION_BUDGET"] = str(int(macro_action_budget))
+    os.environ["GCP_MACRO_MAX_STEPS"] = str(int(macro_max_steps))
+    os.environ["GCP_MACRO_CHEAP"] = "1" if bool(macro_cheap) else "0"
+    t0 = time.time()
+    search_elapsed = None
+    try:
+        # Run solve_instance in a worker thread to enforce timeout.
+        args = SimpleNamespace(
+            cpuct=1.25,
+            gamma=1.0,
+            simulations=int(simulations),
+            max_depth=int(max_depth),
+            prune_every=32,
+            prune_min_visits=4,
+            prune_keep_topk=4,
+            confidence_beta=1.5,
+            action_budget=64,
+            exact_patch_limit=12,
+            profile_every=int(profile_every),
+            profile_out="",
+        )
+        import concurrent.futures
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as ex:
+            fut = ex.submit(gcp.solve_instance, graph, int(k), model, cache.device, macros_map, args)
+            try:
+                out = fut.result(timeout=float(timeout_sec))
+                total_elapsed = float(time.time() - t0)
+                search_elapsed = total_elapsed
+                return {
+                    **out,
+                    "timeout": False,
+                    "method": method,
+                    "time_sec": total_elapsed,
+                    "search_elapsed_sec": float(search_elapsed),
+                    "load_elapsed_sec": float(load_model_sec + load_macro_sec),
+                    "total_elapsed_sec": float(load_model_sec + load_macro_sec + total_elapsed),
+                }
+            except concurrent.futures.TimeoutError:
+                total_elapsed = float(time.time() - t0)
+                return {
+                    "colors": None,
+                    "conflicts": None,
+                    "solved": False,
+                    "primitive_calls": None,
+                    "anytime_trace": [],
+                    "timeout": True,
+                    "method": method,
+                    "time_sec": total_elapsed,
+                    "search_elapsed_sec": float(total_elapsed),
+                    "load_elapsed_sec": float(load_model_sec + load_macro_sec),
+                    "total_elapsed_sec": float(load_model_sec + load_macro_sec + total_elapsed),
+                }
+    finally:
+        for k_env, v_env in prev_env.items():
+            if v_env is None:
+                os.environ.pop(k_env, None)
+            else:
+                os.environ[k_env] = v_env
+
+
 def _bootstrap_ci(values: Sequence[float], seed: int, n_boot: int = 2000) -> Tuple[Optional[float], Optional[float]]:
     vals = [float(v) for v in values if v is not None and not math.isnan(float(v))]
     if not vals:
@@ -447,13 +574,38 @@ def _aggregate_budget_results(rows: List[Dict[str, Any]], baseline_method: str, 
         by_method.setdefault(str(r["method"]), []).append(r)
     baseline_rows = {str(r["instance_id"]): r for r in by_method.get(baseline_method, [])}
 
+    penalty_mode = str(rows[0].get("penalty_mode", "baseline_plus_const")) if rows else "baseline_plus_const"
+
     def _penalized_conf(r: Dict[str, Any], inst_id: str) -> Optional[float]:  # timeout-aware score
         if not bool(r.get("timeout", False)) and r.get("conflicts") is not None:
             return float(r["conflicts"])  # finished
         b = baseline_rows.get(inst_id)
-        if b is None or b.get("conflicts") is None:
-            return None  # cannot anchor without baseline
-        return float(b["conflicts"]) + float(penalty_lambda)
+        b_conf = None if b is None else b.get("conflicts")
+        trace = r.get("anytime_trace", []) or []
+        last_best = None
+        if trace:
+            try:
+                last_best = float(trace[-1].get("best_conflicts"))
+            except Exception:
+                last_best = None
+        if penalty_mode == "constant":
+            if last_best is not None:
+                return float(last_best) + float(penalty_lambda)
+            if b_conf is not None:
+                return float(b_conf) + float(penalty_lambda)
+            return float(penalty_lambda)
+        if penalty_mode == "last_profile_plus_const":
+            if last_best is not None:
+                return float(last_best) + float(penalty_lambda)
+            if b_conf is not None:
+                return float(b_conf) + float(penalty_lambda)
+            return None
+        # baseline_plus_const (default)
+        if b_conf is None:
+            if last_best is not None:
+                return float(last_best) + float(penalty_lambda)
+            return None
+        return float(b_conf) + float(penalty_lambda)
 
     summary: Dict[str, Any] = {}
     for method, mrows in by_method.items():
@@ -504,6 +656,9 @@ def _aggregate_budget_results(rows: List[Dict[str, Any]], baseline_method: str, 
             "compute_normalized_gain_per_sec": float(np.mean(gain_per_sec)) if gain_per_sec else None,
             "compute_normalized_gain_per_primitive": float(np.mean(gain_per_prim)) if gain_per_prim else None,
             "anytime_improvement_per_sec": float(np.mean(anytime_rates)) if anytime_rates else None,
+            "mean_search_elapsed_sec": float(np.mean([float(r.get("search_elapsed_sec", 0.0)) for r in mrows])) if mrows else None,
+            "mean_load_elapsed_sec": float(np.mean([float(r.get("load_elapsed_sec", 0.0)) for r in mrows])) if mrows else None,
+            "mean_total_elapsed_sec": float(np.mean([float(r.get("total_elapsed_sec", float(r.get("time_sec", 0.0)))) for r in mrows])) if mrows else None,
         }
 
     # Explicit paired comparisons — central baseline is now fixed_tabu_recolor, the strongest hand-coded local repair baseline.
@@ -573,10 +728,10 @@ def _markdown_report(payload: Dict[str, Any]) -> str:
         lines.append(f"## Budget {budget_tag}")
         lines.append("")
         lines.append(
-            "| Method | solved_rate | timeout_rate | mean_conf_finished | penalized_conf_mean | median_conf_finished | mean_time_s | mean_primitive_calls | "
+            "| Method | solved_rate | timeout_rate | mean_conf_finished | penalized_conf_mean | median_conf_finished | mean_time_s | mean_search_s | mean_load_s | mean_primitive_calls | "
             f"win_rate_vs_{baseline_label} | delta_mean_vs_{baseline_label} |"
         )
-        lines.append("|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|")
+        lines.append("|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|")
         for method, s in sorted(block["summary_by_method"].items()):
             def fmt(v: Any) -> str:
                 if v is None:
@@ -593,6 +748,8 @@ def _markdown_report(payload: Dict[str, Any]) -> str:
                     fmt(s.get("penalized_conflicts_mean")),
                     fmt(s.get("median_conflicts_finished")),
                     fmt(s.get("mean_time_sec")),
+                    fmt(s.get("mean_search_elapsed_sec")),
+                    fmt(s.get("mean_load_elapsed_sec")),
                     fmt(s.get("mean_primitive_calls")),
                     fmt(s.get("win_rate_vs_baseline")),
                     fmt(s.get("delta_mean_vs_baseline")),
@@ -690,6 +847,10 @@ def main() -> None:
     ap.add_argument("--macro-cheap", action="store_true")  # skip full evaluate_candidates inside macros
     ap.add_argument("--penalty-lambda", type=float, default=20.0)  # timeout penalty over baseline conflicts
     ap.add_argument("--baseline-method", type=str, default="fixed_tabu_recolor")  # central baseline for reporting
+    ap.add_argument("--penalty-mode", type=str, default="baseline_plus_const", choices=["constant", "last_profile_plus_const", "baseline_plus_const"])
+    ap.add_argument("--solver-mode", type=str, default="inprocess", choices=["inprocess", "subprocess"])
+    ap.add_argument("--small-pretrained-ckpt", type=str, default="")
+    ap.add_argument("--skip-small-train", action="store_true")
     args = ap.parse_args()
 
     RUNS_ROOT.mkdir(parents=True, exist_ok=True)
@@ -711,21 +872,45 @@ def main() -> None:
     valid_rows = _merge_shards(small_valid_globs, valid_pt)
 
     train_out = session_dir / "trained_small"
-    trained_small_ckpt = _train_small_model(
-        train_pt,
-        valid_pt,
-        out_dir=train_out,
-        epochs=int(args.train_epochs),
-        steps_per_epoch=int(args.train_steps_per_epoch),
-        valid_steps=int(args.train_valid_steps),
-        batch_size=int(args.train_batch_size),
-        num_workers=int(args.train_num_workers),
-        seed=int(args.seed),
-        d_model=int(args.d_model),
-        refine_steps=int(args.refine_steps),
-        dropout=float(args.dropout),
-        lr=float(args.lr),
-    )
+    pretrained_ckpt = Path(str(args.small_pretrained_ckpt)).expanduser() if str(args.small_pretrained_ckpt).strip() else None
+    if bool(args.skip_small_train):
+        if pretrained_ckpt is None or not pretrained_ckpt.exists():
+            raise ValueError("--skip-small-train requires a valid --small-pretrained-ckpt")
+        trained_small_ckpt = pretrained_ckpt
+    elif pretrained_ckpt is not None and pretrained_ckpt.exists():
+        # fine-tune from pretrained checkpoint for stronger prior transfer
+        trained_small_ckpt = _train_small_model(
+            train_pt,
+            valid_pt,
+            out_dir=train_out,
+            epochs=int(args.train_epochs),
+            steps_per_epoch=int(args.train_steps_per_epoch),
+            valid_steps=int(args.train_valid_steps),
+            batch_size=int(args.train_batch_size),
+            num_workers=int(args.train_num_workers),
+            seed=int(args.seed),
+            d_model=int(args.d_model),
+            refine_steps=int(args.refine_steps),
+            dropout=float(args.dropout),
+            lr=float(args.lr),
+            init_ckpt=pretrained_ckpt,
+        )
+    else:
+        trained_small_ckpt = _train_small_model(
+            train_pt,
+            valid_pt,
+            out_dir=train_out,
+            epochs=int(args.train_epochs),
+            steps_per_epoch=int(args.train_steps_per_epoch),
+            valid_steps=int(args.train_valid_steps),
+            batch_size=int(args.train_batch_size),
+            num_workers=int(args.train_num_workers),
+            seed=int(args.seed),
+            d_model=int(args.d_model),
+            refine_steps=int(args.refine_steps),
+            dropout=float(args.dropout),
+            lr=float(args.lr),
+        )
 
     macros_path = session_dir / "small_macros.json"
     _mine_macros(train_pt, macros_path, min_support=int(args.macro_min_support), max_len=int(args.macro_max_len), top_k=int(args.macro_top_k))
@@ -784,6 +969,7 @@ def main() -> None:
         methods.append("mcts_trained_small_macros")
 
     results_by_budget: Dict[str, Dict[str, Any]] = {}
+    solver_cache = _InProcessSolverCache()
     for budget in budget_ladder:
         rows: List[Dict[str, Any]] = []
         for inst in instances:
@@ -797,36 +983,122 @@ def main() -> None:
                 elif method == "fixed_tabu_recolor":
                     pred = _run_fixed_tabu_recolor(graph, k, rng, max_steps=int(args.fixed_max_steps), num_random_orders=int(args.random_orders), exact_patch_limit=12, profile_every=int(args.profile_every))
                 else:
+                    graph_public = hard.to_public_json(inst)
                     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
-                        json.dump(hard.to_public_json(inst), f)
+                        json.dump(graph_public, f)
                         graph_json = Path(f.name)
                     if method == "mcts_no_model":
-                        pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=None, macros=None, profile_every=int(args.profile_every))
+                        if str(args.solver_mode) == "inprocess":
+                            pred = _run_mcts_solve_inprocess(
+                                method,
+                                graph_public,
+                                k,
+                                budget.simulations,
+                                budget.max_depth,
+                                timeout_sec=float(args.timeout_sec),
+                                ckpt=None,
+                                macros=None,
+                                profile_every=int(args.profile_every),
+                                macro_action_budget=int(args.macro_action_budget),
+                                macro_max_steps=int(args.macro_max_steps),
+                                macro_cheap=bool(args.macro_cheap),
+                                cache=solver_cache,
+                            )
+                        else:
+                            pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=None, macros=None, profile_every=int(args.profile_every))
                     elif method == "mcts_untrained":
-                        pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=untrained_ckpt, macros=None, profile_every=int(args.profile_every))
+                        if str(args.solver_mode) == "inprocess":
+                            pred = _run_mcts_solve_inprocess(
+                                method,
+                                graph_public,
+                                k,
+                                budget.simulations,
+                                budget.max_depth,
+                                timeout_sec=float(args.timeout_sec),
+                                ckpt=untrained_ckpt,
+                                macros=None,
+                                profile_every=int(args.profile_every),
+                                macro_action_budget=int(args.macro_action_budget),
+                                macro_max_steps=int(args.macro_max_steps),
+                                macro_cheap=bool(args.macro_cheap),
+                                cache=solver_cache,
+                            )
+                        else:
+                            pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=untrained_ckpt, macros=None, profile_every=int(args.profile_every))
                     elif method == "mcts_trained_small":
-                        pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=trained_small_ckpt, macros=None, profile_every=int(args.profile_every))
+                        if str(args.solver_mode) == "inprocess":
+                            pred = _run_mcts_solve_inprocess(
+                                method,
+                                graph_public,
+                                k,
+                                budget.simulations,
+                                budget.max_depth,
+                                timeout_sec=float(args.timeout_sec),
+                                ckpt=trained_small_ckpt,
+                                macros=None,
+                                profile_every=int(args.profile_every),
+                                macro_action_budget=int(args.macro_action_budget),
+                                macro_max_steps=int(args.macro_max_steps),
+                                macro_cheap=bool(args.macro_cheap),
+                                cache=solver_cache,
+                            )
+                        else:
+                            pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=trained_small_ckpt, macros=None, profile_every=int(args.profile_every))
                     elif method == "mcts_trained_small_macros":
-                        macro_env = {
-                            "GCP_MACRO_ACTION_BUDGET": str(int(args.macro_action_budget)),
-                            "GCP_MACRO_MAX_STEPS": str(int(args.macro_max_steps)),
-                            "GCP_MACRO_CHEAP": "1" if bool(args.macro_cheap) else "0",
-                        }
-                        pred = _run_mcts_solve(
-                            method,
-                            graph_json,
-                            k,
-                            budget.simulations,
-                            budget.max_depth,
-                            timeout_sec=float(args.timeout_sec),
-                            ckpt=trained_small_ckpt,
-                            macros=macros_path,
-                            profile_every=int(args.profile_every),
-                            env_overrides=macro_env,
-                        )
+                        if str(args.solver_mode) == "inprocess":
+                            pred = _run_mcts_solve_inprocess(
+                                method,
+                                graph_public,
+                                k,
+                                budget.simulations,
+                                budget.max_depth,
+                                timeout_sec=float(args.timeout_sec),
+                                ckpt=trained_small_ckpt,
+                                macros=macros_path,
+                                profile_every=int(args.profile_every),
+                                macro_action_budget=int(args.macro_action_budget),
+                                macro_max_steps=int(args.macro_max_steps),
+                                macro_cheap=bool(args.macro_cheap),
+                                cache=solver_cache,
+                            )
+                        else:
+                            macro_env = {
+                                "GCP_MACRO_ACTION_BUDGET": str(int(args.macro_action_budget)),
+                                "GCP_MACRO_MAX_STEPS": str(int(args.macro_max_steps)),
+                                "GCP_MACRO_CHEAP": "1" if bool(args.macro_cheap) else "0",
+                            }
+                            pred = _run_mcts_solve(
+                                method,
+                                graph_json,
+                                k,
+                                budget.simulations,
+                                budget.max_depth,
+                                timeout_sec=float(args.timeout_sec),
+                                ckpt=trained_small_ckpt,
+                                macros=macros_path,
+                                profile_every=int(args.profile_every),
+                                env_overrides=macro_env,
+                            )
                     elif method == "mcts_trained_curriculum":
                         assert curriculum_ckpt is not None
-                        pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=curriculum_ckpt, macros=None, profile_every=int(args.profile_every))
+                        if str(args.solver_mode) == "inprocess":
+                            pred = _run_mcts_solve_inprocess(
+                                method,
+                                graph_public,
+                                k,
+                                budget.simulations,
+                                budget.max_depth,
+                                timeout_sec=float(args.timeout_sec),
+                                ckpt=curriculum_ckpt,
+                                macros=None,
+                                profile_every=int(args.profile_every),
+                                macro_action_budget=int(args.macro_action_budget),
+                                macro_max_steps=int(args.macro_max_steps),
+                                macro_cheap=bool(args.macro_cheap),
+                                cache=solver_cache,
+                            )
+                        else:
+                            pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=curriculum_ckpt, macros=None, profile_every=int(args.profile_every))
                     else:
                         raise ValueError(method)
                     graph_json.unlink(missing_ok=True)
@@ -852,6 +1124,10 @@ def main() -> None:
                         "primitive_calls": pred.get("primitive_calls"),
                         "timeout": bool(pred.get("timeout", False)),
                         "anytime_trace": pred.get("anytime_trace", []),
+                        "search_elapsed_sec": float(pred.get("search_elapsed_sec", pred.get("time_sec", 0.0))),
+                        "load_elapsed_sec": float(pred.get("load_elapsed_sec", 0.0)),
+                        "total_elapsed_sec": float(pred.get("total_elapsed_sec", pred.get("time_sec", 0.0))),
+                        "penalty_mode": str(args.penalty_mode),
                     }
                 )
         results_by_budget[budget.tag] = {
@@ -885,11 +1161,15 @@ def main() -> None:
             "untrained_ckpt": str(untrained_ckpt),
             "baseline_method": str(args.baseline_method),
             "penalty_lambda": float(args.penalty_lambda),
+            "penalty_mode": str(args.penalty_mode),
+            "solver_mode": str(args.solver_mode),
             "macro_min_distinct_families": int(args.macro_min_distinct_families),
             "macro_require_structural": bool(args.macro_require_structural),
             "macro_action_budget": int(args.macro_action_budget),
             "macro_max_steps": int(args.macro_max_steps),
             "macro_cheap": bool(args.macro_cheap),
+            "small_pretrained_ckpt": str(pretrained_ckpt) if pretrained_ckpt else None,
+            "skip_small_train": bool(args.skip_small_train),
         },
         "budgets": results_by_budget,
     }
