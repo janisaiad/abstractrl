@@ -1,0 +1,10 @@
+{
+  "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_main_bigtrain_skip_1776815757/mcts_trees/12:24/mcts_trained_small/hard_n100_000_try0.json",
+  "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/mcts_tree_plots_demo/hard_n100_000_try0__12_24__mcts_trained_small",
+  "graph_name": "hard_n100_000_try0",
+  "budget": "12:24",
+  "method": "mcts_trained_small",
+  "num_nodes": 288,
+  "max_depth": 24,
+  "tree_animation_error": null
+}

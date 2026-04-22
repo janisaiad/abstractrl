@@ -1,0 +1,4 @@
+[50/120] wrote 763 samples
+[100/120] wrote 1486 samples
+done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid

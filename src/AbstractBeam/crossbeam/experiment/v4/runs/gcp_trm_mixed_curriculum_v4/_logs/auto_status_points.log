@@ -1,0 +1,207 @@
+[watcher_start] 2026-04-22T19:53:44+02:00 interval_sec=600
+
+===== 2026-04-22T19:53:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+
+===== 2026-04-22T20:03:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+
+===== 2026-04-22T20:13:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+
+===== 2026-04-22T20:23:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+
+===== 2026-04-22T20:33:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+
+===== 2026-04-22T20:43:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+
+===== 2026-04-22T20:53:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+
+===== 2026-04-22T21:03:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+
+===== 2026-04-22T21:13:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+
+===== 2026-04-22T21:23:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+
+===== 2026-04-22T21:33:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+
+===== 2026-04-22T21:43:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+
+===== 2026-04-22T21:53:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+
+===== 2026-04-22T22:03:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+
+===== 2026-04-22T22:13:44+02:00 =====
+session=mixed_curriculum_1776880227
+summary=missing
+stage1_dir=present
+proc=running
+75580 /bin/bash -O extglob -c snap=$(command cat <&3) && builtin shopt -s extglob && builtin eval -- "$snap" && { builtin set +u 2>/dev/null || true; builtin eval "${__CURSOR_SANDBOX_ENV_RESTORE:-}" 2>/dev/null; builtin export PWD="$(builtin pwd)"; builtin shopt -s expand_aliases 2>/dev/null; builtin eval "$1" < /dev/null; }; COMMAND_EXIT_CODE=$?; dump_bash_state >&4; builtin exit $COMMAND_EXIT_CODE -- bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75594 bash /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_and_constructive_after_stop.sh
+75598 python3 -u run_mixed_curriculum_gcp_v4.py --session mixed_curriculum_1776880227 --small-train-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_train/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_train/*.pt --small-valid-globs /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n20/traces_valid/*.pt,/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/runs/gcp_trm_scaleup_v2/session_1776550919/n40/traces_valid/*.pt --small-pretrained-ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt --run-ladder-eval
+mixed_log=mixed_curriculum_1776880227.log
+mixed_tail: [50/120] wrote 763 samples
+mixed_tail: [100/120] wrote 1486 samples
+mixed_tail: done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
+mixed_tail: done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
