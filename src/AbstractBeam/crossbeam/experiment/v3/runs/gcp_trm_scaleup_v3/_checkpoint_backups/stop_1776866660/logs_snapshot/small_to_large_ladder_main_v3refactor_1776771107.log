@@ -1,0 +1,11 @@
+wrote 10 macros to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_main_v3refactor_1776771107/small_macros.json
+note: stitch-core is installed, but this single-file implementation uses a stable frequent-ngram macro miner instead of depending on stitch-core's evolving API.
+[macros] filter_stats = {"input": 10, "kept": 6, "dropped_mono_family": 4, "dropped_missing_structural": 0}
+Traceback (most recent call last):
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/run_small_to_large_ladder_v3.py", line 1177, in <module>
+    main()
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/run_small_to_large_ladder_v3.py", line 985, in main
+    pred = _run_mcts_solve_inprocess(
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/run_small_to_large_ladder_v3.py", line 450, in _run_mcts_solve_inprocess
+    graph = gcp.load_single_graph(graph_public_json)
+AttributeError: module 'gcp_trace_abstractbeam_v3' has no attribute 'load_single_graph'

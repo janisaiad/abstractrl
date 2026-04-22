@@ -1,0 +1,4 @@
+wrote 10 macros to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_main_bigtrain_skip_1776815805/small_macros.json
+note: stitch-core is installed, but this single-file implementation uses a stable frequent-ngram macro miner instead of depending on stitch-core's evolving API.
+[macros] filter_stats = {"input": 10, "kept": 6, "dropped_mono_family": 4, "dropped_missing_structural": 0}
+[ladder] built 30 instances | sizes=[100, 200, 400] | budgets=['12:24', '32:48', '64:96'] | methods pending

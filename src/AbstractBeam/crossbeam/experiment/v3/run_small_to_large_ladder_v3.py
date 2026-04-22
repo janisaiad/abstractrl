@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import glob
 import json
+import re
 import math
 import os
 import random
@@ -11,6 +12,7 @@ import shutil
 import subprocess
 import tempfile
 import time
+import traceback
 from dataclasses import dataclass, asdict
 from pathlib import Path
 from types import SimpleNamespace
@@ -38,6 +40,11 @@ class BudgetCfg:
 
 def _parse_csv_ints(s: str) -> List[int]:
     return [int(x.strip()) for x in str(s).split(",") if x.strip()]
+
+
+def _safe_relpath_segment(name: str) -> str:
+    t = re.sub(r"[^a-zA-Z0-9_.-]+", "_", str(name)).strip("_")
+    return (t[:220] if t else "unnamed")
 
 
 def _parse_budget_ladder(s: str) -> List[BudgetCfg]:
@@ -340,6 +347,7 @@ def _run_mcts_solve(
     macros: Optional[Path] = None,
     profile_every: int = 4,
     env_overrides: Optional[Dict[str, str]] = None,
+    mcts_tree_dump: Optional[Path] = None,
 ) -> Dict[str, Any]:
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as fprof:
         profile_path = Path(fprof.name)
@@ -360,6 +368,8 @@ def _run_mcts_solve(
         "--profile-out",
         str(profile_path),
     ]
+    if mcts_tree_dump is not None:
+        cmd.extend(["--mcts-tree-dump", str(mcts_tree_dump)])
     if ckpt is not None:
         cmd.extend(["--ckpt", str(ckpt)])
     if macros is not None:
@@ -445,6 +455,7 @@ def _run_mcts_solve_inprocess(
     macro_max_steps: int,
     macro_cheap: bool,
     cache: _InProcessSolverCache,
+    mcts_tree_dump_path: Optional[Path] = None,
 ) -> Dict[str, Any]:
     # In-process solve: avoids subprocess startup overhead per instance.
     rec = gcp.GraphRecord(
@@ -483,6 +494,7 @@ def _run_mcts_solve_inprocess(
             exact_patch_limit=12,
             profile_every=int(profile_every),
             profile_out="",
+            mcts_tree_dump=str(mcts_tree_dump_path) if mcts_tree_dump_path is not None else "",
         )
         import concurrent.futures
         with concurrent.futures.ThreadPoolExecutor(max_workers=1) as ex:
@@ -849,6 +861,17 @@ def main() -> None:
     ap.add_argument("--baseline-method", type=str, default="fixed_tabu_recolor")  # central baseline for reporting
     ap.add_argument("--penalty-mode", type=str, default="baseline_plus_const", choices=["constant", "last_profile_plus_const", "baseline_plus_const"])
     ap.add_argument("--solver-mode", type=str, default="inprocess", choices=["inprocess", "subprocess"])
+    ap.add_argument(
+        "--store-mcts-trees",
+        action="store_true",
+        help="Dump each completed MCTS search as JSON (full tree: states, edges N/W/Q, branch mean/max). Very disk-heavy.",
+    )
+    ap.add_argument(
+        "--mcts-trees-dir",
+        type=str,
+        default="",
+        help="Root directory for MCTS tree dumps (default: <session>/mcts_trees). Layout: <root>/<budget>/<method>/<instance>.json",
+    )
     ap.add_argument("--small-pretrained-ckpt", type=str, default="")
     ap.add_argument("--skip-small-train", action="store_true")
     args = ap.parse_args()
@@ -955,6 +978,11 @@ def main() -> None:
                 continue
             instances.append(hid)
 
+    print(
+        f"[ladder] built {len(instances)} instances | sizes={sizes} | budgets={[b.tag for b in budget_ladder]} | methods pending",
+        flush=True,
+    )
+
     methods: List[str] = [
         "greedy_best_of_orders",
         "fixed_tabu_recolor",
@@ -978,130 +1006,216 @@ def main() -> None:
             instance_id = str(inst["name"])
             k = int(inst["tight_k"])
             for method in methods:
-                if method == "greedy_best_of_orders":
-                    pred = _run_greedy_best_of_orders(graph, k, rng, int(args.random_orders))
-                elif method == "fixed_tabu_recolor":
-                    pred = _run_fixed_tabu_recolor(graph, k, rng, max_steps=int(args.fixed_max_steps), num_random_orders=int(args.random_orders), exact_patch_limit=12, profile_every=int(args.profile_every))
-                else:
-                    graph_public = hard.to_public_json(inst)
-                    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
-                        json.dump(graph_public, f)
-                        graph_json = Path(f.name)
-                    if method == "mcts_no_model":
-                        if str(args.solver_mode) == "inprocess":
-                            pred = _run_mcts_solve_inprocess(
-                                method,
-                                graph_public,
-                                k,
-                                budget.simulations,
-                                budget.max_depth,
-                                timeout_sec=float(args.timeout_sec),
-                                ckpt=None,
-                                macros=None,
-                                profile_every=int(args.profile_every),
-                                macro_action_budget=int(args.macro_action_budget),
-                                macro_max_steps=int(args.macro_max_steps),
-                                macro_cheap=bool(args.macro_cheap),
-                                cache=solver_cache,
-                            )
-                        else:
-                            pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=None, macros=None, profile_every=int(args.profile_every))
-                    elif method == "mcts_untrained":
-                        if str(args.solver_mode) == "inprocess":
-                            pred = _run_mcts_solve_inprocess(
-                                method,
-                                graph_public,
-                                k,
-                                budget.simulations,
-                                budget.max_depth,
-                                timeout_sec=float(args.timeout_sec),
-                                ckpt=untrained_ckpt,
-                                macros=None,
-                                profile_every=int(args.profile_every),
-                                macro_action_budget=int(args.macro_action_budget),
-                                macro_max_steps=int(args.macro_max_steps),
-                                macro_cheap=bool(args.macro_cheap),
-                                cache=solver_cache,
-                            )
-                        else:
-                            pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=untrained_ckpt, macros=None, profile_every=int(args.profile_every))
-                    elif method == "mcts_trained_small":
-                        if str(args.solver_mode) == "inprocess":
-                            pred = _run_mcts_solve_inprocess(
-                                method,
-                                graph_public,
-                                k,
-                                budget.simulations,
-                                budget.max_depth,
-                                timeout_sec=float(args.timeout_sec),
-                                ckpt=trained_small_ckpt,
-                                macros=None,
-                                profile_every=int(args.profile_every),
-                                macro_action_budget=int(args.macro_action_budget),
-                                macro_max_steps=int(args.macro_max_steps),
-                                macro_cheap=bool(args.macro_cheap),
-                                cache=solver_cache,
-                            )
-                        else:
-                            pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=trained_small_ckpt, macros=None, profile_every=int(args.profile_every))
-                    elif method == "mcts_trained_small_macros":
-                        if str(args.solver_mode) == "inprocess":
-                            pred = _run_mcts_solve_inprocess(
-                                method,
-                                graph_public,
-                                k,
-                                budget.simulations,
-                                budget.max_depth,
-                                timeout_sec=float(args.timeout_sec),
-                                ckpt=trained_small_ckpt,
-                                macros=macros_path,
-                                profile_every=int(args.profile_every),
-                                macro_action_budget=int(args.macro_action_budget),
-                                macro_max_steps=int(args.macro_max_steps),
-                                macro_cheap=bool(args.macro_cheap),
-                                cache=solver_cache,
-                            )
-                        else:
-                            macro_env = {
-                                "GCP_MACRO_ACTION_BUDGET": str(int(args.macro_action_budget)),
-                                "GCP_MACRO_MAX_STEPS": str(int(args.macro_max_steps)),
-                                "GCP_MACRO_CHEAP": "1" if bool(args.macro_cheap) else "0",
-                            }
-                            pred = _run_mcts_solve(
-                                method,
-                                graph_json,
-                                k,
-                                budget.simulations,
-                                budget.max_depth,
-                                timeout_sec=float(args.timeout_sec),
-                                ckpt=trained_small_ckpt,
-                                macros=macros_path,
-                                profile_every=int(args.profile_every),
-                                env_overrides=macro_env,
-                            )
-                    elif method == "mcts_trained_curriculum":
-                        assert curriculum_ckpt is not None
-                        if str(args.solver_mode) == "inprocess":
-                            pred = _run_mcts_solve_inprocess(
-                                method,
-                                graph_public,
-                                k,
-                                budget.simulations,
-                                budget.max_depth,
-                                timeout_sec=float(args.timeout_sec),
-                                ckpt=curriculum_ckpt,
-                                macros=None,
-                                profile_every=int(args.profile_every),
-                                macro_action_budget=int(args.macro_action_budget),
-                                macro_max_steps=int(args.macro_max_steps),
-                                macro_cheap=bool(args.macro_cheap),
-                                cache=solver_cache,
-                            )
-                        else:
-                            pred = _run_mcts_solve(method, graph_json, k, budget.simulations, budget.max_depth, timeout_sec=float(args.timeout_sec), ckpt=curriculum_ckpt, macros=None, profile_every=int(args.profile_every))
+                mcts_tree_dump_path: Optional[Path] = None
+                if bool(args.store_mcts_trees) and str(method).startswith("mcts_"):
+                    mt_root = Path(str(args.mcts_trees_dir)).expanduser() if str(args.mcts_trees_dir).strip() else (session_dir / "mcts_trees")
+                    mcts_tree_dump_path = mt_root / budget.tag / _safe_relpath_segment(str(method)) / f"{_safe_relpath_segment(instance_id)}.json"
+                    mcts_tree_dump_path.parent.mkdir(parents=True, exist_ok=True)
+                graph_json: Optional[Path] = None
+                try:
+                    if method == "greedy_best_of_orders":
+                        pred = _run_greedy_best_of_orders(graph, k, rng, int(args.random_orders))
+                    elif method == "fixed_tabu_recolor":
+                        pred = _run_fixed_tabu_recolor(
+                            graph,
+                            k,
+                            rng,
+                            max_steps=int(args.fixed_max_steps),
+                            num_random_orders=int(args.random_orders),
+                            exact_patch_limit=12,
+                            profile_every=int(args.profile_every),
+                        )
                     else:
-                        raise ValueError(method)
-                    graph_json.unlink(missing_ok=True)
+                        graph_public = hard.to_public_json(inst)
+                        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+                            json.dump(graph_public, f)
+                            graph_json = Path(f.name)
+                        if method == "mcts_no_model":
+                            if str(args.solver_mode) == "inprocess":
+                                pred = _run_mcts_solve_inprocess(
+                                    method,
+                                    graph_public,
+                                    k,
+                                    budget.simulations,
+                                    budget.max_depth,
+                                    timeout_sec=float(args.timeout_sec),
+                                    ckpt=None,
+                                    macros=None,
+                                    profile_every=int(args.profile_every),
+                                    macro_action_budget=int(args.macro_action_budget),
+                                    macro_max_steps=int(args.macro_max_steps),
+                                    macro_cheap=bool(args.macro_cheap),
+                                    cache=solver_cache,
+                                    mcts_tree_dump_path=mcts_tree_dump_path,
+                                )
+                            else:
+                                pred = _run_mcts_solve(
+                                    method,
+                                    graph_json,
+                                    k,
+                                    budget.simulations,
+                                    budget.max_depth,
+                                    timeout_sec=float(args.timeout_sec),
+                                    ckpt=None,
+                                    macros=None,
+                                    profile_every=int(args.profile_every),
+                                    mcts_tree_dump=mcts_tree_dump_path,
+                                )
+                        elif method == "mcts_untrained":
+                            if str(args.solver_mode) == "inprocess":
+                                pred = _run_mcts_solve_inprocess(
+                                    method,
+                                    graph_public,
+                                    k,
+                                    budget.simulations,
+                                    budget.max_depth,
+                                    timeout_sec=float(args.timeout_sec),
+                                    ckpt=untrained_ckpt,
+                                    macros=None,
+                                    profile_every=int(args.profile_every),
+                                    macro_action_budget=int(args.macro_action_budget),
+                                    macro_max_steps=int(args.macro_max_steps),
+                                    macro_cheap=bool(args.macro_cheap),
+                                    cache=solver_cache,
+                                    mcts_tree_dump_path=mcts_tree_dump_path,
+                                )
+                            else:
+                                pred = _run_mcts_solve(
+                                    method,
+                                    graph_json,
+                                    k,
+                                    budget.simulations,
+                                    budget.max_depth,
+                                    timeout_sec=float(args.timeout_sec),
+                                    ckpt=untrained_ckpt,
+                                    macros=None,
+                                    profile_every=int(args.profile_every),
+                                    mcts_tree_dump=mcts_tree_dump_path,
+                                )
+                        elif method == "mcts_trained_small":
+                            if str(args.solver_mode) == "inprocess":
+                                pred = _run_mcts_solve_inprocess(
+                                    method,
+                                    graph_public,
+                                    k,
+                                    budget.simulations,
+                                    budget.max_depth,
+                                    timeout_sec=float(args.timeout_sec),
+                                    ckpt=trained_small_ckpt,
+                                    macros=None,
+                                    profile_every=int(args.profile_every),
+                                    macro_action_budget=int(args.macro_action_budget),
+                                    macro_max_steps=int(args.macro_max_steps),
+                                    macro_cheap=bool(args.macro_cheap),
+                                    cache=solver_cache,
+                                    mcts_tree_dump_path=mcts_tree_dump_path,
+                                )
+                            else:
+                                pred = _run_mcts_solve(
+                                    method,
+                                    graph_json,
+                                    k,
+                                    budget.simulations,
+                                    budget.max_depth,
+                                    timeout_sec=float(args.timeout_sec),
+                                    ckpt=trained_small_ckpt,
+                                    macros=None,
+                                    profile_every=int(args.profile_every),
+                                    mcts_tree_dump=mcts_tree_dump_path,
+                                )
+                        elif method == "mcts_trained_small_macros":
+                            if str(args.solver_mode) == "inprocess":
+                                pred = _run_mcts_solve_inprocess(
+                                    method,
+                                    graph_public,
+                                    k,
+                                    budget.simulations,
+                                    budget.max_depth,
+                                    timeout_sec=float(args.timeout_sec),
+                                    ckpt=trained_small_ckpt,
+                                    macros=macros_path,
+                                    profile_every=int(args.profile_every),
+                                    macro_action_budget=int(args.macro_action_budget),
+                                    macro_max_steps=int(args.macro_max_steps),
+                                    macro_cheap=bool(args.macro_cheap),
+                                    cache=solver_cache,
+                                    mcts_tree_dump_path=mcts_tree_dump_path,
+                                )
+                            else:
+                                macro_env = {
+                                    "GCP_MACRO_ACTION_BUDGET": str(int(args.macro_action_budget)),
+                                    "GCP_MACRO_MAX_STEPS": str(int(args.macro_max_steps)),
+                                    "GCP_MACRO_CHEAP": "1" if bool(args.macro_cheap) else "0",
+                                }
+                                pred = _run_mcts_solve(
+                                    method,
+                                    graph_json,
+                                    k,
+                                    budget.simulations,
+                                    budget.max_depth,
+                                    timeout_sec=float(args.timeout_sec),
+                                    ckpt=trained_small_ckpt,
+                                    macros=macros_path,
+                                    profile_every=int(args.profile_every),
+                                    env_overrides=macro_env,
+                                    mcts_tree_dump=mcts_tree_dump_path,
+                                )
+                        elif method == "mcts_trained_curriculum":
+                            assert curriculum_ckpt is not None
+                            if str(args.solver_mode) == "inprocess":
+                                pred = _run_mcts_solve_inprocess(
+                                    method,
+                                    graph_public,
+                                    k,
+                                    budget.simulations,
+                                    budget.max_depth,
+                                    timeout_sec=float(args.timeout_sec),
+                                    ckpt=curriculum_ckpt,
+                                    macros=None,
+                                    profile_every=int(args.profile_every),
+                                    macro_action_budget=int(args.macro_action_budget),
+                                    macro_max_steps=int(args.macro_max_steps),
+                                    macro_cheap=bool(args.macro_cheap),
+                                    cache=solver_cache,
+                                    mcts_tree_dump_path=mcts_tree_dump_path,
+                                )
+                            else:
+                                pred = _run_mcts_solve(
+                                    method,
+                                    graph_json,
+                                    k,
+                                    budget.simulations,
+                                    budget.max_depth,
+                                    timeout_sec=float(args.timeout_sec),
+                                    ckpt=curriculum_ckpt,
+                                    macros=None,
+                                    profile_every=int(args.profile_every),
+                                    mcts_tree_dump=mcts_tree_dump_path,
+                                )
+                        else:
+                            raise ValueError(method)
+                except Exception as exc:
+                    err_file = session_dir / "ladder_errors.log"
+                    with err_file.open("a", encoding="utf-8") as ef:
+                        ef.write(f"\n=== {instance_id} | {method} | {budget.tag} ===\n")
+                        ef.write(traceback.format_exc())
+                    pred = {
+                        "colors": None,
+                        "conflicts": None,
+                        "solved": False,
+                        "primitive_calls": None,
+                        "anytime_trace": [],
+                        "timeout": False,
+                        "method": str(method),
+                        "time_sec": 0.0,
+                        "search_elapsed_sec": 0.0,
+                        "load_elapsed_sec": 0.0,
+                        "total_elapsed_sec": 0.0,
+                        "error": f"{type(exc).__name__}: {exc}",
+                    }
+                finally:
+                    if graph_json is not None:
+                        graph_json.unlink(missing_ok=True)
                 conf = pred.get("conflicts")
                 if conf is None:
                     rigorous_conf = None
@@ -1128,6 +1242,8 @@ def main() -> None:
                         "load_elapsed_sec": float(pred.get("load_elapsed_sec", 0.0)),
                         "total_elapsed_sec": float(pred.get("total_elapsed_sec", pred.get("time_sec", 0.0))),
                         "penalty_mode": str(args.penalty_mode),
+                        "mcts_tree_dump": pred.get("mcts_tree_dump"),
+                        "run_error": pred.get("error"),
                     }
                 )
         results_by_budget[budget.tag] = {
@@ -1170,6 +1286,8 @@ def main() -> None:
             "macro_cheap": bool(args.macro_cheap),
             "small_pretrained_ckpt": str(pretrained_ckpt) if pretrained_ckpt else None,
             "skip_small_train": bool(args.skip_small_train),
+            "store_mcts_trees": bool(args.store_mcts_trees),
+            "mcts_trees_dir": str(args.mcts_trees_dir) if str(args.mcts_trees_dir).strip() else None,
         },
         "budgets": results_by_budget,
     }

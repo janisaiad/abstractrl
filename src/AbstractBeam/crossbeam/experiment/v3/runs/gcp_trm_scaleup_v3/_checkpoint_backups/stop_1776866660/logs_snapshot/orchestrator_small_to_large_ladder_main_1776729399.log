@@ -1,0 +1,6 @@
+[orchestrator] waiting for main report: /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_main_1776729399/FINAL_LADDER_REPORT.md
+[orchestrator] main report ready at 2026-04-21T06:41:15+02:00, launching macros campaign
+[orchestrator] macros campaign exited with status=0 at 2026-04-21T08:19:48+02:00
+[orchestrator] regenerating consolidated report
+WROTE /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/RAPPORT_LADDERS_V3_CONSOLIDE.md
+[orchestrator] done at 2026-04-21T08:19:48+02:00

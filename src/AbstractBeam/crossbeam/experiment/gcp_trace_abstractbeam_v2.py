@@ -1956,6 +1956,137 @@ class GCPMCTS:
         return self.best_state if self.best_state is not None else root_state
 
 
+def _jsonish(x: Any) -> Any:
+    if x is None or isinstance(x, (bool, int, float, str)):
+        return x
+    if isinstance(x, np.generic):
+        return x.item()
+    if isinstance(x, np.ndarray):
+        return x.tolist()
+    if isinstance(x, (list, tuple)):
+        return [_jsonish(v) for v in x]
+    if isinstance(x, dict):
+        return {str(k): _jsonish(v) for k, v in x.items()}
+    return repr(x)
+
+
+def _mean_max_float(vals: List[float]) -> Optional[Dict[str, float]]:
+    if not vals:
+        return None
+    return {"mean": float(sum(vals) / len(vals)), "max": float(max(vals)), "min": float(min(vals))}
+
+
+def _mean_max_int(vals: List[int]) -> Optional[Dict[str, float]]:
+    if not vals:
+        return None
+    return {"mean": float(sum(vals) / len(vals)), "max": float(max(vals)), "min": float(min(vals))}
+
+
+def _serialize_candidate_action(c: CandidateAction) -> Dict[str, Any]:
+    return {
+        "family": str(c.family),
+        "args": [_jsonish(a) for a in c.args],
+        "est_delta_conflicts": float(c.est_delta_conflicts),
+        "est_delta_vertices": float(c.est_delta_vertices),
+        "est_cost": float(c.est_cost),
+        "token": _jsonish(c.token),
+        "meta": _jsonish(c.meta),
+    }
+
+
+def _serialize_state_metrics_full(m: StateMetrics) -> Dict[str, Any]:
+    return {
+        "conflicts": int(m.conflicts),
+        "conflict_vertices": int(m.conflict_vertices),
+        "core_size": int(m.core_size),
+        "zero_slack_vertices": int(m.zero_slack_vertices),
+        "one_slack_vertices": int(m.one_slack_vertices),
+        "mean_legal_colors": float(m.mean_legal_colors),
+        "patchable_score": float(m.patchable_score),
+        "entropy": float(m.entropy),
+        "class_sizes": m.class_sizes.tolist(),
+        "class_conflicts": m.class_conflicts.tolist(),
+        "local_conflicts": m.local_conflicts.tolist(),
+        "conflict_mask": m.conflict_mask.astype(int).tolist(),
+        "core_mask": m.core_mask.astype(int).tolist(),
+        "same_color_neighbors": m.same_color_neighbors.tolist(),
+        "distinct_neighbor_colors": m.distinct_neighbor_colors.tolist(),
+        "legal_color_counts": m.legal_color_counts.tolist(),
+    }
+
+
+def serialize_gcp_mcts_tree(mcts: GCPMCTS, graph: GCGraph, k: int) -> Dict[str, Any]:
+    nodes_out: List[Dict[str, Any]] = []
+    for nid, node in enumerate(mcts.nodes):
+        n_cand = len(node.candidates)
+        branches: List[Dict[str, Any]] = []
+        for a in range(n_cand):
+            child_id = int(node.children[a]) if a in node.children else -1
+            branches.append(
+                {
+                    "action_index": int(a),
+                    "edge_visits_n": int(node.nsa[a]) if a < len(node.nsa) else 0,
+                    "edge_value_sum_w": float(node.wsa[a]) if a < len(node.wsa) else 0.0,
+                    "edge_mean_q": float(node.qsa[a]) if a < len(node.qsa) else 0.0,
+                    "prior": float(node.priors[a]) if a < len(node.priors) else 0.0,
+                    "alive": bool(node.alive[a]) if a < len(node.alive) else False,
+                    "child_node_id": child_id,
+                    "candidate": _serialize_candidate_action(node.candidates[a]) if a < len(node.candidates) else {},
+                }
+            )
+        alive_idx = [a for a in range(n_cand) if a < len(node.alive) and bool(node.alive[a])]
+        visited_idx = [a for a in alive_idx if a < len(node.nsa) and int(node.nsa[a]) > 0]
+        q_alive = [float(node.qsa[a]) for a in alive_idx if a < len(node.qsa)]
+        q_vis = [float(node.qsa[a]) for a in visited_idx if a < len(node.qsa)]
+        n_alive = [int(node.nsa[a]) for a in alive_idx if a < len(node.nsa)]
+        n_vis = [int(node.nsa[a]) for a in visited_idx if a < len(node.nsa)]
+        branch_stats = {
+            "per_action_q_mean_max": {
+                "among_alive_actions": _mean_max_float(q_alive),
+                "among_visited_actions": _mean_max_float(q_vis),
+            },
+            "per_action_n_mean_max": {
+                "among_alive_actions": _mean_max_int(n_alive),
+                "among_visited_actions": _mean_max_int(n_vis),
+            },
+        }
+        metrics_blob: Optional[Dict[str, Any]] = None
+        if node.metrics is not None:
+            metrics_blob = _serialize_state_metrics_full(node.metrics)
+        nodes_out.append(
+            {
+                "node_id": int(nid),
+                "parent": int(node.parent),
+                "parent_action": int(node.parent_action),
+                "reward_from_parent": float(node.reward_from_parent),
+                "visit_count_V": int(node.visit),
+                "value_sum_V": float(node.value_sum),
+                "value_mean_V": float(0.0 if node.visit == 0 else node.value_sum / max(node.visit, 1)),
+                "expanded": bool(node.expanded),
+                "terminal": bool(node.terminal),
+                "state": {
+                    "colors": [int(x) for x in node.state.colors.tolist()],
+                    "k": int(node.state.k),
+                    "plateau": int(node.state.plateau),
+                    "step": int(node.state.step),
+                },
+                "children_action_to_child_id": {str(int(a)): int(cid) for a, cid in node.children.items()},
+                "branch_stats": branch_stats,
+                "branches": branches,
+                "metrics": metrics_blob,
+            }
+        )
+    return {
+        "format": "gcp_mcts_tree_v1",
+        "graph_name": str(graph.name),
+        "graph_n": int(graph.n),
+        "graph_m": int(graph.m),
+        "k": int(k),
+        "num_nodes": int(len(mcts.nodes)),
+        "nodes": nodes_out,
+    }
+
+
 def solve_instance(
     graph: GCGraph,
     k: Optional[int],
@@ -2009,6 +2140,14 @@ def solve_instance(
                 f,
                 indent=2,
             )
+    tree_dump = str(getattr(args, "mcts_tree_dump", "") or "").strip()
+    if tree_dump:
+        tree_path = Path(tree_dump)
+        tree_path.parent.mkdir(parents=True, exist_ok=True)
+        tree_payload = serialize_gcp_mcts_tree(mcts, graph, int(k))
+        with tree_path.open("w", encoding="utf-8") as tf:
+            json.dump(tree_payload, tf, indent=2, default=str)
+        result["mcts_tree_dump"] = str(tree_path.resolve())
     return result
 
 
@@ -2287,6 +2426,11 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("--exact-patch-limit", type=int, default=12)
     s.add_argument("--profile-every", type=int, default=8)
     s.add_argument("--profile-out", default="")
+    s.add_argument(
+        "--mcts-tree-dump",
+        default="",
+        help="if set, write the full MCTS search tree (nodes, states, per-action N/W/Q, branch mean/max) as JSON after search",
+    )
     s.set_defaults(func=command_solve)
 
     return p
