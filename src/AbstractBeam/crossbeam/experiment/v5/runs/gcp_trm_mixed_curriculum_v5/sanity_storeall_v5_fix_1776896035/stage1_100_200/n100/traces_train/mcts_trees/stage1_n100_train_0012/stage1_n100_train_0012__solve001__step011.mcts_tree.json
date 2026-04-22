@@ -1,0 +1,5525 @@
+{
+  "format": "gcp_mcts_tree_v2",
+  "graph_name": "stage1_n100_train_0012",
+  "graph_n": 100,
+  "graph_m": 927,
+  "k": 6,
+  "num_nodes": 1,
+  "nodes": [
+    {
+      "node_id": 0,
+      "parent": -1,
+      "parent_action": -1,
+      "reward_from_parent": 0.0,
+      "visit_count_V": 49,
+      "value_sum_V": -0.1,
+      "value_mean_V": -0.0020408163265306124,
+      "expanded": true,
+      "terminal": false,
+      "solved": false,
+      "frozen": false,
+      "dead": true,
+      "best_terminal_conflicts": 25,
+      "best_through": 0.0,
+      "state": {
+        "colors": [
+          0,
+          1,
+          2,
+          0,
+          3,
+          0,
+          4,
+          0,
+          4,
+          3,
+          5,
+          2,
+          1,
+          0,
+          4,
+          0,
+          2,
+          5,
+          2,
+          1,
+          5,
+          2,
+          1,
+          2,
+          4,
+          4,
+          0,
+          0,
+          4,
+          4,
+          5,
+          0,
+          5,
+          2,
+          3,
+          4,
+          4,
+          1,
+          1,
+          1,
+          0,
+          2,
+          1,
+          5,
+          2,
+          3,
+          5,
+          2,
+          1,
+          5,
+          3,
+          4,
+          5,
+          0,
+          4,
+          1,
+          2,
+          3,
+          1,
+          1,
+          0,
+          1,
+          2,
+          0,
+          0,
+          2,
+          4,
+          1,
+          2,
+          2,
+          3,
+          1,
+          4,
+          2,
+          0,
+          3,
+          3,
+          2,
+          2,
+          0,
+          5,
+          4,
+          5,
+          3,
+          3,
+          3,
+          3,
+          5,
+          5,
+          5,
+          1,
+          5,
+          0,
+          1,
+          3,
+          0,
+          5,
+          5,
+          4,
+          3
+        ],
+        "k": 6,
+        "plateau": 5,
+        "step": 11
+      },
+      "children_action_to_child_id": {
+        "36": 0
+      },
+      "branch_stats": {
+        "per_action_q_mean_max": {
+          "among_alive_actions": {
+            "mean": -0.002734375,
+            "max": 0.0,
+            "min": -0.35
+          },
+          "among_visited_actions": {
+            "mean": -0.35,
+            "max": -0.35,
+            "min": -0.35
+          }
+        },
+        "per_action_n_mean_max": {
+          "among_alive_actions": {
+            "mean": 0.0078125,
+            "max": 1.0,
+            "min": 0.0
+          },
+          "among_visited_actions": {
+            "mean": 1.0,
+            "max": 1.0,
+            "min": 1.0
+          }
+        }
+      },
+      "branches": [
+        {
+          "action_index": 0,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00355567317456007,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              49,
+              4
+            ],
+            "params": [
+              49,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 2.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              49,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 1,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008906927891075611,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              44,
+              4
+            ],
+            "params": [
+              44,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              44,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 2,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008122156374156475,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              47,
+              5
+            ],
+            "params": [
+              47,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              47,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 3,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008293152786791325,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              76,
+              4
+            ],
+            "params": [
+              76,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              76,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 4,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008699278347194195,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              93,
+              5
+            ],
+            "params": [
+              93,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              93,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 5,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00498668197542429,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              0,
+              2
+            ],
+            "params": [
+              0,
+              2
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              0,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 6,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003856456372886896,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              39,
+              5
+            ],
+            "params": [
+              39,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              39,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 7,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.004217253997921944,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              49,
+              0
+            ],
+            "params": [
+              49,
+              0
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              49,
+              [
+                18,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 8,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003572093788534403,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              49,
+              3
+            ],
+            "params": [
+              49,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              49,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 9,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00432134885340929,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              40,
+              4
+            ],
+            "params": [
+              40,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              40,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 10,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.005094263702630997,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              44,
+              0
+            ],
+            "params": [
+              44,
+              0
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              44,
+              [
+                18,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 11,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0038844142109155655,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              44,
+              4
+            ],
+            "params": [
+              44,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              44,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 12,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003869390580803156,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              47,
+              4
+            ],
+            "params": [
+              47,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              47,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 13,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003661518916487694,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              47,
+              5
+            ],
+            "params": [
+              47,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              47,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 14,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0040671625174582005,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              58,
+              4
+            ],
+            "params": [
+              58,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              58,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 15,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008611900731921196,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              0,
+              5
+            ],
+            "params": [
+              0,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              0,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 16,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008757506497204304,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              59,
+              4
+            ],
+            "params": [
+              59,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              59,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 17,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.01005213987082243,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              40,
+              3
+            ],
+            "params": [
+              40,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              40,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 18,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.010182587429881096,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              58,
+              2
+            ],
+            "params": [
+              58,
+              2
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              58,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 19,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.007720773108303547,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              35,
+              3
+            ],
+            "params": [
+              35,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              35,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 20,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.007238764315843582,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              82,
+              3
+            ],
+            "params": [
+              82,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              82,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 21,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.010199341922998428,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              90,
+              2
+            ],
+            "params": [
+              90,
+              2
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              90,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 22,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008434467948973179,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              92,
+              5
+            ],
+            "params": [
+              92,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              92,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 23,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008844083175063133,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              73,
+              3
+            ],
+            "params": [
+              73,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              73,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 24,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003875570371747017,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              0,
+              5
+            ],
+            "params": [
+              0,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              0,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 25,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.004396884236484766,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              59,
+              2
+            ],
+            "params": [
+              59,
+              2
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              59,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 26,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0038987835869193077,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              59,
+              4
+            ],
+            "params": [
+              59,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              59,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 27,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0038960266392678022,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              39,
+              4
+            ],
+            "params": [
+              39,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              39,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 28,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0037724566645920277,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              49,
+              1
+            ],
+            "params": [
+              49,
+              1
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              49,
+              [
+                17,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 29,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.004366000182926655,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              40,
+              3
+            ],
+            "params": [
+              40,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              40,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 30,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0043864562176167965,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              48,
+              2
+            ],
+            "params": [
+              48,
+              2
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              48,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 31,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0038892049342393875,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              48,
+              4
+            ],
+            "params": [
+              48,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              48,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 32,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.005097075365483761,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              58,
+              0
+            ],
+            "params": [
+              58,
+              0
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              58,
+              [
+                18,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 33,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.004365537781268358,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              58,
+              2
+            ],
+            "params": [
+              58,
+              2
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              58,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 34,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.06936027854681015,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "core",
+            "family": "tabu_short",
+            "args": [
+              8,
+              4
+            ],
+            "params": [
+              8,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 3.0,
+            "token": [
+              "tabu_short",
+              8,
+              4
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 35,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.03784800320863724,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "core",
+            "family": "focus_core",
+            "args": [
+              8,
+              4
+            ],
+            "params": [
+              8,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 4.0,
+            "token": [
+              "focus_core",
+              8,
+              4
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 36,
+          "edge_visits_n": 1,
+          "edge_value_sum_w": -0.09999999999999998,
+          "edge_mean_q": -0.35,
+          "edge_max_q": -0.1,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0944763645529747,
+          "alive": true,
+          "child_node_id": 0,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "core",
+            "family": "tabu_long",
+            "args": [
+              16,
+              6
+            ],
+            "params": [
+              16,
+              6
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 5.0,
+            "token": [
+              "tabu_long",
+              16,
+              6
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 37,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.03155011683702469,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "diversify",
+            "family": "perturb_soft",
+            "args": [
+              1
+            ],
+            "params": [
+              1
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 6.0,
+            "token": [
+              "perturb_soft",
+              1
+            ],
+            "meta": [
+              0.08
+            ]
+          }
+        },
+        {
+          "action_index": 38,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.004771315958350897,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              0,
+              1
+            ],
+            "params": [
+              0,
+              1
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              0,
+              [
+                17,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 39,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0039136228151619434,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              0,
+              4
+            ],
+            "params": [
+              0,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              0,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 40,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003926686942577362,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              59,
+              3
+            ],
+            "params": [
+              59,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              59,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 41,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00353433471173048,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              59,
+              5
+            ],
+            "params": [
+              59,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              59,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 42,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0048081655986607075,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              39,
+              0
+            ],
+            "params": [
+              39,
+              0
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              39,
+              [
+                18,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 43,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.004154535010457039,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              39,
+              2
+            ],
+            "params": [
+              39,
+              2
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              39,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 44,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0035698560532182455,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              51,
+              2
+            ],
+            "params": [
+              51,
+              2
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              51,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 45,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.004394965246319771,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              40,
+              2
+            ],
+            "params": [
+              40,
+              2
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              40,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 46,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003677680157124996,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              40,
+              5
+            ],
+            "params": [
+              40,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              40,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 47,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.004485053941607475,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              47,
+              0
+            ],
+            "params": [
+              47,
+              0
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              47,
+              [
+                18,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 48,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.004183358512818813,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              47,
+              1
+            ],
+            "params": [
+              47,
+              1
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              47,
+              [
+                17,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 49,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0037195596378296614,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              47,
+              3
+            ],
+            "params": [
+              47,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              47,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 50,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.004798251669853926,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              48,
+              0
+            ],
+            "params": [
+              48,
+              0
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              48,
+              [
+                18,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 51,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003916617948561907,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              48,
+              3
+            ],
+            "params": [
+              48,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              48,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 52,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003983712289482355,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              98,
+              0
+            ],
+            "params": [
+              98,
+              0
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              98,
+              [
+                18,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 53,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003190467832610011,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              98,
+              5
+            ],
+            "params": [
+              98,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              98,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 54,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003901883726939559,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              58,
+              3
+            ],
+            "params": [
+              58,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              58,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 55,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00451380992308259,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              59,
+              0
+            ],
+            "params": [
+              59,
+              0
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              59,
+              [
+                18,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 56,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0033135307021439075,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              49,
+              2
+            ],
+            "params": [
+              49,
+              2
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              49,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 57,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003108067438006401,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              51,
+              5
+            ],
+            "params": [
+              51,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              51,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 58,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.004461626056581736,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              40,
+              1
+            ],
+            "params": [
+              40,
+              1
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              40,
+              [
+                17,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 59,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0035654569510370493,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              44,
+              3
+            ],
+            "params": [
+              44,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              44,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 60,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0033935552928596735,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              48,
+              5
+            ],
+            "params": [
+              48,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              48,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 61,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00342653994448483,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              98,
+              2
+            ],
+            "params": [
+              98,
+              2
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              98,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 62,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0044676982797682285,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              3,
+              1
+            ],
+            "params": [
+              3,
+              1
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              3,
+              [
+                17,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 63,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0037173666059970856,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              3,
+              4
+            ],
+            "params": [
+              3,
+              4
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              3,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 64,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0035318743903189898,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              3,
+              5
+            ],
+            "params": [
+              3,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              3,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 65,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0037468010559678078,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              0,
+              3
+            ],
+            "params": [
+              0,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -3.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              0,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 66,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0035737259313464165,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              39,
+              3
+            ],
+            "params": [
+              39,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -3.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              39,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 67,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003581612603738904,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              51,
+              0
+            ],
+            "params": [
+              51,
+              0
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -3.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              51,
+              [
+                18,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 68,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003429332748055458,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              51,
+              1
+            ],
+            "params": [
+              51,
+              1
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -3.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              51,
+              [
+                17,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 69,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0037634584587067366,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              44,
+              1
+            ],
+            "params": [
+              44,
+              1
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -3.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              44,
+              [
+                17,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 70,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0031824056059122086,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              44,
+              5
+            ],
+            "params": [
+              44,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -3.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              44,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 71,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00343703362159431,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              98,
+              1
+            ],
+            "params": [
+              98,
+              1
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -3.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              98,
+              [
+                17,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 72,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0032009377609938383,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              98,
+              3
+            ],
+            "params": [
+              98,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -3.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              98,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 73,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003736314829438925,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              3,
+              2
+            ],
+            "params": [
+              3,
+              2
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -4.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              3,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 74,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.003566587343811989,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              3,
+              3
+            ],
+            "params": [
+              3,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -4.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              3,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 75,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0031746148597449064,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              58,
+              5
+            ],
+            "params": [
+              58,
+              5
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -4.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              58,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 76,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0030328750144690275,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "kempe_swap",
+            "args": [
+              51,
+              3
+            ],
+            "params": [
+              51,
+              3
+            ],
+            "est_delta_conflicts": 0.0,
+            "est_delta_vertices": -5.0,
+            "est_cost": 2.0,
+            "token": [
+              "kempe_swap",
+              51,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 77,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008033779449760914,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              49,
+              4
+            ],
+            "params": [
+              49,
+              4
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": 2.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              49,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 78,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.011868715286254883,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              0,
+              2
+            ],
+            "params": [
+              0,
+              2
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              0,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 79,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008762934245169163,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              39,
+              5
+            ],
+            "params": [
+              39,
+              5
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              39,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 80,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00796978734433651,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              49,
+              3
+            ],
+            "params": [
+              49,
+              3
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              49,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 81,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.009396171197295189,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              58,
+              4
+            ],
+            "params": [
+              58,
+              4
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              58,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 82,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.007234759163111448,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              87,
+              4
+            ],
+            "params": [
+              87,
+              4
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              87,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 83,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.007059235591441393,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              29,
+              5
+            ],
+            "params": [
+              29,
+              5
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              29,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 84,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00806310772895813,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              62,
+              4
+            ],
+            "params": [
+              62,
+              4
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              62,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 85,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008652113378047943,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              67,
+              4
+            ],
+            "params": [
+              67,
+              4
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              67,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 86,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008049309253692627,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              78,
+              4
+            ],
+            "params": [
+              78,
+              4
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              78,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 87,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008939076215028763,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              85,
+              2
+            ],
+            "params": [
+              85,
+              2
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              85,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 88,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008575581945478916,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              93,
+              4
+            ],
+            "params": [
+              93,
+              4
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              93,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 89,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.007220807950943708,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              59,
+              5
+            ],
+            "params": [
+              59,
+              5
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              59,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 90,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.009392892010509968,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              39,
+              2
+            ],
+            "params": [
+              39,
+              2
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              39,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 91,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00796524342149496,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              47,
+              3
+            ],
+            "params": [
+              47,
+              3
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              47,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 92,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008506220765411854,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              58,
+              3
+            ],
+            "params": [
+              58,
+              3
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              58,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 93,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00908398162573576,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              63,
+              3
+            ],
+            "params": [
+              63,
+              3
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              63,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 94,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00987450685352087,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              63,
+              2
+            ],
+            "params": [
+              63,
+              2
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              63,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 95,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00908398162573576,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              92,
+              3
+            ],
+            "params": [
+              92,
+              3
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              92,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 96,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00987450685352087,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              92,
+              2
+            ],
+            "params": [
+              92,
+              2
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              92,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 97,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.006527800112962723,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              96,
+              3
+            ],
+            "params": [
+              96,
+              3
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              96,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 98,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.006975424475967884,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              29,
+              3
+            ],
+            "params": [
+              29,
+              3
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              29,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 99,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.006953664124011993,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              3,
+              5
+            ],
+            "params": [
+              3,
+              5
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              3,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 100,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.007623475976288319,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              3,
+              4
+            ],
+            "params": [
+              3,
+              4
+            ],
+            "est_delta_conflicts": -1.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              3,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 101,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.010010962374508381,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              40,
+              4
+            ],
+            "params": [
+              40,
+              4
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              40,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 102,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008749616332352161,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              47,
+              4
+            ],
+            "params": [
+              47,
+              4
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              47,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 103,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.009958816692233086,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              63,
+              4
+            ],
+            "params": [
+              63,
+              4
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              63,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 104,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0085532171651721,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              97,
+              2
+            ],
+            "params": [
+              97,
+              2
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              97,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 105,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008795782923698425,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              73,
+              4
+            ],
+            "params": [
+              73,
+              4
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              73,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 106,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.010202058590948582,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              59,
+              2
+            ],
+            "params": [
+              59,
+              2
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              59,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 107,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008635212667286396,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              39,
+              4
+            ],
+            "params": [
+              39,
+              4
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              39,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 108,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.010109025985002518,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              48,
+              2
+            ],
+            "params": [
+              48,
+              2
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              48,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 109,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008551402948796749,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              48,
+              4
+            ],
+            "params": [
+              48,
+              4
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              48,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 110,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008317691273987293,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              63,
+              5
+            ],
+            "params": [
+              63,
+              5
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              63,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 111,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.007994181476533413,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              65,
+              4
+            ],
+            "params": [
+              65,
+              4
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              65,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 112,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008302349597215652,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              35,
+              2
+            ],
+            "params": [
+              35,
+              2
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              35,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 113,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.006542915012687445,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              97,
+              4
+            ],
+            "params": [
+              97,
+              4
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              97,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 114,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.006825855001807213,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              99,
+              5
+            ],
+            "params": [
+              99,
+              5
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": 0.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              99,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 115,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008577690459787846,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              59,
+              3
+            ],
+            "params": [
+              59,
+              3
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              59,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 116,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008488442748785019,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              48,
+              3
+            ],
+            "params": [
+              48,
+              3
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              48,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 117,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.005812010727822781,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              98,
+              5
+            ],
+            "params": [
+              98,
+              5
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              98,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 118,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.008069629780948162,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              76,
+              2
+            ],
+            "params": [
+              76,
+              2
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              76,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 119,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.00618717959150672,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              85,
+              5
+            ],
+            "params": [
+              85,
+              5
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              85,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 120,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0077437469735741615,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              90,
+              4
+            ],
+            "params": [
+              90,
+              4
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              90,
+              [
+                15,
+                5
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 121,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.006652172189205885,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              23,
+              5
+            ],
+            "params": [
+              23,
+              5
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              23,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 122,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.006937445607036352,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              25,
+              3
+            ],
+            "params": [
+              25,
+              3
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              25,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 123,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.007560244761407375,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              25,
+              2
+            ],
+            "params": [
+              25,
+              2
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": -1.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              25,
+              [
+                18,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 124,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0072040013037621975,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              44,
+              3
+            ],
+            "params": [
+              44,
+              3
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              44,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 125,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.007737015374004841,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              67,
+              3
+            ],
+            "params": [
+              67,
+              3
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              67,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 126,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.0072040013037621975,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              78,
+              3
+            ],
+            "params": [
+              78,
+              3
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              78,
+              [
+                15,
+                2
+              ]
+            ],
+            "meta": []
+          }
+        },
+        {
+          "action_index": 127,
+          "edge_visits_n": 0,
+          "edge_value_sum_w": 0.0,
+          "edge_mean_q": 0.0,
+          "edge_max_q": -1e+18,
+          "edge_q_distinct": 0.0,
+          "prior": 0.006406863685697317,
+          "alive": true,
+          "child_node_id": -1,
+          "best_through": 0.0,
+          "child_solved": false,
+          "candidate": {
+            "selector": "vertex",
+            "family": "vertex_recolor",
+            "args": [
+              90,
+              5
+            ],
+            "params": [
+              90,
+              5
+            ],
+            "est_delta_conflicts": -2.0,
+            "est_delta_vertices": -2.0,
+            "est_cost": 1.0,
+            "token": [
+              "vertex_recolor",
+              90,
+              [
+                17,
+                4
+              ]
+            ],
+            "meta": []
+          }
+        }
+      ],
+      "metrics": {
+        "conflicts": 25,
+        "conflict_vertices": 46,
+        "core_size": 100,
+        "zero_slack_vertices": 46,
+        "one_slack_vertices": 51,
+        "mean_legal_colors": 0.57,
+        "patchable_score": 0.12,
+        "entropy": 1.7889287498356956,
+        "class_sizes": [
+          18,
+          17,
+          18,
+          15,
+          15,
+          17
+        ],
+        "class_conflicts": [
+          5,
+          5,
+          4,
+          2,
+          5,
+          4
+        ],
+        "local_conflicts": [
+          2,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          2,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "conflict_mask": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "core_mask": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "same_color_neighbors": [
+          2,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          2,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "distinct_neighbor_colors": [
+          6,
+          5,
+          5,
+          6,
+          5,
+          6,
+          6,
+          5,
+          6,
+          6,
+          6,
+          6,
+          5,
+          6,
+          6,
+          5,
+          5,
+          6,
+          5,
+          6,
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          5,
+          5,
+          5,
+          5,
+          5,
+          6,
+          5,
+          5,
+          5,
+          6,
+          6,
+          5,
+          5,
+          5,
+          6,
+          5,
+          4,
+          6,
+          6,
+          6,
+          5,
+          6,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          6,
+          6,
+          5,
+          5,
+          6,
+          6,
+          5,
+          6,
+          5,
+          6,
+          4,
+          5,
+          5,
+          5,
+          5,
+          6,
+          5,
+          4,
+          6,
+          5,
+          6,
+          5,
+          5,
+          5,
+          6,
+          5,
+          5,
+          6,
+          5,
+          6,
+          5,
+          5,
+          6,
+          5,
+          6,
+          6,
+          5,
+          5,
+          6,
+          6,
+          6,
+          6
+        ],
+        "legal_color_counts": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          2,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          2,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          2,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ]
+}

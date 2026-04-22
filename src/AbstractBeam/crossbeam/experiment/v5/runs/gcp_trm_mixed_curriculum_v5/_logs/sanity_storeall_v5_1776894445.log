@@ -1,0 +1,28 @@
+[50/120] wrote 763 samples
+[100/120] wrote 1486 samples
+done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_storeall_v5_1776894445/stage1_100_200/n100/traces_train
+done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_storeall_v5_1776894445/stage1_100_200/n100/traces_valid
+Traceback (most recent call last):
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/gcp_trace_abstractbeam_v3.py", line 22, in <module>
+    main()
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/gcp_trace_abstractbeam_v2.py", line 2830, in main
+    args.func(args)
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/gcp_trace_abstractbeam_v2.py", line 2601, in command_build_solve_traces
+    samples = build_solve_traces_for_record(
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/gcp_trace_abstractbeam_v2.py", line 1475, in build_solve_traces_for_record
+    root = mcts.run_search(cur)
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/gcp_trace_abstractbeam_v2.py", line 2155, in run_search
+    with concurrent.futures.ThreadPoolExecutor(max_workers=batch) as ex:
+NameError: name 'concurrent' is not defined
+Traceback (most recent call last):
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/run_mixed_curriculum_gcp_v5.py", line 541, in <module>
+    main()
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/run_mixed_curriculum_gcp_v5.py", line 469, in main
+    build_solve_traces(s1_train_jsonl[idx], tr_dir, "solve", base_ckpt, k=sc.k, episodes=stage1_train_cfg.solve_train, max_steps=16, simulations=stage1_train_cfg.simulations_trace, seed=int(args.seed) + 300 + idx)
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/run_mixed_curriculum_gcp_v5.py", line 237, in build_solve_traces
+    run_cmd(cmd, V3_ROOT)
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/run_mixed_curriculum_gcp_v5.py", line 101, in run_cmd
+    subprocess.run(cmd, cwd=str(cwd), check=True)
+  File "/usr/lib64/python3.9/subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', 'gcp_trace_abstractbeam_v3.py', 'build-solve-traces', '--input', '/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_storeall_v5_1776894445/stage1_100_200/data/stage1_n100/train.jsonl', '--out-dir', '/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_storeall_v5_1776894445/stage1_100_200/n100/traces_train', '--prefix', 'solve', '--samples-per-shard', '5000', '--episodes-per-graph', '2', '--max-steps', '16', '--k', '6', '--simulations', '48', '--search-alpha-mean', '0.75', '--search-beta-max', '0.25', '--novelty-coef', '0.05', '--search-mode', 'collect', '--collect-prior-mix', '0.35', '--collect-prior-temp', '1.9', '--worker-count', '4', '--virtual-loss', '0.25', '--alloc-lambda-best', '1.0', '--alloc-lambda-uncertainty', '0.7', '--alloc-lambda-novelty', '0.35', '--train-policy-target-mode', 'best_through', '--train-topk-k', '3', '--train-lse-beta', '4.0', '--track-distinct-terminals', '--mcts-tree-dump-dir', '/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_storeall_v5_1776894445/stage1_100_200/n100/traces_train/mcts_trees', '--seed', '20260722', '--log-every-records', '50', '--ckpt', '/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt']' returned non-zero exit status 1.

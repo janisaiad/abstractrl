@@ -201,6 +201,8 @@ def build_solve_traces(
     seed: int,
 ) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
+    tree_dir = out_dir / "mcts_trees"
+    tree_dir.mkdir(parents=True, exist_ok=True)
     cmd = [
         "python", "gcp_trace_abstractbeam_v3.py", "build-solve-traces",
         "--input", str(input_jsonl),
@@ -226,6 +228,7 @@ def build_solve_traces(
         "--train-topk-k", "3",
         "--train-lse-beta", "4.0",
         "--track-distinct-terminals",
+        "--mcts-tree-dump-dir", str(tree_dir),
         "--seed", str(seed),
         "--log-every-records", "50",
     ]
@@ -276,6 +279,9 @@ def eval_indistribution(eval_files: Sequence[Path], ckpt: Path, size_cfgs: Seque
         audits: List[Dict[str, Any]] = []
         for rec in rows:
             tmp = out_dir / f"{rec['name']}.json"
+            tree_dir = out_dir / "mcts_trees" / f"n{sc.n}"
+            tree_dir.mkdir(parents=True, exist_ok=True)
+            tree_dump = tree_dir / f"{rec['name']}.mcts_tree.json"
             tmp.write_text(json.dumps({"name": rec["name"], "n": rec["n"], "edges": rec["edges"]}))
             out = subprocess.check_output(
                 [
@@ -289,6 +295,7 @@ def eval_indistribution(eval_files: Sequence[Path], ckpt: Path, size_cfgs: Seque
                     "--search-beta-max", "0.25",
                     "--search-mode", "infer",
                     "--worker-count", str(max(1, torch.cuda.device_count() * 4 if torch.cuda.is_available() else 4)),
+                    "--mcts-tree-dump", str(tree_dump),
                 ],
                 cwd=str(V3_ROOT), text=True,
             )

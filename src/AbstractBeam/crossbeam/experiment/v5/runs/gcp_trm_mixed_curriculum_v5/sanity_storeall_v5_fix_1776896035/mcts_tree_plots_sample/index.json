@@ -1,0 +1,36 @@
+{
+  "n_input_candidates": 3,
+  "n_mcts_trees": 3,
+  "reports": [
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_storeall_v5_fix_1776896035/stage1_100_200/n100/traces_train/mcts_trees/stage1_n100_train_0000/stage1_n100_train_0000__solve000__step000.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_storeall_v5_fix_1776896035/mcts_tree_plots_sample/stage1_n100_train_0000__mcts_trees__stage1_n100_train_0000",
+      "graph_name": "stage1_n100_train_0000",
+      "budget": "mcts_trees",
+      "method": "stage1_n100_train_0000",
+      "num_nodes": 4,
+      "max_depth": 3,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_storeall_v5_fix_1776896035/stage1_100_200/n100/traces_train/mcts_trees/stage1_n100_train_0000/stage1_n100_train_0000__solve000__step008.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_storeall_v5_fix_1776896035/mcts_tree_plots_sample/stage1_n100_train_0000__mcts_trees__stage1_n100_train_0000",
+      "graph_name": "stage1_n100_train_0000",
+      "budget": "mcts_trees",
+      "method": "stage1_n100_train_0000",
+      "num_nodes": 3,
+      "max_depth": 2,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_storeall_v5_fix_1776896035/stage1_100_200/n100/traces_train/mcts_trees/stage1_n100_train_0021/stage1_n100_train_0021__solve000__step008.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_storeall_v5_fix_1776896035/mcts_tree_plots_sample/stage1_n100_train_0021__mcts_trees__stage1_n100_train_0021",
+      "graph_name": "stage1_n100_train_0021",
+      "budget": "mcts_trees",
+      "method": "stage1_n100_train_0021",
+      "num_nodes": 1,
+      "max_depth": 0,
+      "tree_animation_error": null
+    }
+  ]
+}

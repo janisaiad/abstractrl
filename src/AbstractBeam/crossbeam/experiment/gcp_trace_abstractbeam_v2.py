@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import concurrent.futures
 import dataclasses
 import enum
 import glob
@@ -35,7 +36,7 @@ import sys
 import threading
 import time
 from pathlib import Path
-from typing import Any, Dict, Iterable, Iterator, List, Optional, Sequence, Tuple
+from typing import Any, Dict, Iterable, Iterator, List, Optional, Sequence, Set, Tuple
 
 import numpy as np
 import torch
@@ -1448,6 +1449,7 @@ def build_solve_traces_for_record(
     explicit_k: Optional[int],
     k_offset: int,
     seed: int,
+    tree_dump_dir: Optional[Path] = None,
 ) -> List[TraceSample]:
     out: List[TraceSample] = []
     rng = np.random.default_rng(seed)
@@ -1472,6 +1474,11 @@ def build_solve_traces_for_record(
                 break
             mcts = GCPMCTS(graph, model, device, macros, cfg)
             root = mcts.run_search(cur)
+            if tree_dump_dir is not None:
+                tree_dump_dir.mkdir(parents=True, exist_ok=True)
+                dump_path = tree_dump_dir / f"{graph.name}__solve{epi:03d}__step{step:03d}.mcts_tree.json"
+                with dump_path.open("w") as f:
+                    json.dump(serialize_gcp_mcts_tree(mcts, graph, int(k)), f, indent=2)
             if root.metrics is None:
                 break
             if not root.candidates:
@@ -2587,9 +2594,11 @@ def command_build_solve_traces(args: argparse.Namespace) -> None:
     )
     records = load_records(args.input)
     writer = TraceShardWriter(args.out_dir, prefix=args.prefix, samples_per_shard=args.samples_per_shard)
+    tree_dump_base = Path(str(args.mcts_tree_dump_dir)).expanduser() if str(getattr(args, "mcts_tree_dump_dir", "")).strip() else None
     total = 0
     for ridx, rec in enumerate(records):
         graph = rec.to_runtime()
+        record_tree_dir = (tree_dump_base / graph.name) if tree_dump_base is not None else None
         samples = build_solve_traces_for_record(
             graph,
             episodes_per_graph=args.episodes_per_graph,
@@ -2605,6 +2614,7 @@ def command_build_solve_traces(args: argparse.Namespace) -> None:
             explicit_k=args.k,
             k_offset=args.k_offset,
             seed=args.seed + ridx,
+            tree_dump_dir=record_tree_dir,
         )
         for s in samples:
             writer.add(s)
@@ -2729,6 +2739,7 @@ def build_parser() -> argparse.ArgumentParser:
     bs.add_argument("--train-lse-beta", type=float, default=4.0)
     bs.add_argument("--seed", type=int, default=0)
     bs.add_argument("--log-every-records", type=int, default=25)
+    bs.add_argument("--mcts-tree-dump-dir", default="", help="if set, dump one MCTS tree JSON per solve step during solve-trace collection")
     bs.set_defaults(func=command_build_solve_traces)
 
     t = sub.add_parser("train", help="ddp training over trace shards")
