@@ -32,6 +32,7 @@ import pickle
 import random
 import re
 import sys
+import threading
 import time
 from pathlib import Path
 from typing import Any, Dict, Iterable, Iterator, List, Optional, Sequence, Tuple
@@ -182,8 +183,10 @@ class StateMetrics:
 
 @dataclasses.dataclass(frozen=True)
 class CandidateAction:
+    selector: str
     family: str
     args: Tuple[int, ...]
+    params: Tuple[Any, ...]
     est_delta_conflicts: float
     est_delta_vertices: float
     est_cost: float
@@ -222,6 +225,30 @@ class SearchConfig:
     action_budget: int = DEFAULT_ACTION_BUDGET
     exact_patch_limit: int = 12
     profile_every: int = 0
+    # Mean-for-search / max-for-train controls.
+    search_alpha_mean: float = 1.0
+    search_beta_max: float = 0.0
+    novelty_coef: float = 0.0
+    # Parallel search controls.
+    worker_count: int = 1
+    worker_rounds: int = 1
+    virtual_loss: float = 0.0
+    # Distinct-terminal tracking controls.
+    track_distinct_terminals: bool = False
+    # Explicit mode split: collect (weak prior, more diversity) vs infer (strong prior).
+    search_mode: str = "collect"
+    collect_prior_mix: float = 0.30
+    collect_prior_temp: float = 1.8
+    infer_prior_mix: float = 0.0
+    infer_prior_temp: float = 1.0
+    # Root worker allocator weights (best-through, uncertainty, novelty).
+    alloc_lambda_best: float = 1.0
+    alloc_lambda_uncertainty: float = 0.5
+    alloc_lambda_novelty: float = 0.25
+    # Learning target shaping from search statistics.
+    train_policy_target_mode: str = "best_through"  # qmax|best_through|topk_mean|logsumexp
+    train_topk_k: int = 3
+    train_lse_beta: float = 4.0
 
 
 def set_seed(seed: int) -> None:
@@ -824,8 +851,10 @@ def generate_candidate_actions(
                 de, dv = local_delta_for_recolor(graph, state, metrics, int(v), c)
                 candidates.append(
                     CandidateAction(
+                        selector="vertex",
                         family=PrimitiveFamily.VERTEX_RECOLOR.value,
                         args=(int(v), int(c)),
+                        params=(int(v), int(c)),
                         est_delta_conflicts=float(de),
                         est_delta_vertices=float(dv),
                         est_cost=1.0,
@@ -843,8 +872,10 @@ def generate_candidate_actions(
                 de, dv = local_delta_for_recolor(graph, state, metrics, int(v), c)
                 candidates.append(
                     CandidateAction(
+                        selector="vertex",
                         family=PrimitiveFamily.KEMPE_SWAP.value,
                         args=(int(v), int(c)),
+                        params=(int(v), int(c)),
                         est_delta_conflicts=float(max(0, de)),
                         est_delta_vertices=float(dv),
                         est_cost=2.0,
@@ -854,19 +885,19 @@ def generate_candidate_actions(
 
     # 3) tabu and focus
     if accept(PrimitiveFamily.TABU_SHORT.value):
-        candidates.append(CandidateAction(PrimitiveFamily.TABU_SHORT.value, (8, 4), 0.0, 0.0, 3.0, (PrimitiveFamily.TABU_SHORT.value, 8, 4)))
+        candidates.append(CandidateAction("core", PrimitiveFamily.TABU_SHORT.value, (8, 4), (8, 4), 0.0, 0.0, 3.0, (PrimitiveFamily.TABU_SHORT.value, 8, 4)))
     if accept(PrimitiveFamily.TABU_LONG.value):
-        candidates.append(CandidateAction(PrimitiveFamily.TABU_LONG.value, (16, 6), 0.0, 0.0, 5.0, (PrimitiveFamily.TABU_LONG.value, 16, 6)))
+        candidates.append(CandidateAction("core", PrimitiveFamily.TABU_LONG.value, (16, 6), (16, 6), 0.0, 0.0, 5.0, (PrimitiveFamily.TABU_LONG.value, 16, 6)))
     if accept(PrimitiveFamily.FOCUS_CORE.value):
-        candidates.append(CandidateAction(PrimitiveFamily.FOCUS_CORE.value, (8, 4), 0.0, 0.0, 4.0, (PrimitiveFamily.FOCUS_CORE.value, 8, 4)))
+        candidates.append(CandidateAction("core", PrimitiveFamily.FOCUS_CORE.value, (8, 4), (8, 4), 0.0, 0.0, 4.0, (PrimitiveFamily.FOCUS_CORE.value, 8, 4)))
 
     # 4) exact patch
     if accept(PrimitiveFamily.EXACT_PATCH.value) and metrics.core_size > 0 and metrics.core_size <= exact_patch_limit:
-        candidates.append(CandidateAction(PrimitiveFamily.EXACT_PATCH.value, (exact_patch_limit,), 0.0, 0.0, 6.0, (PrimitiveFamily.EXACT_PATCH.value, exact_patch_limit)))
+        candidates.append(CandidateAction("exact", PrimitiveFamily.EXACT_PATCH.value, (exact_patch_limit,), (exact_patch_limit,), 0.0, 0.0, 6.0, (PrimitiveFamily.EXACT_PATCH.value, exact_patch_limit)))
 
     # 5) perturb only if plateau or hard conflict
     if accept(PrimitiveFamily.PERTURB_SOFT.value) and (state.plateau >= 2 or metrics.conflicts > max(2, graph.n // 8)):
-        candidates.append(CandidateAction(PrimitiveFamily.PERTURB_SOFT.value, (1,), 0.0, 0.0, 6.0, (PrimitiveFamily.PERTURB_SOFT.value, 1), meta=(0.08,)))
+        candidates.append(CandidateAction("diversify", PrimitiveFamily.PERTURB_SOFT.value, (1,), (1,), 0.0, 0.0, 6.0, (PrimitiveFamily.PERTURB_SOFT.value, 1), meta=(0.08,)))
 
     # 6) macros
     if accept(PrimitiveFamily.MACRO.value) and macros:
@@ -874,8 +905,10 @@ def generate_candidate_actions(
             if macro_applicable(macro, metrics, graph):
                 candidates.append(
                     CandidateAction(
+                        selector="macro",
                         family=PrimitiveFamily.MACRO.value,
                         args=(hash(macro.name) & 0xFFFF,),
+                        params=(macro.name,),
                         est_delta_conflicts=0.0,
                         est_delta_vertices=0.0,
                         est_cost=float(len(macro.families)),
@@ -1444,11 +1477,14 @@ def build_solve_traces_for_record(
             if not root.candidates:
                 break
             obs = build_observation(graph, cur, root.metrics, root.candidates, macros=macros, vertex_budget=vertex_budget, class_budget=class_budget, action_budget=action_budget)
-            counts = root.nsa.astype(np.float64)
-            if counts.sum() <= 0:
-                counts = root.priors.astype(np.float64)
-            probs = counts + 1e-6
-            probs = probs / max(probs.sum(), EPS)
+            raw_scores = np.asarray([mcts._edge_train_score(root, a) for a in range(len(root.candidates))], dtype=np.float64)
+            if raw_scores.size == 0:
+                break
+            if not np.isfinite(raw_scores).any():
+                raw_scores = root.nsa.astype(np.float64)
+            logits = raw_scores - float(np.max(raw_scores))
+            probs = np.exp(logits)
+            probs = probs / max(float(probs.sum()), EPS)
             target = int(np.argmax(probs[: len(root.candidates)]))
             chosen = root.candidates[target]
             nxt, nxt_metrics, reward = transition_state(graph, cur, root.metrics, chosen, macros=macros, exact_patch_limit=cfg.exact_patch_limit)
@@ -1477,9 +1513,11 @@ def build_solve_traces_for_record(
             if nxt_metrics.conflicts == 0:
                 break
         rtg = 0.0
+        best_through = -1e18
         for sample, reward in zip(reversed(samples_ep), reversed(rewards_ep)):
             rtg = float(reward) + rtg
-            sample.value_target = float(rtg)
+            best_through = max(best_through, rtg)
+            sample.value_target = float(best_through)
         out.extend(samples_ep)
     return out
 
@@ -1743,8 +1781,20 @@ class MCTSNode:
         "nsa",
         "wsa",
         "qsa",
+        "qmaxsa",
+        "distinct_sumsa",
+        "distinct_countsa",
+        "topk_returnssa",
+        "lse_sum_expsa",
+        "lse_countsa",
         "alive",
         "metrics",
+        "frozen",
+        "dead",
+        "solved",
+        "best_terminal_conflicts",
+        "best_through",
+        "tt_key",
     )
 
     def __init__(self, state: RepairState, parent: int = -1, parent_action: int = -1, reward_from_parent: float = 0.0):
@@ -1762,8 +1812,20 @@ class MCTSNode:
         self.nsa = np.zeros(0, dtype=np.int32)
         self.wsa = np.zeros(0, dtype=np.float64)
         self.qsa = np.zeros(0, dtype=np.float64)
+        self.qmaxsa = np.zeros(0, dtype=np.float64)
+        self.distinct_sumsa = np.zeros(0, dtype=np.float64)
+        self.distinct_countsa = np.zeros(0, dtype=np.int32)
+        self.topk_returnssa: List[List[float]] = []
+        self.lse_sum_expsa = np.zeros(0, dtype=np.float64)
+        self.lse_countsa = np.zeros(0, dtype=np.int32)
         self.alive = np.zeros(0, dtype=np.bool_)
         self.metrics: Optional[StateMetrics] = None
+        self.frozen = False
+        self.dead = False
+        self.solved = False
+        self.best_terminal_conflicts = int(10**9)
+        self.best_through = -1e18
+        self.tt_key = b""
 
     @property
     def value(self) -> float:
@@ -1789,8 +1851,16 @@ class GCPMCTS:
         self.best_state: Optional[RepairState] = None
         self.best_metrics: Optional[StateMetrics] = None
         self.anytime_trace: List[Dict[str, float]] = []
+        self.tree_lock = threading.RLock()
+        self.distinct_terminals: Set[bytes] = set()
+        self.state_to_node: Dict[bytes, int] = {}
+        self.root_action_alloc: np.ndarray = np.zeros(0, dtype=np.int32)
 
     def evaluate_with_model(self, state: RepairState, metrics: StateMetrics, candidates: List[CandidateAction]) -> Tuple[np.ndarray, float]:
+        if str(getattr(self.cfg, "search_mode", "collect")) == "noprior":
+            priors = np.full(len(candidates), 1.0 / max(len(candidates), 1), dtype=np.float32)
+            value = self._rollout_value(state, metrics)
+            return priors, float(value)
         if self.model is None:
             scores = np.asarray([
                 c.est_delta_conflicts + 0.25 * c.est_delta_vertices - 0.05 * c.est_cost for c in candidates
@@ -1798,7 +1868,7 @@ class GCPMCTS:
             priors = np.exp(scores - scores.max())
             priors = priors / max(priors.sum(), EPS)
             value = float(1.0 - metrics.conflicts / max(self.graph.m, 1) + 0.1 * metrics.mean_legal_colors / max(state.k, 1) + 0.05 * metrics.patchable_score)
-            return priors, value
+            return self._apply_prior_mode(priors), value
         obs = build_observation(self.graph, state, metrics, candidates, macros=self.macros, action_budget=self.cfg.action_budget)
         batch = {
             "global_feats": torch.from_numpy(obs["global_feats"]).unsqueeze(0).to(self.device),
@@ -1815,13 +1885,151 @@ class GCPMCTS:
             priors = np.exp(logits - logits.max())
             priors = priors / max(priors.sum(), EPS)
             value = float(out["value"][0].detach().cpu())
+        priors = self._apply_prior_mode(priors)
         return priors, value
+
+    def _rollout_value(self, state: RepairState, metrics: StateMetrics) -> float:
+        cur = state.copy()
+        cur_metrics = metrics
+        horizon = min(12, max(4, int(self.cfg.max_depth // 4)))
+        gamma = float(self.cfg.gamma)
+        ret = 0.0
+        disc = 1.0
+        for _ in range(horizon):
+            if int(cur_metrics.conflicts) == 0:
+                ret += disc * 1.0
+                break
+            cands = generate_candidate_actions(
+                self.graph,
+                cur,
+                cur_metrics,
+                list(self.macros.values()),
+                action_budget=min(self.cfg.action_budget, 24),
+                exact_patch_limit=self.cfg.exact_patch_limit,
+            )
+            if not cands:
+                break
+            # Pure rollout policy: choose best local-improvement action without model prior.
+            cand = max(cands, key=lambda x: (x.est_delta_conflicts, x.est_delta_vertices, -x.est_cost))
+            nxt, nxt_metrics, reward = transition_state(self.graph, cur, cur_metrics, cand, macros=self.macros, exact_patch_limit=self.cfg.exact_patch_limit)
+            ret += disc * float(reward)
+            disc *= gamma
+            cur = nxt
+            cur_metrics = nxt_metrics
+        return float(ret)
+
+    def _apply_prior_mode(self, priors: np.ndarray) -> np.ndarray:
+        p = np.asarray(priors, dtype=np.float64)
+        if p.size == 0:
+            return priors
+        mode = str(getattr(self.cfg, "search_mode", "collect"))
+        if mode == "noprior":
+            uni = np.full_like(p, 1.0 / max(int(p.size), 1), dtype=np.float64)
+            return uni.astype(np.float32)
+        if mode == "collect":
+            temp = max(float(getattr(self.cfg, "collect_prior_temp", 1.8)), 1e-6)
+            mix = float(getattr(self.cfg, "collect_prior_mix", 0.30))
+        else:
+            temp = max(float(getattr(self.cfg, "infer_prior_temp", 1.0)), 1e-6)
+            mix = float(getattr(self.cfg, "infer_prior_mix", 0.0))
+        p = np.power(np.maximum(p, EPS), 1.0 / temp)
+        p = p / max(float(p.sum()), EPS)
+        if mix > 0.0:
+            uni = np.full_like(p, 1.0 / max(int(p.size), 1), dtype=np.float64)
+            p = (1.0 - mix) * p + mix * uni
+            p = p / max(float(p.sum()), EPS)
+        return p.astype(np.float32)
+
+    def _edge_train_score(self, node: MCTSNode, a: int) -> float:
+        mode = str(getattr(self.cfg, "train_policy_target_mode", "best_through"))
+        qmax = float(node.qmaxsa[a]) if a < len(node.qmaxsa) and float(node.qmaxsa[a]) > -1e17 else float(node.qsa[a] if a < len(node.qsa) else 0.0)
+        if mode == "qmax":
+            return qmax
+        if mode == "topk_mean":
+            vals = node.topk_returnssa[a] if a < len(node.topk_returnssa) else []
+            return float(sum(vals) / max(len(vals), 1)) if vals else qmax
+        if mode == "logsumexp":
+            beta = max(float(getattr(self.cfg, "train_lse_beta", 4.0)), 1e-6)
+            s = float(node.lse_sum_expsa[a]) if a < len(node.lse_sum_expsa) else 0.0
+            c = int(node.lse_countsa[a]) if a < len(node.lse_countsa) else 0
+            if s <= 0.0 or c <= 0:
+                return qmax
+            return float(math.log(s / max(c, 1)) / beta)
+        # best_through default
+        if a in node.children:
+            cid = int(node.children[a])
+            if 0 <= cid < len(self.nodes):
+                return float(self.nodes[cid].best_through)
+        return qmax
+
+    def _compute_root_allocation(self, batch: int) -> List[int]:
+        if not self.nodes:
+            return [-1 for _ in range(batch)]
+        root = self.nodes[0]
+        if not root.expanded or len(root.candidates) == 0:
+            return [-1 for _ in range(batch)]
+        if self.root_action_alloc.shape[0] != len(root.candidates):
+            self.root_action_alloc = np.zeros(len(root.candidates), dtype=np.int32)
+        else:
+            self.root_action_alloc.fill(0)
+        alloc_scores = np.full(len(root.candidates), -1e18, dtype=np.float64)
+        total_n = max(root.visit, 1)
+        for a in range(len(root.candidates)):
+            if a >= len(root.alive) or not bool(root.alive[a]):
+                continue
+            qmax = root.qmaxsa[a] if a < len(root.qmaxsa) and root.qmaxsa[a] > -1e17 else (root.qsa[a] if a < len(root.qsa) else 0.0)
+            uncertainty = math.sqrt(math.log(total_n + 2.0) / (1.0 + float(root.nsa[a] if a < len(root.nsa) else 0.0)))
+            novelty = 1.0 / math.sqrt(1.0 + float(root.nsa[a] if a < len(root.nsa) else 0.0) + float(self.root_action_alloc[a]))
+            alloc_scores[a] = (
+                float(getattr(self.cfg, "alloc_lambda_best", 1.0)) * float(qmax)
+                + float(getattr(self.cfg, "alloc_lambda_uncertainty", 0.5)) * float(uncertainty)
+                + float(getattr(self.cfg, "alloc_lambda_novelty", 0.25)) * float(novelty)
+            )
+        if not np.isfinite(alloc_scores).any():
+            return [-1 for _ in range(batch)]
+        order = np.argsort(-alloc_scores)
+        out: List[int] = []
+        for i in range(batch):
+            a = int(order[i % len(order)])
+            if not np.isfinite(alloc_scores[a]):
+                out.append(-1)
+                continue
+            self.root_action_alloc[a] += 1
+            out.append(a)
+        return out
+
+    def _propagate_status_bottom_up(self, visited_nodes: List[int]) -> None:
+        seen: Set[int] = set()
+        for nid in reversed(visited_nodes):
+            if nid in seen or nid < 0 or nid >= len(self.nodes):
+                continue
+            seen.add(nid)
+            node = self.nodes[nid]
+            child_ids = [int(cid) for cid in node.children.values() if 0 <= int(cid) < len(self.nodes)]
+            if child_ids:
+                child_best = min([self.nodes[cid].best_terminal_conflicts for cid in child_ids] + [node.best_terminal_conflicts])
+                node.best_terminal_conflicts = int(child_best)
+                node.best_through = max([self.nodes[cid].best_through for cid in child_ids] + [node.best_through])
+            node.solved = bool(node.best_terminal_conflicts == 0)
+            if node.terminal and node.solved:
+                node.frozen = True
+            if child_ids:
+                all_children_frozen = all(self.nodes[cid].frozen for cid in child_ids)
+                all_children_dead = all(self.nodes[cid].dead or self.nodes[cid].frozen for cid in child_ids)
+                if all_children_frozen:
+                    node.frozen = True
+                if all_children_dead and node.expanded:
+                    node.dead = True
 
     def maybe_expand(self, node_id: int) -> float:
         node = self.nodes[node_id]
         if node.expanded:
             return 0.0
         metrics = compute_state_metrics(self.graph, node.state)
+        key = state_key(node.state)
+        node.tt_key = key
+        if key not in self.state_to_node:
+            self.state_to_node[key] = int(node_id)
         node.metrics = metrics
         if self.best_metrics is None or metrics.conflicts < self.best_metrics.conflicts:
             self.best_state = node.state.copy()
@@ -1830,7 +2038,6 @@ class GCPMCTS:
             node.expanded = True
             node.terminal = True
             return 1.0
-        key = state_key(node.state)
         if key in self.cache:
             cached = self.cache[key]
             node.candidates = cached.candidates
@@ -1838,6 +2045,12 @@ class GCPMCTS:
             node.nsa = np.zeros(len(node.candidates), dtype=np.int32)
             node.wsa = np.zeros(len(node.candidates), dtype=np.float64)
             node.qsa = np.zeros(len(node.candidates), dtype=np.float64)
+            node.qmaxsa = np.full(len(node.candidates), -1e18, dtype=np.float64)
+            node.distinct_sumsa = np.zeros(len(node.candidates), dtype=np.float64)
+            node.distinct_countsa = np.zeros(len(node.candidates), dtype=np.int32)
+            node.topk_returnssa = [[] for _ in range(len(node.candidates))]
+            node.lse_sum_expsa = np.zeros(len(node.candidates), dtype=np.float64)
+            node.lse_countsa = np.zeros(len(node.candidates), dtype=np.int32)
             node.alive = np.ones(len(node.candidates), dtype=np.bool_)
             node.expanded = True
             node.terminal = cached.solved
@@ -1853,6 +2066,12 @@ class GCPMCTS:
         node.nsa = np.zeros(len(cands), dtype=np.int32)
         node.wsa = np.zeros(len(cands), dtype=np.float64)
         node.qsa = np.zeros(len(cands), dtype=np.float64)
+        node.qmaxsa = np.full(len(cands), -1e18, dtype=np.float64)
+        node.distinct_sumsa = np.zeros(len(cands), dtype=np.float64)
+        node.distinct_countsa = np.zeros(len(cands), dtype=np.int32)
+        node.topk_returnssa = [[] for _ in range(len(cands))]
+        node.lse_sum_expsa = np.zeros(len(cands), dtype=np.float64)
+        node.lse_countsa = np.zeros(len(cands), dtype=np.int32)
         node.alive = np.ones(len(cands), dtype=np.bool_)
         node.expanded = True
         self.cache[key] = CacheEntry(priors=node.priors.copy(), value=float(value), solved=False, metrics=metrics, candidates=cands)
@@ -1869,15 +2088,25 @@ class GCPMCTS:
             if not node.alive[a]:
                 continue
             n = node.nsa[a]
-            q = node.qsa[a]
+            q_mean = node.qsa[a]
+            q_max = node.qmaxsa[a] if node.qmaxsa[a] > -1e17 else q_mean
+            q_distinct = 0.0 if node.distinct_countsa[a] <= 0 else float(node.distinct_sumsa[a] / max(node.distinct_countsa[a], 1))
             bonus = self.cfg.cpuct * float(node.priors[a]) * math.sqrt(total_n) / (1 + n)
-            score = q + bonus
+            novelty = self.cfg.novelty_coef / math.sqrt(1.0 + float(n))
+            score = (
+                self.cfg.search_alpha_mean * q_mean
+                + self.cfg.search_beta_max * q_max
+                + bonus
+                + novelty
+                + 0.05 * q_distinct
+            )
             if score > best_score:
                 best_score = score
                 best_a = a
-            conf = self.cfg.confidence_beta * math.sqrt(math.log(total_n + 2) / (n + 1))
-            lcb[a] = q - conf
-            ucb[a] = q + conf
+            conf = self.cfg.confidence_beta * math.sqrt(math.log(total_n + 2.0) / (n + 1.0))
+            core_q = self.cfg.search_alpha_mean * q_mean + self.cfg.search_beta_max * q_max
+            lcb[a] = core_q - conf
+            ucb[a] = core_q + conf
         if best_a < 0:
             return 0
         if node.visit > 0 and node.visit % self.cfg.prune_every == 0:
@@ -1899,57 +2128,123 @@ class GCPMCTS:
 
     def run_search(self, root_state: RepairState) -> MCTSNode:
         self.nodes = [MCTSNode(root_state.copy())]
+        self.nodes[0].tt_key = state_key(root_state)
+        self.state_to_node = {self.nodes[0].tt_key: 0}
         self.best_state = root_state.copy()
         self.best_metrics = compute_state_metrics(self.graph, root_state)
         self.anytime_trace = []
+        self.distinct_terminals = set()
         t0 = time.time()
         profile_every = max(1, int(getattr(self.cfg, "profile_every", 0) or 0))
-        for sim_idx in range(self.cfg.simulations):
-            path: List[Tuple[int, int, float]] = []
-            node_id = 0
-            depth = 0
-            while True:
+        worker_count = max(1, int(getattr(self.cfg, "worker_count", 1)))
+        sims_done = 0
+        round_width = max(1, worker_count * max(1, int(getattr(self.cfg, "worker_rounds", 1))))
+        while sims_done < self.cfg.simulations:
+            batch = min(round_width, self.cfg.simulations - sims_done)
+            with self.tree_lock:
+                forced_roots = self._compute_root_allocation(batch)
+            if batch <= 1:
+                self._simulate_once(forced_root_action=forced_roots[0] if forced_roots else -1)
+            else:
+                with concurrent.futures.ThreadPoolExecutor(max_workers=batch) as ex:
+                    futs = [ex.submit(self._simulate_once, forced_roots[i] if i < len(forced_roots) else -1) for i in range(batch)]
+                    for fut in futs:
+                        fut.result()
+            sims_done += batch
+            if profile_every > 0 and (sims_done % profile_every == 0 or (self.best_metrics is not None and self.best_metrics.conflicts == 0)):
+                best_conf = int(self.best_metrics.conflicts) if self.best_metrics is not None else int(10**9)
+                self.anytime_trace.append({"simulation": int(sims_done), "best_conflicts": int(best_conf), "elapsed_sec": float(time.time() - t0)})
+            if self.best_metrics is not None and self.best_metrics.conflicts == 0:
+                break
+        return self.nodes[0]
+
+    def _simulate_once(self, forced_root_action: int = -1) -> None:
+        path: List[Tuple[int, int, float]] = []
+        visited_nodes: List[int] = []
+        node_id = 0
+        depth = 0
+        seen_on_path: Set[int] = set()
+        while True:
+            with self.tree_lock:
                 node = self.nodes[node_id]
+                visited_nodes.append(int(node_id))
                 leaf_value = self.maybe_expand(node_id)
                 node.visit += 1
-                if node.terminal or depth >= self.cfg.max_depth:
+                if node.terminal or depth >= self.cfg.max_depth or node.dead:
                     backup = float(leaf_value)
+                    terminal_conf = int(node.metrics.conflicts) if node.metrics is not None else int(10**9)
+                    node.best_terminal_conflicts = min(node.best_terminal_conflicts, terminal_conf)
+                    node.best_through = max(float(node.best_through), float(backup))
+                    if terminal_conf == 0:
+                        node.solved = True
+                        node.frozen = True
+                        if self.cfg.track_distinct_terminals:
+                            self.distinct_terminals.add(state_key(node.state))
                     break
-                a = self.select_action(node_id)
+                if depth == 0 and forced_root_action >= 0 and forced_root_action < len(node.candidates) and bool(node.alive[forced_root_action]):
+                    a = int(forced_root_action)
+                else:
+                    a = self.select_action(node_id)
                 if a in node.children:
                     child_id = node.children[a]
                     reward = self.nodes[child_id].reward_from_parent
                 else:
                     metrics = node.metrics if node.metrics is not None else compute_state_metrics(self.graph, node.state)
                     nxt_state, nxt_metrics, reward = transition_state(self.graph, node.state, metrics, node.candidates[a], macros=self.macros, exact_patch_limit=self.cfg.exact_patch_limit)
-                    child_id = len(self.nodes)
-                    self.nodes.append(MCTSNode(nxt_state, parent=node_id, parent_action=a, reward_from_parent=reward))
-                    node.children[a] = child_id
+                    nxt_key = state_key(nxt_state)
+                    if nxt_key in self.state_to_node:
+                        child_id = int(self.state_to_node[nxt_key])
+                        node.children[a] = child_id
+                    else:
+                        child_id = len(self.nodes)
+                        child_node = MCTSNode(nxt_state, parent=node_id, parent_action=a, reward_from_parent=reward)
+                        child_node.tt_key = nxt_key
+                        self.nodes.append(child_node)
+                        self.state_to_node[nxt_key] = child_id
+                        node.children[a] = child_id
                     if self.best_metrics is None or nxt_metrics.conflicts < self.best_metrics.conflicts:
                         self.best_metrics = nxt_metrics
                         self.best_state = nxt_state.copy()
+                if child_id in seen_on_path:
+                    node.dead = True
+                    backup = float(node.qsa[a] if a < len(node.qsa) else 0.0)
+                    break
+                seen_on_path.add(int(child_id))
+                if self.cfg.virtual_loss > 0:
+                    node.wsa[a] -= float(self.cfg.virtual_loss)
                 path.append((node_id, a, reward))
                 node_id = child_id
-                depth += 1
+            depth += 1
+        distinct_bonus = 0.0
+        if self.cfg.track_distinct_terminals and self.distinct_terminals:
+            distinct_bonus = 1.0 / float(len(self.distinct_terminals))
+        with self.tree_lock:
             for nid, a, r in reversed(path):
                 backup = r + self.cfg.gamma * backup
                 node = self.nodes[nid]
                 node.nsa[a] += 1
-                node.wsa[a] += backup
+                node.wsa[a] += backup + distinct_bonus
                 node.qsa[a] = node.wsa[a] / max(node.nsa[a], 1)
+                node.qmaxsa[a] = max(float(node.qmaxsa[a]), float(backup))
+                node.best_through = max(float(node.best_through), float(backup))
+                if a < len(node.topk_returnssa):
+                    vals = node.topk_returnssa[a]
+                    vals.append(float(backup))
+                    vals.sort(reverse=True)
+                    k = max(1, int(getattr(self.cfg, "train_topk_k", 3)))
+                    if len(vals) > k:
+                        del vals[k:]
+                if a < len(node.lse_sum_expsa):
+                    beta = max(float(getattr(self.cfg, "train_lse_beta", 4.0)), 1e-6)
+                    node.lse_sum_expsa[a] += float(math.exp(beta * float(backup)))
+                    node.lse_countsa[a] += 1
+                if self.cfg.track_distinct_terminals:
+                    node.distinct_sumsa[a] += distinct_bonus
+                    node.distinct_countsa[a] += 1
                 node.value_sum += backup
-            if profile_every > 0 and ((sim_idx + 1) % profile_every == 0 or (self.best_metrics is not None and self.best_metrics.conflicts == 0)):
-                best_conf = int(self.best_metrics.conflicts) if self.best_metrics is not None else int(10**9)
-                self.anytime_trace.append(
-                    {
-                        "simulation": int(sim_idx + 1),
-                        "best_conflicts": int(best_conf),
-                        "elapsed_sec": float(time.time() - t0),
-                    }
-                )
-            if self.best_metrics is not None and self.best_metrics.conflicts == 0:
-                break
-        return self.nodes[0]
+                if self.cfg.virtual_loss > 0:
+                    node.wsa[a] += float(self.cfg.virtual_loss)
+            self._propagate_status_bottom_up(visited_nodes)
 
     def search(self, root_state: RepairState) -> RepairState:
         self.run_search(root_state)
@@ -1984,8 +2279,10 @@ def _mean_max_int(vals: List[int]) -> Optional[Dict[str, float]]:
 
 def _serialize_candidate_action(c: CandidateAction) -> Dict[str, Any]:
     return {
+        "selector": str(c.selector),
         "family": str(c.family),
         "args": [_jsonish(a) for a in c.args],
+        "params": [_jsonish(a) for a in c.params],
         "est_delta_conflicts": float(c.est_delta_conflicts),
         "est_delta_vertices": float(c.est_delta_vertices),
         "est_cost": float(c.est_cost),
@@ -2028,9 +2325,13 @@ def serialize_gcp_mcts_tree(mcts: GCPMCTS, graph: GCGraph, k: int) -> Dict[str, 
                     "edge_visits_n": int(node.nsa[a]) if a < len(node.nsa) else 0,
                     "edge_value_sum_w": float(node.wsa[a]) if a < len(node.wsa) else 0.0,
                     "edge_mean_q": float(node.qsa[a]) if a < len(node.qsa) else 0.0,
+                    "edge_max_q": float(node.qmaxsa[a]) if a < len(node.qmaxsa) else 0.0,
+                    "edge_q_distinct": float(node.distinct_sumsa[a] / max(node.distinct_countsa[a], 1)) if a < len(node.distinct_sumsa) and a < len(node.distinct_countsa) and int(node.distinct_countsa[a]) > 0 else 0.0,
                     "prior": float(node.priors[a]) if a < len(node.priors) else 0.0,
                     "alive": bool(node.alive[a]) if a < len(node.alive) else False,
                     "child_node_id": child_id,
+                    "best_through": float(mcts.nodes[child_id].best_through) if child_id >= 0 and child_id < len(mcts.nodes) else 0.0,
+                    "child_solved": bool(mcts.nodes[child_id].solved) if child_id >= 0 and child_id < len(mcts.nodes) else False,
                     "candidate": _serialize_candidate_action(node.candidates[a]) if a < len(node.candidates) else {},
                 }
             )
@@ -2064,6 +2365,11 @@ def serialize_gcp_mcts_tree(mcts: GCPMCTS, graph: GCGraph, k: int) -> Dict[str, 
                 "value_mean_V": float(0.0 if node.visit == 0 else node.value_sum / max(node.visit, 1)),
                 "expanded": bool(node.expanded),
                 "terminal": bool(node.terminal),
+                "solved": bool(node.solved),
+                "frozen": bool(node.frozen),
+                "dead": bool(node.dead),
+                "best_terminal_conflicts": int(node.best_terminal_conflicts),
+                "best_through": float(node.best_through),
                 "state": {
                     "colors": [int(x) for x in node.state.colors.tolist()],
                     "k": int(node.state.k),
@@ -2077,7 +2383,7 @@ def serialize_gcp_mcts_tree(mcts: GCPMCTS, graph: GCGraph, k: int) -> Dict[str, 
             }
         )
     return {
-        "format": "gcp_mcts_tree_v1",
+        "format": "gcp_mcts_tree_v2",
         "graph_name": str(graph.name),
         "graph_n": int(graph.n),
         "graph_m": int(graph.m),
@@ -2111,6 +2417,24 @@ def solve_instance(
         action_budget=args.action_budget,
         exact_patch_limit=args.exact_patch_limit,
         profile_every=int(getattr(args, "profile_every", 0)),
+        search_alpha_mean=float(getattr(args, "search_alpha_mean", 1.0)),
+        search_beta_max=float(getattr(args, "search_beta_max", 0.0)),
+        novelty_coef=float(getattr(args, "novelty_coef", 0.0)),
+        worker_count=int(getattr(args, "worker_count", 1)),
+        worker_rounds=int(getattr(args, "worker_rounds", 1)),
+        virtual_loss=float(getattr(args, "virtual_loss", 0.0)),
+        track_distinct_terminals=bool(getattr(args, "track_distinct_terminals", False)),
+        search_mode=str(getattr(args, "search_mode", "infer")),
+        collect_prior_mix=float(getattr(args, "collect_prior_mix", 0.30)),
+        collect_prior_temp=float(getattr(args, "collect_prior_temp", 1.8)),
+        infer_prior_mix=float(getattr(args, "infer_prior_mix", 0.0)),
+        infer_prior_temp=float(getattr(args, "infer_prior_temp", 1.0)),
+        alloc_lambda_best=float(getattr(args, "alloc_lambda_best", 1.0)),
+        alloc_lambda_uncertainty=float(getattr(args, "alloc_lambda_uncertainty", 0.5)),
+        alloc_lambda_novelty=float(getattr(args, "alloc_lambda_novelty", 0.25)),
+        train_policy_target_mode=str(getattr(args, "train_policy_target_mode", "best_through")),
+        train_topk_k=int(getattr(args, "train_topk_k", 3)),
+        train_lse_beta=float(getattr(args, "train_lse_beta", 4.0)),
     ))
     best = mcts.search(state)
     metrics = compute_state_metrics(graph, best)
@@ -2242,6 +2566,24 @@ def command_build_solve_traces(args: argparse.Namespace) -> None:
         action_budget=args.action_budget,
         exact_patch_limit=args.exact_patch_limit,
         profile_every=0,
+        search_alpha_mean=args.search_alpha_mean,
+        search_beta_max=args.search_beta_max,
+        novelty_coef=args.novelty_coef,
+        worker_count=args.worker_count,
+        worker_rounds=max(1, args.worker_rounds),
+        virtual_loss=args.virtual_loss,
+        track_distinct_terminals=args.track_distinct_terminals,
+        search_mode=str(args.search_mode),
+        collect_prior_mix=float(args.collect_prior_mix),
+        collect_prior_temp=float(args.collect_prior_temp),
+        infer_prior_mix=float(args.infer_prior_mix),
+        infer_prior_temp=float(args.infer_prior_temp),
+        alloc_lambda_best=float(args.alloc_lambda_best),
+        alloc_lambda_uncertainty=float(args.alloc_lambda_uncertainty),
+        alloc_lambda_novelty=float(args.alloc_lambda_novelty),
+        train_policy_target_mode=str(args.train_policy_target_mode),
+        train_topk_k=int(args.train_topk_k),
+        train_lse_beta=float(args.train_lse_beta),
     )
     records = load_records(args.input)
     writer = TraceShardWriter(args.out_dir, prefix=args.prefix, samples_per_shard=args.samples_per_shard)
@@ -2367,6 +2709,24 @@ def build_parser() -> argparse.ArgumentParser:
     bs.add_argument("--prune-min-visits", type=int, default=4)
     bs.add_argument("--prune-keep-topk", type=int, default=4)
     bs.add_argument("--confidence-beta", type=float, default=1.5)
+    bs.add_argument("--search-alpha-mean", type=float, default=0.8)
+    bs.add_argument("--search-beta-max", type=float, default=0.2)
+    bs.add_argument("--novelty-coef", type=float, default=0.05)
+    bs.add_argument("--worker-count", type=int, default=max(1, os.cpu_count() // 2 if os.cpu_count() else 2))
+    bs.add_argument("--worker-rounds", type=int, default=1)
+    bs.add_argument("--virtual-loss", type=float, default=0.25)
+    bs.add_argument("--track-distinct-terminals", action="store_true")
+    bs.add_argument("--search-mode", choices=["collect", "infer", "noprior"], default="collect")
+    bs.add_argument("--collect-prior-mix", type=float, default=0.30)
+    bs.add_argument("--collect-prior-temp", type=float, default=1.8)
+    bs.add_argument("--infer-prior-mix", type=float, default=0.0)
+    bs.add_argument("--infer-prior-temp", type=float, default=1.0)
+    bs.add_argument("--alloc-lambda-best", type=float, default=1.0)
+    bs.add_argument("--alloc-lambda-uncertainty", type=float, default=0.5)
+    bs.add_argument("--alloc-lambda-novelty", type=float, default=0.25)
+    bs.add_argument("--train-policy-target-mode", choices=["qmax", "best_through", "topk_mean", "logsumexp"], default="best_through")
+    bs.add_argument("--train-topk-k", type=int, default=3)
+    bs.add_argument("--train-lse-beta", type=float, default=4.0)
     bs.add_argument("--seed", type=int, default=0)
     bs.add_argument("--log-every-records", type=int, default=25)
     bs.set_defaults(func=command_build_solve_traces)
@@ -2422,6 +2782,24 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("--prune-min-visits", type=int, default=4)
     s.add_argument("--prune-keep-topk", type=int, default=4)
     s.add_argument("--confidence-beta", type=float, default=1.5)
+    s.add_argument("--search-alpha-mean", type=float, default=0.8)
+    s.add_argument("--search-beta-max", type=float, default=0.2)
+    s.add_argument("--novelty-coef", type=float, default=0.05)
+    s.add_argument("--worker-count", type=int, default=max(1, os.cpu_count() // 2 if os.cpu_count() else 2))
+    s.add_argument("--worker-rounds", type=int, default=1)
+    s.add_argument("--virtual-loss", type=float, default=0.25)
+    s.add_argument("--track-distinct-terminals", action="store_true")
+    s.add_argument("--search-mode", choices=["collect", "infer", "noprior"], default="infer")
+    s.add_argument("--collect-prior-mix", type=float, default=0.30)
+    s.add_argument("--collect-prior-temp", type=float, default=1.8)
+    s.add_argument("--infer-prior-mix", type=float, default=0.0)
+    s.add_argument("--infer-prior-temp", type=float, default=1.0)
+    s.add_argument("--alloc-lambda-best", type=float, default=1.0)
+    s.add_argument("--alloc-lambda-uncertainty", type=float, default=0.5)
+    s.add_argument("--alloc-lambda-novelty", type=float, default=0.25)
+    s.add_argument("--train-policy-target-mode", choices=["qmax", "best_through", "topk_mean", "logsumexp"], default="best_through")
+    s.add_argument("--train-topk-k", type=int, default=3)
+    s.add_argument("--train-lse-beta", type=float, default=4.0)
     s.add_argument("--action-budget", type=int, default=DEFAULT_ACTION_BUDGET)
     s.add_argument("--exact-patch-limit", type=int, default=12)
     s.add_argument("--profile-every", type=int, default=8)

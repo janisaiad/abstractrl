@@ -2,3 +2,15 @@
 [100/120] wrote 1486 samples
 done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train
 done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_valid
+Traceback (most recent call last):
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_curriculum_gcp_v4.py", line 427, in <module>
+    main()
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_curriculum_gcp_v4.py", line 372, in main
+    build_solve_traces(s1_train_jsonl[idx], tr_dir, "solve", base_ckpt, k=sc.k, episodes=STAGE1_TRAIN.solve_train, max_steps=16, simulations=STAGE1_TRAIN.simulations_trace, seed=int(args.seed) + 300 + idx)
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_curriculum_gcp_v4.py", line 199, in build_solve_traces
+    run_cmd(cmd, V3_ROOT)
+  File "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/run_mixed_curriculum_gcp_v4.py", line 81, in run_cmd
+    subprocess.run(cmd, cwd=str(cwd), check=True)
+  File "/usr/lib64/python3.9/subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/gcp_trace_abstractbeam_v3.py', 'build-solve-traces', '--input', '/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/data/stage1_n100/train.jsonl', '--out-dir', '/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v4/runs/gcp_trm_mixed_curriculum_v4/mixed_curriculum_1776880227/stage1_100_200/n100/traces_train', '--prefix', 'solve', '--samples-per-shard', '5000', '--episodes-per-graph', '2', '--max-steps', '16', '--k', '6', '--simulations', '96', '--seed', '20260722', '--log-every-records', '50', '--ckpt', '/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt']' died with <Signals.SIGTERM: 15>.

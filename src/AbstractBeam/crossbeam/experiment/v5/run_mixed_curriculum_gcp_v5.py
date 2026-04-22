@@ -34,6 +34,7 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 import torch
 
 ROOT = Path(__file__).resolve().parent
+V3_ROOT = ROOT.parent / "v3"
 RUNS_ROOT = ROOT / "runs" / "gcp_trm_mixed_curriculum_v5"
 DATA_ROOT = ROOT / "data" / "gcp_mixed_curriculum_v5"
 
@@ -79,8 +80,8 @@ DEFAULT_STAGE1_TRAIN = TrainCfg(
     teacher_valid=3,
     solve_train=2,
     solve_valid=1,
-    simulations_trace=96,
-    simulations_eval=128,
+    simulations_trace=48,
+    simulations_eval=96,
 )
 DEFAULT_STAGE2_TRAIN = TrainCfg(
     epochs=4,
@@ -91,8 +92,8 @@ DEFAULT_STAGE2_TRAIN = TrainCfg(
     teacher_valid=2,
     solve_train=2,
     solve_valid=1,
-    simulations_trace=128,
-    simulations_eval=160,
+    simulations_trace=64,
+    simulations_eval=128,
 )
 
 
@@ -184,7 +185,7 @@ def build_teacher_traces(input_jsonl: Path, out_dir: Path, prefix: str, corrupti
             "--seed", str(seed),
             "--log-every-records", "50",
         ],
-        ROOT,
+        V3_ROOT,
     )
 
 
@@ -210,12 +211,27 @@ def build_solve_traces(
         "--max-steps", str(max_steps),
         "--k", str(k),
         "--simulations", str(simulations),
+        "--search-alpha-mean", "0.75",
+        "--search-beta-max", "0.25",
+        "--novelty-coef", "0.05",
+        "--search-mode", "collect",
+        "--collect-prior-mix", "0.35",
+        "--collect-prior-temp", "1.9",
+        "--worker-count", str(max(1, torch.cuda.device_count() * 4 if torch.cuda.is_available() else 4)),
+        "--virtual-loss", "0.25",
+        "--alloc-lambda-best", "1.0",
+        "--alloc-lambda-uncertainty", "0.7",
+        "--alloc-lambda-novelty", "0.35",
+        "--train-policy-target-mode", "best_through",
+        "--train-topk-k", "3",
+        "--train-lse-beta", "4.0",
+        "--track-distinct-terminals",
         "--seed", str(seed),
         "--log-every-records", "50",
     ]
     if ckpt is not None and ckpt.exists():
         cmd.extend(["--ckpt", str(ckpt)])
-    run_cmd(cmd, ROOT)
+    run_cmd(cmd, V3_ROOT)
 
 
 def train_mixed(
@@ -242,7 +258,7 @@ def train_mixed(
     ]
     if init_ckpt is not None and init_ckpt.exists():
         cmd.extend(["--init-ckpt", str(init_ckpt)])
-    run_cmd(cmd, ROOT)
+    run_cmd(cmd, V3_ROOT)
     ckpt = out_dir / "model-best.pt"
     if not ckpt.exists():
         ckpt = out_dir / "model-last.pt"
@@ -269,8 +285,12 @@ def eval_indistribution(eval_files: Sequence[Path], ckpt: Path, size_cfgs: Seque
                     "--k", str(sc.k),
                     "--simulations", str(DEFAULT_STAGE1_TRAIN.simulations_eval if sc.n < 400 else DEFAULT_STAGE2_TRAIN.simulations_eval),
                     "--max-depth", "128",
+                    "--search-alpha-mean", "0.75",
+                    "--search-beta-max", "0.25",
+                    "--search-mode", "infer",
+                    "--worker-count", str(max(1, torch.cuda.device_count() * 4 if torch.cuda.is_available() else 4)),
                 ],
-                cwd=str(ROOT), text=True,
+                cwd=str(V3_ROOT), text=True,
             )
             sol = json.loads(out)
             indep = sum(1 for u, v in rec["edges"] if sol["colors"][u] == sol["colors"][v])
@@ -328,9 +348,10 @@ def run_ladder_eval(
         "--baseline-method", "fixed_tabu_recolor",
         "--penalty-mode", "last_profile_plus_const",
         "--solver-mode", "inprocess",
+        "--store-mcts-trees",
     ]
-    run_cmd(cmd, ROOT)
-    return ROOT / "runs" / "gcp_trm_scaleup_v3" / out_session_name
+    run_cmd(cmd, V3_ROOT)
+    return V3_ROOT / "runs" / "gcp_trm_scaleup_v3" / out_session_name
 
 
 def _cfgs_to_json(cfgs: Sequence[SizeCfg]) -> List[Dict[str, Any]]:
