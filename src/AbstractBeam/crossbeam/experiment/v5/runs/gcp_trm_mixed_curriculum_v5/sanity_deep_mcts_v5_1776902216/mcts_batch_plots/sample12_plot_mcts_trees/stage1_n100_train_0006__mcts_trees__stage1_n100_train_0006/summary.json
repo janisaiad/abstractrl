@@ -1,0 +1,10 @@
+{
+  "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_deep_mcts_v5_1776902216/stage1_100_200/n100/traces_train/mcts_trees/stage1_n100_train_0006/stage1_n100_train_0006__solve001__step004.mcts_tree.json",
+  "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_deep_mcts_v5_1776902216/mcts_batch_plots/sample12_plot_mcts_trees/stage1_n100_train_0006__mcts_trees__stage1_n100_train_0006",
+  "graph_name": "stage1_n100_train_0006",
+  "budget": "mcts_trees",
+  "method": "stage1_n100_train_0006",
+  "num_nodes": 3,
+  "max_depth": 2,
+  "tree_animation_error": null
+}

@@ -199,6 +199,12 @@ def build_solve_traces(
     max_steps: int,
     simulations: int,
     seed: int,
+    mcts_max_depth: int = 48,
+    prune_every: int = 32,
+    prune_keep_topk: int = 4,
+    worker_count: Optional[int] = None,
+    mcts_sim_trace: str = "aggregates",
+    mcts_sim_trace_cap: int = 50000,
 ) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     tree_dir = out_dir / "mcts_trees"
@@ -213,13 +219,21 @@ def build_solve_traces(
         "--max-steps", str(max_steps),
         "--k", str(k),
         "--simulations", str(simulations),
+        "--max-depth", str(int(mcts_max_depth)),
+        "--prune-every", str(int(prune_every)),
+        "--prune-keep-topk", str(int(prune_keep_topk)),
         "--search-alpha-mean", "0.75",
         "--search-beta-max", "0.25",
         "--novelty-coef", "0.05",
         "--search-mode", "collect",
         "--collect-prior-mix", "0.35",
         "--collect-prior-temp", "1.9",
-        "--worker-count", str(max(1, torch.cuda.device_count() * 4 if torch.cuda.is_available() else 4)),
+        "--worker-count",
+        str(
+            int(worker_count)
+            if worker_count is not None
+            else max(1, torch.cuda.device_count() * 4 if torch.cuda.is_available() else 4)
+        ),
         "--virtual-loss", "0.25",
         "--alloc-lambda-best", "1.0",
         "--alloc-lambda-uncertainty", "0.7",
@@ -229,6 +243,10 @@ def build_solve_traces(
         "--train-lse-beta", "4.0",
         "--track-distinct-terminals",
         "--mcts-tree-dump-dir", str(tree_dir),
+        "--mcts-sim-trace",
+        str(mcts_sim_trace),
+        "--mcts-sim-trace-cap",
+        str(int(mcts_sim_trace_cap)),
         "--seed", str(seed),
         "--log-every-records", "50",
     ]
@@ -270,7 +288,14 @@ def train_mixed(
     return ckpt
 
 
-def eval_indistribution(eval_files: Sequence[Path], ckpt: Path, size_cfgs: Sequence[SizeCfg], out_dir: Path) -> Dict[str, Any]:
+def eval_indistribution(
+    eval_files: Sequence[Path],
+    ckpt: Path,
+    size_cfgs: Sequence[SizeCfg],
+    out_dir: Path,
+    mcts_sim_trace: str = "aggregates",
+    mcts_sim_trace_cap: int = 50000,
+) -> Dict[str, Any]:
     out_dir.mkdir(parents=True, exist_ok=True)
     results: List[Dict[str, Any]] = []
     for path, sc in zip(eval_files, size_cfgs):
@@ -296,6 +321,10 @@ def eval_indistribution(eval_files: Sequence[Path], ckpt: Path, size_cfgs: Seque
                     "--search-mode", "infer",
                     "--worker-count", str(max(1, torch.cuda.device_count() * 4 if torch.cuda.is_available() else 4)),
                     "--mcts-tree-dump", str(tree_dump),
+                    "--mcts-sim-trace",
+                    str(mcts_sim_trace),
+                    "--mcts-sim-trace-cap",
+                    str(int(mcts_sim_trace_cap)),
                 ],
                 cwd=str(V3_ROOT), text=True,
             )
@@ -385,6 +414,29 @@ def main() -> None:
     ap.add_argument("--stage2-steps", type=int, default=DEFAULT_STAGE2_TRAIN.steps_per_epoch)
     ap.add_argument("--stage2-valid-steps", type=int, default=DEFAULT_STAGE2_TRAIN.valid_steps)
     ap.add_argument("--stage2-batch", type=int, default=DEFAULT_STAGE2_TRAIN.batch_size)
+    ap.add_argument(
+        "--deep-mcts-traces",
+        action="store_true",
+        help="Use deeper/wider MCTS for solve-trace collection (more simulations, higher max-depth, gentler pruning, fewer parallel workers for stability).",
+    )
+    ap.add_argument(
+        "--trace-mcts-simulations",
+        type=int,
+        default=0,
+        help="Override MCTS simulations for solve-trace collection when --deep-mcts-traces is set (0 => 320 stage1, 384 stage2).",
+    )
+    ap.add_argument("--trace-mcts-max-depth", type=int, default=0, help="With --deep-mcts-traces: max MCTS depth (0 => 96).")
+    ap.add_argument("--trace-mcts-prune-every", type=int, default=0, help="With --deep-mcts-traces: prune period (0 => 128).")
+    ap.add_argument("--trace-mcts-prune-keep-topk", type=int, default=0, help="With --deep-mcts-traces: keep-topk when pruning (0 => 8).")
+    ap.add_argument("--trace-mcts-workers", type=int, default=0, help="With --deep-mcts-traces: worker count (0 => 2).")
+    ap.add_argument(
+        "--mcts-sim-trace",
+        type=str,
+        default="aggregates",
+        choices=["off", "aggregates", "full"],
+        help="Per-simulation MCTS instrumentation in dumped trees (solve-traces + in-dist eval).",
+    )
+    ap.add_argument("--mcts-sim-trace-cap", type=int, default=50000, help="Cap on per-tree simulation summaries / full paths.")
     args = ap.parse_args()
 
     RUNS_ROOT.mkdir(parents=True, exist_ok=True)
@@ -456,6 +508,23 @@ def main() -> None:
         simulations_eval=DEFAULT_STAGE2_TRAIN.simulations_eval,
     )
 
+    trace_tm: Dict[str, Any]
+    trace_s1_simulations: Optional[int]
+    trace_s2_simulations: Optional[int]
+    if bool(args.deep_mcts_traces):
+        trace_tm = {
+            "mcts_max_depth": int(args.trace_mcts_max_depth or 96),
+            "prune_every": int(args.trace_mcts_prune_every or 128),
+            "prune_keep_topk": int(args.trace_mcts_prune_keep_topk or 8),
+            "worker_count": int(args.trace_mcts_workers or 2),
+        }
+        trace_s1_simulations = int(args.trace_mcts_simulations) if int(args.trace_mcts_simulations) > 0 else 320
+        trace_s2_simulations = int(args.trace_mcts_simulations) if int(args.trace_mcts_simulations) > 0 else 384
+    else:
+        trace_tm = {"mcts_max_depth": 48, "prune_every": 32, "prune_keep_topk": 4, "worker_count": None}
+        trace_s1_simulations = None
+        trace_s2_simulations = None
+
     # Stage-1: n=100/200
     stage1_dir = session_dir / "stage1_100_200"
     s1_train_jsonl, s1_valid_jsonl, s1_eval_jsonl = build_dataset_files(stage1_dir / "data", DEFAULT_STAGE1_SIZES, seed=int(args.seed) + 11, prefix="stage1")
@@ -466,8 +535,34 @@ def main() -> None:
         va_dir = stage1_dir / f"n{sc.n}" / "traces_valid"
         build_teacher_traces(s1_train_jsonl[idx], tr_dir, "teacher", stage1_train_cfg.teacher_train, max_steps=24, seed=int(args.seed) + 100 + idx)
         build_teacher_traces(s1_valid_jsonl[idx], va_dir, "teacher", stage1_train_cfg.teacher_valid, max_steps=20, seed=int(args.seed) + 200 + idx)
-        build_solve_traces(s1_train_jsonl[idx], tr_dir, "solve", base_ckpt, k=sc.k, episodes=stage1_train_cfg.solve_train, max_steps=16, simulations=stage1_train_cfg.simulations_trace, seed=int(args.seed) + 300 + idx)
-        build_solve_traces(s1_valid_jsonl[idx], va_dir, "solve", base_ckpt, k=sc.k, episodes=stage1_train_cfg.solve_valid, max_steps=12, simulations=max(32, stage1_train_cfg.simulations_trace // 2), seed=int(args.seed) + 400 + idx)
+        build_solve_traces(
+            s1_train_jsonl[idx],
+            tr_dir,
+            "solve",
+            base_ckpt,
+            k=sc.k,
+            episodes=stage1_train_cfg.solve_train,
+            max_steps=16,
+            simulations=int(trace_s1_simulations) if trace_s1_simulations is not None else int(stage1_train_cfg.simulations_trace),
+            seed=int(args.seed) + 300 + idx,
+            mcts_sim_trace=str(args.mcts_sim_trace),
+            mcts_sim_trace_cap=int(args.mcts_sim_trace_cap),
+            **trace_tm,
+        )
+        build_solve_traces(
+            s1_valid_jsonl[idx],
+            va_dir,
+            "solve",
+            base_ckpt,
+            k=sc.k,
+            episodes=stage1_train_cfg.solve_valid,
+            max_steps=12,
+            simulations=max(32, (int(trace_s1_simulations) if trace_s1_simulations is not None else int(stage1_train_cfg.simulations_trace)) // 2),
+            seed=int(args.seed) + 400 + idx,
+            mcts_sim_trace=str(args.mcts_sim_trace),
+            mcts_sim_trace_cap=int(args.mcts_sim_trace_cap),
+            **trace_tm,
+        )
         s1_train_trace_patterns.append(str(tr_dir / "*.pt"))
         s1_valid_trace_patterns.append(str(va_dir / "*.pt"))
 
@@ -476,7 +571,14 @@ def main() -> None:
     _merge_shards([str(small_train_pt)] + s1_train_trace_patterns, s1_train_mix)
     _merge_shards([str(small_valid_pt)] + s1_valid_trace_patterns, s1_valid_mix)
     stage1_ckpt = train_mixed(s1_train_mix, s1_valid_mix, stage1_dir / "train_run", stage1_train_cfg, seed=int(args.seed) + 500, init_ckpt=base_ckpt)
-    stage1_eval = eval_indistribution(s1_eval_jsonl, stage1_ckpt, DEFAULT_STAGE1_SIZES, stage1_dir / "eval")
+    stage1_eval = eval_indistribution(
+        s1_eval_jsonl,
+        stage1_ckpt,
+        DEFAULT_STAGE1_SIZES,
+        stage1_dir / "eval",
+        mcts_sim_trace=str(args.mcts_sim_trace),
+        mcts_sim_trace_cap=int(args.mcts_sim_trace_cap),
+    )
 
     # Stage-2: n=400
     stage2_dir = session_dir / "stage2_400"
@@ -488,8 +590,34 @@ def main() -> None:
         va_dir = stage2_dir / f"n{sc.n}" / "traces_valid"
         build_teacher_traces(s2_train_jsonl[idx], tr_dir, "teacher", stage2_train_cfg.teacher_train, max_steps=24, seed=int(args.seed) + 700 + idx)
         build_teacher_traces(s2_valid_jsonl[idx], va_dir, "teacher", stage2_train_cfg.teacher_valid, max_steps=20, seed=int(args.seed) + 800 + idx)
-        build_solve_traces(s2_train_jsonl[idx], tr_dir, "solve", stage1_ckpt, k=sc.k, episodes=stage2_train_cfg.solve_train, max_steps=16, simulations=stage2_train_cfg.simulations_trace, seed=int(args.seed) + 900 + idx)
-        build_solve_traces(s2_valid_jsonl[idx], va_dir, "solve", stage1_ckpt, k=sc.k, episodes=stage2_train_cfg.solve_valid, max_steps=12, simulations=max(32, stage2_train_cfg.simulations_trace // 2), seed=int(args.seed) + 1000 + idx)
+        build_solve_traces(
+            s2_train_jsonl[idx],
+            tr_dir,
+            "solve",
+            stage1_ckpt,
+            k=sc.k,
+            episodes=stage2_train_cfg.solve_train,
+            max_steps=16,
+            simulations=int(trace_s2_simulations) if trace_s2_simulations is not None else int(stage2_train_cfg.simulations_trace),
+            seed=int(args.seed) + 900 + idx,
+            mcts_sim_trace=str(args.mcts_sim_trace),
+            mcts_sim_trace_cap=int(args.mcts_sim_trace_cap),
+            **trace_tm,
+        )
+        build_solve_traces(
+            s2_valid_jsonl[idx],
+            va_dir,
+            "solve",
+            stage1_ckpt,
+            k=sc.k,
+            episodes=stage2_train_cfg.solve_valid,
+            max_steps=12,
+            simulations=max(32, (int(trace_s2_simulations) if trace_s2_simulations is not None else int(stage2_train_cfg.simulations_trace)) // 2),
+            seed=int(args.seed) + 1000 + idx,
+            mcts_sim_trace=str(args.mcts_sim_trace),
+            mcts_sim_trace_cap=int(args.mcts_sim_trace_cap),
+            **trace_tm,
+        )
         s2_train_trace_patterns.append(str(tr_dir / "*.pt"))
         s2_valid_trace_patterns.append(str(va_dir / "*.pt"))
 
@@ -498,7 +626,14 @@ def main() -> None:
     _merge_shards([str(small_train_pt)] + s1_train_trace_patterns + s2_train_trace_patterns, s2_train_mix)
     _merge_shards([str(small_valid_pt)] + s1_valid_trace_patterns + s2_valid_trace_patterns, s2_valid_mix)
     final_ckpt = train_mixed(s2_train_mix, s2_valid_mix, stage2_dir / "train_run", stage2_train_cfg, seed=int(args.seed) + 1100, init_ckpt=stage1_ckpt)
-    stage2_eval = eval_indistribution(s2_eval_jsonl, final_ckpt, DEFAULT_STAGE2_SIZES, stage2_dir / "eval")
+    stage2_eval = eval_indistribution(
+        s2_eval_jsonl,
+        final_ckpt,
+        DEFAULT_STAGE2_SIZES,
+        stage2_dir / "eval",
+        mcts_sim_trace=str(args.mcts_sim_trace),
+        mcts_sim_trace_cap=int(args.mcts_sim_trace_cap),
+    )
 
     summary: Dict[str, Any] = {
         "session_dir": str(session_dir),

@@ -250,6 +250,12 @@ class SearchConfig:
     train_policy_target_mode: str = "best_through"  # qmax|best_through|topk_mean|logsumexp
     train_topk_k: int = 3
     train_lse_beta: float = 4.0
+    # MCTS instrumentation for dumps / reverse-engineering sanity runs.
+    # off: no per-run simulation tables (smallest JSON)
+    # aggregates: histograms + expand counters + per-sim scalar summaries (bounded list cap)
+    # full: also record each simulation path (steps) up to mcts_sim_trace_cap entries
+    mcts_sim_trace_mode: str = "aggregates"
+    mcts_sim_trace_cap: int = 50000
 
 
 def set_seed(seed: int) -> None:
@@ -1862,6 +1868,13 @@ class GCPMCTS:
         self.distinct_terminals: Set[bytes] = set()
         self.state_to_node: Dict[bytes, int] = {}
         self.root_action_alloc: np.ndarray = np.zeros(0, dtype=np.int32)
+        self._search_wall_seconds: float = 0.0
+        self._search_simulations_target: int = 0
+        self._search_simulations_done: int = 0
+        self._search_early_stopped_solved: bool = False
+        self._mcts_stat_expand_tt_reuse: int = 0
+        self._mcts_stat_expand_model_eval: int = 0
+        self._mcts_stat_expand_trivial_terminal: int = 0
 
     def evaluate_with_model(self, state: RepairState, metrics: StateMetrics, candidates: List[CandidateAction]) -> Tuple[np.ndarray, float]:
         if str(getattr(self.cfg, "search_mode", "collect")) == "noprior":
@@ -2042,10 +2055,12 @@ class GCPMCTS:
             self.best_state = node.state.copy()
             self.best_metrics = metrics
         if metrics.conflicts == 0:
+            self._mcts_stat_expand_trivial_terminal += 1
             node.expanded = True
             node.terminal = True
             return 1.0
         if key in self.cache:
+            self._mcts_stat_expand_tt_reuse += 1
             cached = self.cache[key]
             node.candidates = cached.candidates
             node.priors = cached.priors.copy()
@@ -2064,9 +2079,11 @@ class GCPMCTS:
             return cached.value
         cands = generate_candidate_actions(self.graph, node.state, metrics, list(self.macros.values()), action_budget=self.cfg.action_budget, exact_patch_limit=self.cfg.exact_patch_limit)
         if not cands:
+            self._mcts_stat_expand_trivial_terminal += 1
             node.expanded = True
             node.terminal = True
             return float(1.0 - metrics.conflicts / max(self.graph.m, 1))
+        self._mcts_stat_expand_model_eval += 1
         priors, value = self.evaluate_with_model(node.state, metrics, cands)
         node.candidates = cands
         node.priors = priors.astype(np.float32)
@@ -2133,6 +2150,68 @@ class GCPMCTS:
                 best_a = int(valid[0]) if valid.size else 0
         return int(best_a)
 
+    def _reset_mcts_instrumentation(self) -> None:
+        self._mcts_stat_expand_tt_reuse = 0
+        self._mcts_stat_expand_model_eval = 0
+        self._mcts_stat_expand_trivial_terminal = 0
+        self._sim_depth_hist = collections.defaultdict(int)
+        self._sim_outcome_hist = collections.defaultdict(int)
+        self._sim_root_action_hist = collections.defaultdict(int)
+        self._sim_forced_root_hist = collections.defaultdict(int)
+        self._sim_tt_join_hist = collections.defaultdict(int)
+        self._sim_edge_reuse_hist = collections.defaultdict(int)
+        self._sim_new_child_hist = collections.defaultdict(int)
+        self._sim_summaries = []
+        self._sim_paths_full = []
+
+    def _record_simulation_instrumentation(
+        self,
+        *,
+        path_len: int,
+        stop_reason: str,
+        leaf_conflicts: int,
+        root_action: int,
+        used_forced_root: bool,
+        tt_joins: int,
+        edge_reuses: int,
+        new_children: int,
+        trace_steps: Optional[List[Dict[str, Any]]],
+    ) -> None:
+        mode = str(getattr(self.cfg, "mcts_sim_trace_mode", "off"))
+        if mode == "off":
+            return
+        self._sim_depth_hist[int(path_len)] += 1
+        self._sim_outcome_hist[str(stop_reason)] += 1
+        self._sim_forced_root_hist["yes" if used_forced_root else "no"] += 1
+        self._sim_tt_join_hist[int(tt_joins)] += 1
+        self._sim_edge_reuse_hist[int(edge_reuses)] += 1
+        self._sim_new_child_hist[int(new_children)] += 1
+        if root_action >= 0:
+            self._sim_root_action_hist[int(root_action)] += 1
+        cap = max(1000, int(getattr(self.cfg, "mcts_sim_trace_cap", 50000)))
+        if len(self._sim_summaries) < cap:
+            self._sim_summaries.append(
+                {
+                    "path_len": int(path_len),
+                    "stop": str(stop_reason),
+                    "leaf_conflicts": int(leaf_conflicts),
+                    "root_action": int(root_action),
+                    "forced_root": bool(used_forced_root),
+                    "tt_joins": int(tt_joins),
+                    "edge_reuses": int(edge_reuses),
+                    "new_children": int(new_children),
+                }
+            )
+        if mode == "full" and trace_steps is not None and len(self._sim_paths_full) < cap:
+            self._sim_paths_full.append(
+                {
+                    "stop": str(stop_reason),
+                    "leaf_conflicts": int(leaf_conflicts),
+                    "path_len": int(path_len),
+                    "steps": trace_steps,
+                }
+            )
+
     def run_search(self, root_state: RepairState) -> MCTSNode:
         self.nodes = [MCTSNode(root_state.copy())]
         self.nodes[0].tt_key = state_key(root_state)
@@ -2141,6 +2220,7 @@ class GCPMCTS:
         self.best_metrics = compute_state_metrics(self.graph, root_state)
         self.anytime_trace = []
         self.distinct_terminals = set()
+        self._reset_mcts_instrumentation()
         t0 = time.time()
         profile_every = max(1, int(getattr(self.cfg, "profile_every", 0) or 0))
         worker_count = max(1, int(getattr(self.cfg, "worker_count", 1)))
@@ -2163,14 +2243,26 @@ class GCPMCTS:
                 self.anytime_trace.append({"simulation": int(sims_done), "best_conflicts": int(best_conf), "elapsed_sec": float(time.time() - t0)})
             if self.best_metrics is not None and self.best_metrics.conflicts == 0:
                 break
+        self._search_wall_seconds = float(time.time() - t0)
+        self._search_simulations_target = int(self.cfg.simulations)
+        self._search_simulations_done = int(sims_done)
+        self._search_early_stopped_solved = bool(self.best_metrics is not None and self.best_metrics.conflicts == 0)
         return self.nodes[0]
 
     def _simulate_once(self, forced_root_action: int = -1) -> None:
+        trace_mode = str(getattr(self.cfg, "mcts_sim_trace_mode", "off"))
         path: List[Tuple[int, int, float]] = []
         visited_nodes: List[int] = []
         node_id = 0
         depth = 0
         seen_on_path: Set[int] = set()
+        trace_steps: List[Dict[str, Any]] = []
+        used_forced_root = False
+        edge_reuses = 0
+        tt_joins = 0
+        new_children = 0
+        stop_reason = "unknown"
+        leaf_conflicts = int(10**9)
         while True:
             with self.tree_lock:
                 node = self.nodes[node_id]
@@ -2187,14 +2279,36 @@ class GCPMCTS:
                         node.frozen = True
                         if self.cfg.track_distinct_terminals:
                             self.distinct_terminals.add(state_key(node.state))
+                        stop_reason = "solved"
+                    elif bool(node.terminal):
+                        stop_reason = "terminal_unsolved"
+                    elif bool(node.dead):
+                        stop_reason = "dead_leaf"
+                    elif depth >= int(self.cfg.max_depth):
+                        stop_reason = "max_depth"
+                    else:
+                        stop_reason = "other_leaf"
+                    leaf_conflicts = int(terminal_conf)
                     break
                 if depth == 0 and forced_root_action >= 0 and forced_root_action < len(node.candidates) and bool(node.alive[forced_root_action]):
                     a = int(forced_root_action)
+                    used_forced_root = True
                 else:
                     a = self.select_action(node_id)
                 if a in node.children:
                     child_id = node.children[a]
                     reward = self.nodes[child_id].reward_from_parent
+                    edge_reuses += 1
+                    if trace_mode == "full":
+                        trace_steps.append(
+                            {
+                                "node_id": int(node_id),
+                                "depth": int(depth),
+                                "action": int(a),
+                                "via": "edge",
+                                "forced_root": bool(depth == 0 and used_forced_root),
+                            }
+                        )
                 else:
                     metrics = node.metrics if node.metrics is not None else compute_state_metrics(self.graph, node.state)
                     nxt_state, nxt_metrics, reward = transition_state(self.graph, node.state, metrics, node.candidates[a], macros=self.macros, exact_patch_limit=self.cfg.exact_patch_limit)
@@ -2202,6 +2316,8 @@ class GCPMCTS:
                     if nxt_key in self.state_to_node:
                         child_id = int(self.state_to_node[nxt_key])
                         node.children[a] = child_id
+                        tt_joins += 1
+                        via = "tt"
                     else:
                         child_id = len(self.nodes)
                         child_node = MCTSNode(nxt_state, parent=node_id, parent_action=a, reward_from_parent=reward)
@@ -2209,12 +2325,26 @@ class GCPMCTS:
                         self.nodes.append(child_node)
                         self.state_to_node[nxt_key] = child_id
                         node.children[a] = child_id
+                        new_children += 1
+                        via = "new"
+                    if trace_mode == "full":
+                        trace_steps.append(
+                            {
+                                "node_id": int(node_id),
+                                "depth": int(depth),
+                                "action": int(a),
+                                "via": str(via),
+                                "forced_root": bool(depth == 0 and used_forced_root),
+                            }
+                        )
                     if self.best_metrics is None or nxt_metrics.conflicts < self.best_metrics.conflicts:
                         self.best_metrics = nxt_metrics
                         self.best_state = nxt_state.copy()
                 if child_id in seen_on_path:
                     node.dead = True
                     backup = float(node.qsa[a] if a < len(node.qsa) else 0.0)
+                    stop_reason = "cycle"
+                    leaf_conflicts = int(node.metrics.conflicts) if node.metrics is not None else int(10**9)
                     break
                 seen_on_path.add(int(child_id))
                 if self.cfg.virtual_loss > 0:
@@ -2252,6 +2382,18 @@ class GCPMCTS:
                 if self.cfg.virtual_loss > 0:
                     node.wsa[a] += float(self.cfg.virtual_loss)
             self._propagate_status_bottom_up(visited_nodes)
+            root_action = int(path[0][1]) if path else -1
+            self._record_simulation_instrumentation(
+                path_len=int(len(path)),
+                stop_reason=str(stop_reason),
+                leaf_conflicts=int(leaf_conflicts),
+                root_action=int(root_action),
+                used_forced_root=bool(used_forced_root),
+                tt_joins=int(tt_joins),
+                edge_reuses=int(edge_reuses),
+                new_children=int(new_children),
+                trace_steps=trace_steps if trace_mode == "full" else None,
+            )
 
     def search(self, root_state: RepairState) -> RepairState:
         self.run_search(root_state)
@@ -2296,6 +2438,45 @@ def _serialize_candidate_action(c: CandidateAction) -> Dict[str, Any]:
         "token": _jsonish(c.token),
         "meta": _jsonish(c.meta),
     }
+
+
+def _json_int_histogram(h: Dict[int, int]) -> Dict[str, int]:
+    return {str(int(k)): int(v) for k, v in sorted(h.items(), key=lambda kv: int(kv[0]))}
+
+
+def _json_str_histogram(h: Dict[str, int]) -> Dict[str, int]:
+    return {str(k): int(v) for k, v in sorted(h.items(), key=lambda kv: str(kv[0]))}
+
+
+def _mcts_instrumentation_payload(mcts: GCPMCTS) -> Dict[str, Any]:
+    mode = str(getattr(mcts.cfg, "mcts_sim_trace_mode", "off"))
+    base: Dict[str, Any] = {
+        "mode": mode,
+        "search_config": dataclasses.asdict(mcts.cfg),
+        "run": {
+            "wall_seconds": float(mcts._search_wall_seconds),
+            "simulations_target": int(mcts._search_simulations_target),
+            "simulations_done": int(mcts._search_simulations_done),
+            "early_stop_solved": bool(mcts._search_early_stopped_solved),
+            "expand_tt_reuse": int(mcts._mcts_stat_expand_tt_reuse),
+            "expand_model_eval": int(mcts._mcts_stat_expand_model_eval),
+            "expand_trivial_terminal": int(mcts._mcts_stat_expand_trivial_terminal),
+            "distinct_terminal_states": int(len(mcts.distinct_terminals)),
+        },
+    }
+    if mode == "off":
+        return base
+    base["sim_depth_hist"] = _json_int_histogram(mcts._sim_depth_hist)
+    base["sim_outcome_hist"] = _json_str_histogram(mcts._sim_outcome_hist)
+    base["sim_root_action_hist"] = _json_int_histogram(mcts._sim_root_action_hist)
+    base["sim_forced_root_hist"] = _json_str_histogram(mcts._sim_forced_root_hist)
+    base["sim_tt_joins_per_rollout_hist"] = _json_int_histogram(mcts._sim_tt_join_hist)
+    base["sim_edge_reuses_per_rollout_hist"] = _json_int_histogram(mcts._sim_edge_reuse_hist)
+    base["sim_new_children_per_rollout_hist"] = _json_int_histogram(mcts._sim_new_child_hist)
+    base["simulation_summaries"] = list(mcts._sim_summaries)
+    if mode == "full":
+        base["simulation_paths"] = list(mcts._sim_paths_full)
+    return base
 
 
 def _serialize_state_metrics_full(m: StateMetrics) -> Dict[str, Any]:
@@ -2397,6 +2578,7 @@ def serialize_gcp_mcts_tree(mcts: GCPMCTS, graph: GCGraph, k: int) -> Dict[str, 
         "k": int(k),
         "num_nodes": int(len(mcts.nodes)),
         "nodes": nodes_out,
+        "mcts_instrumentation": _mcts_instrumentation_payload(mcts),
     }
 
 
@@ -2442,6 +2624,8 @@ def solve_instance(
         train_policy_target_mode=str(getattr(args, "train_policy_target_mode", "best_through")),
         train_topk_k=int(getattr(args, "train_topk_k", 3)),
         train_lse_beta=float(getattr(args, "train_lse_beta", 4.0)),
+        mcts_sim_trace_mode=str(getattr(args, "mcts_sim_trace", "aggregates")),
+        mcts_sim_trace_cap=int(getattr(args, "mcts_sim_trace_cap", 50000)),
     ))
     best = mcts.search(state)
     metrics = compute_state_metrics(graph, best)
@@ -2455,6 +2639,7 @@ def solve_instance(
         "solved": bool(metrics.conflicts == 0),
         "primitive_calls": int(best.step),
         "anytime_trace": mcts.anytime_trace,
+        "mcts_run_stats": _mcts_instrumentation_payload(mcts),
     }
     profile_out = str(getattr(args, "profile_out", "") or "")
     if profile_out:
@@ -2591,6 +2776,8 @@ def command_build_solve_traces(args: argparse.Namespace) -> None:
         train_policy_target_mode=str(args.train_policy_target_mode),
         train_topk_k=int(args.train_topk_k),
         train_lse_beta=float(args.train_lse_beta),
+        mcts_sim_trace_mode=str(getattr(args, "mcts_sim_trace", "aggregates")),
+        mcts_sim_trace_cap=int(getattr(args, "mcts_sim_trace_cap", 50000)),
     )
     records = load_records(args.input)
     writer = TraceShardWriter(args.out_dir, prefix=args.prefix, samples_per_shard=args.samples_per_shard)
@@ -2740,6 +2927,13 @@ def build_parser() -> argparse.ArgumentParser:
     bs.add_argument("--seed", type=int, default=0)
     bs.add_argument("--log-every-records", type=int, default=25)
     bs.add_argument("--mcts-tree-dump-dir", default="", help="if set, dump one MCTS tree JSON per solve step during solve-trace collection")
+    bs.add_argument(
+        "--mcts-sim-trace",
+        choices=["off", "aggregates", "full"],
+        default="aggregates",
+        help="MCTS per-simulation instrumentation stored inside each dumped tree JSON",
+    )
+    bs.add_argument("--mcts-sim-trace-cap", type=int, default=50000, help="Max recorded simulation summaries / full paths per tree dump")
     bs.set_defaults(func=command_build_solve_traces)
 
     t = sub.add_parser("train", help="ddp training over trace shards")
@@ -2820,6 +3014,13 @@ def build_parser() -> argparse.ArgumentParser:
         default="",
         help="if set, write the full MCTS search tree (nodes, states, per-action N/W/Q, branch mean/max) as JSON after search",
     )
+    s.add_argument(
+        "--mcts-sim-trace",
+        choices=["off", "aggregates", "full"],
+        default="aggregates",
+        help="Per-simulation MCTS stats in tree JSON + mcts_run_stats in solve output (full = paths with actions)",
+    )
+    s.add_argument("--mcts-sim-trace-cap", type=int, default=50000, help="Cap on stored per-simulation summaries / paths per search")
     s.set_defaults(func=command_solve)
 
     return p

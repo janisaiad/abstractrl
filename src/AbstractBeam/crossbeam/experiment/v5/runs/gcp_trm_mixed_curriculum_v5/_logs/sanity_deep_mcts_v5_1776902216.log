@@ -1,0 +1,8 @@
+[50/120] wrote 763 samples
+[100/120] wrote 1486 samples
+done: wrote 1776 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_deep_mcts_v5_1776902216/stage1_100_200/n100/traces_train
+done: wrote 154 samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_deep_mcts_v5_1776902216/stage1_100_200/n100/traces_valid
+[50/120] wrote 1600 solve-trace samples
+[100/120] wrote 3200 solve-trace samples
+done: wrote 3840 solve-trace samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_deep_mcts_v5_1776902216/stage1_100_200/n100/traces_train
+done: wrote 288 solve-trace samples to /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_deep_mcts_v5_1776902216/stage1_100_200/n100/traces_valid
