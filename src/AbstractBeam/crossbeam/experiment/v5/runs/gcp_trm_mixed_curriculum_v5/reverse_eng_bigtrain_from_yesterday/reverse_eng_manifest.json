@@ -1,0 +1,16 @@
+{
+  "ckpt_preset": "big_train",
+  "ckpt_resolved": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt",
+  "input": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_deep_mcts_v5_1776902216/stage1_100_200/data/stage1_n100/eval.jsonl",
+  "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday",
+  "presets": {
+    "ladder_trained_small": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_macros_1776746475/trained_small/model-best.pt",
+    "big_train": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt"
+  },
+  "after_run_open": [
+    "reverse_eng_manifest.json",
+    "inference_lineage.json",
+    "inference_index.json",
+    "mcts_reverse_eng_batch_stats.json"
+  ]
+}

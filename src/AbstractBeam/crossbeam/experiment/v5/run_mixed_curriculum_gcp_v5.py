@@ -635,6 +635,68 @@ def main() -> None:
         mcts_sim_trace_cap=int(args.mcts_sim_trace_cap),
     )
 
+    s1_sim_train = int(trace_s1_simulations) if trace_s1_simulations is not None else int(stage1_train_cfg.simulations_trace)
+    s1_sim_valid = max(32, s1_sim_train // 2)
+    s2_sim_train = int(trace_s2_simulations) if trace_s2_simulations is not None else int(stage2_train_cfg.simulations_trace)
+    s2_sim_valid = max(32, s2_sim_train // 2)
+    mcts_and_checkpoints: Dict[str, Any] = {
+        "schema": "mcts_and_checkpoints_v1",
+        "orchestrator": "v5/run_mixed_curriculum_gcp_v5.py",
+        "gcp_solver_entrypoint": str(V3_ROOT / "gcp_trace_abstractbeam_v3.py"),
+        "notes_fr": [
+            "L'entraînement PyTorch (train) ne lance pas MCTS : il lit des shards de traces et met à jour les poids.",
+            "Le MCTS apparaît dans (1) build-solve-traces : plusieurs recherches MCTS par graphe/épisode pour générer des traces, avec --ckpt = prior TRM.",
+            "(2) eval in-distribution : une recherche MCTS par graphe d'éval, avec --ckpt = le modèle produit à la fin du stage (stage1_ckpt ou final_ckpt).",
+            "Arbres JSON : sous stage1_100_200/n*/traces_train|traces_valid/mcts_trees/<graph>/ et stage2_400/.../ idem ; éval : stage1_100_200/eval/mcts_trees/n*/.",
+            "Agrégation reverse-eng : python3 v5/aggregate_mcts_sanity_stats.py --inputs <dossier_ou_glob> --out-json stats.json",
+        ],
+        "reference_petit_modele_ladder_v3": str(
+            V3_ROOT
+            / "runs"
+            / "gcp_trm_scaleup_v3"
+            / "small_to_large_ladder_macros_1776746475"
+            / "trained_small"
+            / "model-best.pt"
+        ),
+        "pytorch_training_no_mcts": {
+            "stage1": {"init_ckpt": str(base_ckpt), "output_ckpt": str(stage1_ckpt)},
+            "stage2": {"init_ckpt": str(stage1_ckpt), "output_ckpt": str(final_ckpt)},
+        },
+        "stage1_solve_traces_mcts": {
+            "role": "generation de traces solve (plusieurs pas MCTS par graphe)",
+            "checkpoint_for_prior_and_value": str(base_ckpt),
+            "deep_mcts_traces": bool(args.deep_mcts_traces),
+            "mcts_hyperparams": {**trace_tm, "mcts_sim_trace": str(args.mcts_sim_trace), "mcts_sim_trace_cap": int(args.mcts_sim_trace_cap)},
+            "simulations_train_graphs": s1_sim_train,
+            "simulations_valid_graphs": s1_sim_valid,
+            "tree_dumps_under": str(stage1_dir),
+        },
+        "stage1_eval_mcts": {
+            "role": "une recherche MCTS par ligne du JSONL d'eval",
+            "checkpoint_for_prior_and_value": str(stage1_ckpt),
+            "simulations_n100_n200": int(DEFAULT_STAGE1_TRAIN.simulations_eval),
+            "max_depth": 128,
+            "search_mode": "infer",
+            "tree_dumps_under": str(stage1_dir / "eval"),
+        },
+        "stage2_solve_traces_mcts": {
+            "role": "generation de traces solve (stage 2)",
+            "checkpoint_for_prior_and_value": str(stage1_ckpt),
+            "mcts_hyperparams": {**trace_tm, "mcts_sim_trace": str(args.mcts_sim_trace), "mcts_sim_trace_cap": int(args.mcts_sim_trace_cap)},
+            "simulations_train_graphs": s2_sim_train,
+            "simulations_valid_graphs": s2_sim_valid,
+            "tree_dumps_under": str(stage2_dir),
+        },
+        "stage2_eval_mcts": {
+            "role": "une recherche MCTS par ligne du JSONL d'eval",
+            "checkpoint_for_prior_and_value": str(final_ckpt),
+            "simulations_n400": int(DEFAULT_STAGE2_TRAIN.simulations_eval),
+            "max_depth": 128,
+            "search_mode": "infer",
+            "tree_dumps_under": str(stage2_dir / "eval"),
+        },
+    }
+
     summary: Dict[str, Any] = {
         "session_dir": str(session_dir),
         "seed": int(args.seed),
@@ -654,6 +716,7 @@ def main() -> None:
             "train_cfg": asdict(stage2_train_cfg),
         },
         "ladder_eval_session": None,
+        "mcts_and_checkpoints": mcts_and_checkpoints,
     }
 
     if args.run_ladder_eval:
@@ -669,6 +732,7 @@ def main() -> None:
         summary["ladder_eval_session"] = str(ladder_session)
 
     (session_dir / "summary.json").write_text(json.dumps(summary, indent=2))
+    (session_dir / "mcts_lineage.json").write_text(json.dumps(mcts_and_checkpoints, indent=2))
     print(json.dumps(summary, indent=2), flush=True)
 
 

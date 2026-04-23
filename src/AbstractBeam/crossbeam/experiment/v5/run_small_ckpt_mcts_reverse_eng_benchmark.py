@@ -106,6 +106,16 @@ def main() -> None:
         "ckpt_resolved": str(ckpt.resolve()),
         "input": str(Path(args.input).expanduser().resolve()),
         "out_dir": str(out_dir.resolve()),
+        "presets": {
+            "ladder_trained_small": str(DEFAULT_LADDER_SMALL.resolve()),
+            "big_train": str(DEFAULT_BIG_TRAIN.resolve()),
+        },
+        "after_run_open": [
+            "reverse_eng_manifest.json",
+            "inference_lineage.json",
+            "inference_index.json",
+            "mcts_reverse_eng_batch_stats.json",
+        ],
     }
     (out_dir / "reverse_eng_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 

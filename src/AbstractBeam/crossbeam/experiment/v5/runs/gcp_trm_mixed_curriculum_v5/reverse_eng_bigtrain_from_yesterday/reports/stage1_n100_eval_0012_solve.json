@@ -1,0 +1,5524 @@
+{
+  "name": "stage1_n100_eval_0012",
+  "k": 6,
+  "colors": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    4,
+    0,
+    4,
+    5,
+    2,
+    4,
+    5,
+    3,
+    2,
+    1,
+    0,
+    4,
+    5,
+    0,
+    3,
+    3,
+    4,
+    2,
+    1,
+    1,
+    0,
+    3,
+    1,
+    5,
+    5,
+    4,
+    1,
+    3,
+    5,
+    5,
+    2,
+    0,
+    3,
+    5,
+    5,
+    2,
+    0,
+    4,
+    3,
+    2,
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    4,
+    1,
+    0,
+    4,
+    4,
+    2,
+    2,
+    3,
+    0,
+    1,
+    1,
+    2,
+    3,
+    0,
+    5,
+    3,
+    3,
+    1,
+    5,
+    1,
+    1,
+    5,
+    4,
+    0,
+    0,
+    2,
+    2,
+    3,
+    4,
+    5,
+    4,
+    1,
+    5,
+    3,
+    2,
+    3,
+    2,
+    4,
+    5,
+    3,
+    1,
+    1,
+    3,
+    4,
+    5,
+    1,
+    2,
+    5
+  ],
+  "conflicts": 30,
+  "conflict_vertices": 51,
+  "core_size": 100,
+  "solved": false,
+  "primitive_calls": 8,
+  "anytime_trace": [
+    {
+      "simulation": 8,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.5900475978851318
+    },
+    {
+      "simulation": 16,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.5917515754699707
+    },
+    {
+      "simulation": 24,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.5935041904449463
+    },
+    {
+      "simulation": 32,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.595160961151123
+    },
+    {
+      "simulation": 40,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.596757173538208
+    },
+    {
+      "simulation": 48,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.5983469486236572
+    },
+    {
+      "simulation": 56,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.5999307632446289
+    },
+    {
+      "simulation": 64,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6014928817749023
+    },
+    {
+      "simulation": 72,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6030731201171875
+    },
+    {
+      "simulation": 80,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6046476364135742
+    },
+    {
+      "simulation": 88,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6062147617340088
+    },
+    {
+      "simulation": 96,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6077942848205566
+    },
+    {
+      "simulation": 104,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6093628406524658
+    },
+    {
+      "simulation": 112,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6109499931335449
+    },
+    {
+      "simulation": 120,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6125171184539795
+    },
+    {
+      "simulation": 128,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6140913963317871
+    },
+    {
+      "simulation": 136,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6156833171844482
+    },
+    {
+      "simulation": 144,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6172952651977539
+    },
+    {
+      "simulation": 152,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6188843250274658
+    },
+    {
+      "simulation": 160,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6204493045806885
+    },
+    {
+      "simulation": 168,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6220166683197021
+    },
+    {
+      "simulation": 176,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6236045360565186
+    },
+    {
+      "simulation": 184,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6251766681671143
+    },
+    {
+      "simulation": 192,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.626763105392456
+    },
+    {
+      "simulation": 200,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6283371448516846
+    },
+    {
+      "simulation": 208,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6299088001251221
+    },
+    {
+      "simulation": 216,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6315052509307861
+    },
+    {
+      "simulation": 224,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6330819129943848
+    },
+    {
+      "simulation": 232,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6346564292907715
+    },
+    {
+      "simulation": 240,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.636244535446167
+    },
+    {
+      "simulation": 248,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6378140449523926
+    },
+    {
+      "simulation": 256,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6393849849700928
+    },
+    {
+      "simulation": 264,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6409657001495361
+    },
+    {
+      "simulation": 272,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6425564289093018
+    },
+    {
+      "simulation": 280,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6441383361816406
+    },
+    {
+      "simulation": 288,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6457207202911377
+    },
+    {
+      "simulation": 296,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6473026275634766
+    },
+    {
+      "simulation": 304,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6488790512084961
+    },
+    {
+      "simulation": 312,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6504485607147217
+    },
+    {
+      "simulation": 320,
+      "best_conflicts": 30,
+      "elapsed_sec": 0.6520347595214844
+    }
+  ],
+  "mcts_run_stats": {
+    "mode": "full",
+    "search_config": {
+      "cpuct": 1.25,
+      "gamma": 1.0,
+      "simulations": 320,
+      "max_depth": 96,
+      "prune_every": 32,
+      "prune_min_visits": 4,
+      "prune_keep_topk": 4,
+      "confidence_beta": 1.5,
+      "action_budget": 128,
+      "exact_patch_limit": 12,
+      "profile_every": 8,
+      "search_alpha_mean": 0.75,
+      "search_beta_max": 0.25,
+      "novelty_coef": 0.05,
+      "worker_count": 2,
+      "worker_rounds": 1,
+      "virtual_loss": 0.25,
+      "track_distinct_terminals": false,
+      "search_mode": "infer",
+      "collect_prior_mix": 0.3,
+      "collect_prior_temp": 1.8,
+      "infer_prior_mix": 0.0,
+      "infer_prior_temp": 1.0,
+      "alloc_lambda_best": 1.0,
+      "alloc_lambda_uncertainty": 0.5,
+      "alloc_lambda_novelty": 0.25,
+      "train_policy_target_mode": "best_through",
+      "train_topk_k": 3,
+      "train_lse_beta": 4.0,
+      "mcts_sim_trace_mode": "full",
+      "mcts_sim_trace_cap": 20000
+    },
+    "run": {
+      "wall_seconds": 0.6520357131958008,
+      "simulations_target": 320,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 2,
+      "expand_trivial_terminal": 0,
+      "distinct_terminal_states": 0
+    },
+    "sim_depth_hist": {
+      "0": 319,
+      "1": 1
+    },
+    "sim_outcome_hist": {
+      "cycle": 1,
+      "dead_leaf": 319
+    },
+    "sim_root_action_hist": {
+      "34": 1
+    },
+    "sim_forced_root_hist": {
+      "no": 320
+    },
+    "sim_tt_joins_per_rollout_hist": {
+      "0": 319,
+      "1": 1
+    },
+    "sim_edge_reuses_per_rollout_hist": {
+      "0": 320
+    },
+    "sim_new_children_per_rollout_hist": {
+      "0": 319,
+      "1": 1
+    },
+    "simulation_summaries": [
+      {
+        "path_len": 1,
+        "stop": "cycle",
+        "leaf_conflicts": 30,
+        "root_action": 34,
+        "forced_root": false,
+        "tt_joins": 1,
+        "edge_reuses": 0,
+        "new_children": 1
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      },
+      {
+        "path_len": 0,
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "root_action": -1,
+        "forced_root": false,
+        "tt_joins": 0,
+        "edge_reuses": 0,
+        "new_children": 0
+      }
+    ],
+    "simulation_paths": [
+      {
+        "stop": "cycle",
+        "leaf_conflicts": 30,
+        "path_len": 1,
+        "steps": [
+          {
+            "node_id": 0,
+            "depth": 0,
+            "action": 34,
+            "via": "new",
+            "forced_root": false
+          },
+          {
+            "node_id": 1,
+            "depth": 1,
+            "action": 29,
+            "via": "tt",
+            "forced_root": false
+          }
+        ]
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      },
+      {
+        "stop": "dead_leaf",
+        "leaf_conflicts": 36,
+        "path_len": 0,
+        "steps": []
+      }
+    ]
+  },
+  "mcts_tree_dump": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0012.mcts_tree.json"
+}

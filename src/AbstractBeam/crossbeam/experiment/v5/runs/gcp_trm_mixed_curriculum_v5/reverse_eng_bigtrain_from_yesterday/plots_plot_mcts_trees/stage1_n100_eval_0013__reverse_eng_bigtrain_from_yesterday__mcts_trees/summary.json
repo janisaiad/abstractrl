@@ -1,0 +1,10 @@
+{
+  "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0013.mcts_tree.json",
+  "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0013__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+  "graph_name": "stage1_n100_eval_0013",
+  "budget": "reverse_eng_bigtrain_from_yesterday",
+  "method": "mcts_trees",
+  "num_nodes": 5,
+  "max_depth": 4,
+  "tree_animation_error": null
+}

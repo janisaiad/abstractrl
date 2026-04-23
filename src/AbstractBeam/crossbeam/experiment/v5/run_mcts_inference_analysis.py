@@ -6,14 +6,19 @@ Charge un checkpoint TRM déjà entraîné, résout un petit benchmark (JSONL de
 écrit les dumps d'arbre MCTS, produit un rapport JSON lisible (primitives par arête,
 stats N/Q/prior, action la plus visitée, lien parent→enfant), puis lance plot_mcts_trees.
 
-Usage typique (petit benchmark, checkpoint "small" fort) :
+Usage typique (petit benchmark, checkpoint déjà entraîné — pas de training ici) :
 
-  PYTHONPATH=/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment \\
+  PYTHONPATH=.../crossbeam/experiment \\
     python3 v5/run_mcts_inference_analysis.py \\
-      --ckpt /Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt \\
+      --ckpt .../v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt \\
       --input /chemin/vers/eval.jsonl \\
       --out-dir /chemin/vers/run_mcts_infer_001 \\
       --max-graphs 8
+
+  Autre ckpt « petit » ladder (TRM n20/n40) : \\
+    .../v3/runs/gcp_trm_scaleup_v3/small_to_large_ladder_macros_1776746475/trained_small/model-best.pt
+
+  À la fin : écrit inference_index.json, inference_lineage.json (quel ckpt / quels hyperparams MCTS).
 """
 
 from __future__ import annotations
@@ -309,6 +314,35 @@ def main() -> None:
         )
 
     (out / "inference_index.json").write_text(json.dumps({"graphs": index}, indent=2), encoding="utf-8")
+
+    lineage: Dict[str, Any] = {
+        "schema": "inference_mcts_lineage_v1",
+        "script": "v5/run_mcts_inference_analysis.py",
+        "mode": "inference_only_no_training",
+        "checkpoint_resolved": str(ckpt.resolve()),
+        "benchmark_jsonl": str(bench.resolve()),
+        "out_dir": str(out.resolve()),
+        "mcts_solve_flags": {
+            "max_graphs": int(args.max_graphs),
+            "k_cli": int(args.k),
+            "simulations": int(args.simulations),
+            "max_depth": int(args.max_depth),
+            "search_mode": str(args.search_mode),
+            "search_alpha_mean": float(args.search_alpha_mean),
+            "search_beta_max": float(args.search_beta_max),
+            "novelty_coef": float(args.novelty_coef),
+            "cpuct": float(args.cpuct),
+            "worker_count": int(args.worker_count),
+            "mcts_sim_trace": str(args.mcts_sim_trace),
+            "mcts_sim_trace_cap": int(args.mcts_sim_trace_cap),
+        },
+        "artifacts": {
+            "trees_dir": str(trees_dir.resolve()),
+            "reports_dir": str(reports_dir.resolve()),
+            "plots_dir": str(plots_dir.resolve()),
+        },
+    }
+    (out / "inference_lineage.json").write_text(json.dumps(lineage, indent=2), encoding="utf-8")
 
     if not args.skip_plots:
         run_cmd(

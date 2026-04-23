@@ -1,0 +1,27 @@
+{
+  "schema": "inference_mcts_lineage_v1",
+  "script": "v5/run_mcts_inference_analysis.py",
+  "mode": "inference_only_no_training",
+  "checkpoint_resolved": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v3/runs/gcp_trm_scaleup_v3/big_train_1776710200/model-best.pt",
+  "benchmark_jsonl": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/sanity_deep_mcts_v5_1776902216/stage1_100_200/data/stage1_n100/eval.jsonl",
+  "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday",
+  "mcts_solve_flags": {
+    "max_graphs": 20,
+    "k_cli": 6,
+    "simulations": 320,
+    "max_depth": 96,
+    "search_mode": "infer",
+    "search_alpha_mean": 0.75,
+    "search_beta_max": 0.25,
+    "novelty_coef": 0.05,
+    "cpuct": 1.25,
+    "worker_count": 2,
+    "mcts_sim_trace": "full",
+    "mcts_sim_trace_cap": 20000
+  },
+  "artifacts": {
+    "trees_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees",
+    "reports_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports",
+    "plots_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees"
+  }
+}

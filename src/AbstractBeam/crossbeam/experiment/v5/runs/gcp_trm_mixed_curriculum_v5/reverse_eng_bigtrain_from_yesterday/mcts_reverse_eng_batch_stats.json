@@ -1,0 +1,703 @@
+{
+  "n_files_seen": 20,
+  "n_trees_parsed_ok": 20,
+  "n_parse_errors": 0,
+  "n_legacy_trees_without_mcts_instrumentation": 0,
+  "num_nodes_summary": {
+    "mean": 3.15,
+    "median": 3.0,
+    "p90": 5.0,
+    "min": 2.0,
+    "max": 8.0
+  },
+  "rollups": {
+    "sum_wall_seconds_trees_with_inst": 14.555874586105347,
+    "sum_simulations_done_trees_with_inst": 6400,
+    "n_trees_early_stop_solved_flag": 0,
+    "sum_expand_tt_reuse": 0,
+    "sum_expand_model_eval": 63,
+    "sum_expand_trivial_terminal": 0
+  },
+  "merged_histograms": {
+    "sim_depth": {
+      "0": 6380,
+      "1": 9,
+      "2": 5,
+      "3": 3,
+      "4": 2,
+      "7": 1
+    },
+    "sim_outcome": {
+      "dead_leaf": 6380,
+      "cycle": 20
+    },
+    "sim_root_action": {
+      "27": 1,
+      "30": 1,
+      "31": 2,
+      "34": 1,
+      "37": 1,
+      "38": 1,
+      "39": 1,
+      "43": 1,
+      "44": 1,
+      "46": 1,
+      "47": 2,
+      "49": 1,
+      "51": 1,
+      "53": 1,
+      "56": 1,
+      "57": 1,
+      "58": 1,
+      "64": 1
+    },
+    "sim_forced_root": {
+      "no": 6400
+    },
+    "sim_tt_joins_per_rollout": {
+      "0": 6380,
+      "1": 20
+    },
+    "sim_edge_reuses_per_rollout": {
+      "0": 6400
+    },
+    "sim_new_children_per_rollout": {
+      "0": 6380,
+      "1": 9,
+      "2": 5,
+      "3": 3,
+      "4": 2,
+      "7": 1
+    }
+  },
+  "root_candidate_family_counts_across_trees": {
+    "vertex_recolor": 1366,
+    "kempe_swap": 1114,
+    "tabu_short": 20,
+    "focus_core": 20,
+    "tabu_long": 20,
+    "perturb_soft": 20
+  },
+  "per_tree": [
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0000.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0000",
+      "graph_n": 100,
+      "graph_m": 930,
+      "k": 6,
+      "num_nodes": 4,
+      "root_conflicts": 36,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.767874002456665,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 4,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 71,
+        "kempe_swap": 53,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.5477692434594965
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0001.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0001",
+      "graph_n": 100,
+      "graph_m": 957,
+      "k": 6,
+      "num_nodes": 2,
+      "root_conflicts": 25,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.5893154144287109,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 2,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 64,
+        "kempe_swap": 60,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.1217098934021024
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0002.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0002",
+      "graph_n": 100,
+      "graph_m": 943,
+      "k": 6,
+      "num_nodes": 2,
+      "root_conflicts": 30,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.586674690246582,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 2,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "kempe_swap": 60,
+        "vertex_recolor": 64,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 0.9648992889835618
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0003.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0003",
+      "graph_n": 100,
+      "graph_m": 896,
+      "k": 6,
+      "num_nodes": 2,
+      "root_conflicts": 20,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.56144118309021,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 2,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 74,
+        "kempe_swap": 50,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.194792722248827
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0004.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0004",
+      "graph_n": 100,
+      "graph_m": 899,
+      "k": 6,
+      "num_nodes": 3,
+      "root_conflicts": 23,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.64194655418396,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 3,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 73,
+        "kempe_swap": 51,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.310409086326174
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0005.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0005",
+      "graph_n": 100,
+      "graph_m": 929,
+      "k": 6,
+      "num_nodes": 3,
+      "root_conflicts": 36,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.7238304615020752,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 3,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 64,
+        "kempe_swap": 60,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.3314946131662546
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0006.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0006",
+      "graph_n": 100,
+      "graph_m": 950,
+      "k": 6,
+      "num_nodes": 4,
+      "root_conflicts": 32,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.7776169776916504,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 4,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 72,
+        "kempe_swap": 52,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.1656229915511738
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0007.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0007",
+      "graph_n": 100,
+      "graph_m": 932,
+      "k": 6,
+      "num_nodes": 2,
+      "root_conflicts": 26,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.6011176109313965,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 2,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 64,
+        "kempe_swap": 60,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.4680064215896342
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0008.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0008",
+      "graph_n": 100,
+      "graph_m": 906,
+      "k": 6,
+      "num_nodes": 2,
+      "root_conflicts": 28,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.6248540878295898,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 2,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 64,
+        "kempe_swap": 60,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.5004494611719421
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0009.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0009",
+      "graph_n": 100,
+      "graph_m": 913,
+      "k": 6,
+      "num_nodes": 2,
+      "root_conflicts": 28,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.5917744636535645,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 2,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 74,
+        "kempe_swap": 50,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.1471051710446405
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0010.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0010",
+      "graph_n": 100,
+      "graph_m": 934,
+      "k": 6,
+      "num_nodes": 3,
+      "root_conflicts": 32,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.7680375576019287,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 3,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 70,
+        "kempe_swap": 54,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.4781729851337388
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0011.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0011",
+      "graph_n": 100,
+      "graph_m": 901,
+      "k": 6,
+      "num_nodes": 5,
+      "root_conflicts": 30,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.9069314002990723,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 5,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 64,
+        "kempe_swap": 60,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.1976501425295394
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0012.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0012",
+      "graph_n": 100,
+      "graph_m": 940,
+      "k": 6,
+      "num_nodes": 2,
+      "root_conflicts": 36,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.6520357131958008,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 2,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 70,
+        "kempe_swap": 54,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.1035132534978702
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0013.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0013",
+      "graph_n": 100,
+      "graph_m": 913,
+      "k": 6,
+      "num_nodes": 5,
+      "root_conflicts": 35,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.9360952377319336,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 5,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 70,
+        "kempe_swap": 54,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.2722755322083685
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0014.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0014",
+      "graph_n": 100,
+      "graph_m": 941,
+      "k": 6,
+      "num_nodes": 2,
+      "root_conflicts": 39,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.6649186611175537,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 2,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "kempe_swap": 60,
+        "vertex_recolor": 64,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.2437426034431387
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0015.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0015",
+      "graph_n": 100,
+      "graph_m": 911,
+      "k": 6,
+      "num_nodes": 4,
+      "root_conflicts": 34,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.7869880199432373,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 4,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "kempe_swap": 51,
+        "vertex_recolor": 73,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.466149656650138
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0016.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0016",
+      "graph_n": 100,
+      "graph_m": 938,
+      "k": 6,
+      "num_nodes": 8,
+      "root_conflicts": 36,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 1.2324490547180176,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 8,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 71,
+        "kempe_swap": 53,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.451967840484277
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0017.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0017",
+      "graph_n": 100,
+      "graph_m": 929,
+      "k": 6,
+      "num_nodes": 3,
+      "root_conflicts": 31,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.6746683120727539,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 3,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 72,
+        "kempe_swap": 52,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.4255757762259524
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0018.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0018",
+      "graph_n": 100,
+      "graph_m": 955,
+      "k": 6,
+      "num_nodes": 2,
+      "root_conflicts": 31,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.6756401062011719,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 2,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 64,
+        "kempe_swap": 60,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 0.9634356560121501
+      }
+    },
+    {
+      "path": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0019.mcts_tree.json",
+      "graph_name": "stage1_n100_eval_0019",
+      "graph_n": 100,
+      "graph_m": 905,
+      "k": 6,
+      "num_nodes": 3,
+      "root_conflicts": 36,
+      "instrumentation_mode": "full",
+      "legacy_no_instrumentation": false,
+      "wall_seconds": 0.7916650772094727,
+      "simulations_done": 320,
+      "early_stop_solved": false,
+      "expand_tt_reuse": 0,
+      "expand_model_eval": 3,
+      "expand_trivial_terminal": 0,
+      "root_families": {
+        "vertex_recolor": 64,
+        "kempe_swap": 60,
+        "tabu_short": 1,
+        "focus_core": 1,
+        "tabu_long": 1,
+        "perturb_soft": 1
+      },
+      "root_visit_stats": {
+        "n_actions": 128,
+        "total_edge_visits_at_root": 1,
+        "max_edge_visits_at_root": 1,
+        "prior_entropy": 1.3249584679163218
+      }
+    }
+  ]
+}

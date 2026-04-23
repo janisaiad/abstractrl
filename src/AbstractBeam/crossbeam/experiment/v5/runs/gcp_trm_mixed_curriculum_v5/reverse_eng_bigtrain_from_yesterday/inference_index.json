@@ -1,0 +1,184 @@
+{
+  "graphs": [
+    {
+      "name": "stage1_n100_eval_0000",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0000.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0000_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0000_solve.json",
+      "root_conflicts_from_tree_metrics": 36,
+      "solve_conflicts": 15,
+      "num_nodes": 4
+    },
+    {
+      "name": "stage1_n100_eval_0001",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0001.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0001_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0001_solve.json",
+      "root_conflicts_from_tree_metrics": 25,
+      "solve_conflicts": 17,
+      "num_nodes": 2
+    },
+    {
+      "name": "stage1_n100_eval_0002",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0002.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0002_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0002_solve.json",
+      "root_conflicts_from_tree_metrics": 30,
+      "solve_conflicts": 20,
+      "num_nodes": 2
+    },
+    {
+      "name": "stage1_n100_eval_0003",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0003.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0003_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0003_solve.json",
+      "root_conflicts_from_tree_metrics": 20,
+      "solve_conflicts": 18,
+      "num_nodes": 2
+    },
+    {
+      "name": "stage1_n100_eval_0004",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0004.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0004_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0004_solve.json",
+      "root_conflicts_from_tree_metrics": 23,
+      "solve_conflicts": 12,
+      "num_nodes": 3
+    },
+    {
+      "name": "stage1_n100_eval_0005",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0005.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0005_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0005_solve.json",
+      "root_conflicts_from_tree_metrics": 36,
+      "solve_conflicts": 21,
+      "num_nodes": 3
+    },
+    {
+      "name": "stage1_n100_eval_0006",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0006.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0006_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0006_solve.json",
+      "root_conflicts_from_tree_metrics": 32,
+      "solve_conflicts": 14,
+      "num_nodes": 4
+    },
+    {
+      "name": "stage1_n100_eval_0007",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0007.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0007_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0007_solve.json",
+      "root_conflicts_from_tree_metrics": 26,
+      "solve_conflicts": 24,
+      "num_nodes": 2
+    },
+    {
+      "name": "stage1_n100_eval_0008",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0008.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0008_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0008_solve.json",
+      "root_conflicts_from_tree_metrics": 28,
+      "solve_conflicts": 24,
+      "num_nodes": 2
+    },
+    {
+      "name": "stage1_n100_eval_0009",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0009.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0009_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0009_solve.json",
+      "root_conflicts_from_tree_metrics": 28,
+      "solve_conflicts": 21,
+      "num_nodes": 2
+    },
+    {
+      "name": "stage1_n100_eval_0010",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0010.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0010_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0010_solve.json",
+      "root_conflicts_from_tree_metrics": 32,
+      "solve_conflicts": 25,
+      "num_nodes": 3
+    },
+    {
+      "name": "stage1_n100_eval_0011",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0011.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0011_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0011_solve.json",
+      "root_conflicts_from_tree_metrics": 30,
+      "solve_conflicts": 16,
+      "num_nodes": 5
+    },
+    {
+      "name": "stage1_n100_eval_0012",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0012.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0012_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0012_solve.json",
+      "root_conflicts_from_tree_metrics": 36,
+      "solve_conflicts": 30,
+      "num_nodes": 2
+    },
+    {
+      "name": "stage1_n100_eval_0013",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0013.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0013_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0013_solve.json",
+      "root_conflicts_from_tree_metrics": 35,
+      "solve_conflicts": 17,
+      "num_nodes": 5
+    },
+    {
+      "name": "stage1_n100_eval_0014",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0014.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0014_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0014_solve.json",
+      "root_conflicts_from_tree_metrics": 39,
+      "solve_conflicts": 33,
+      "num_nodes": 2
+    },
+    {
+      "name": "stage1_n100_eval_0015",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0015.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0015_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0015_solve.json",
+      "root_conflicts_from_tree_metrics": 34,
+      "solve_conflicts": 16,
+      "num_nodes": 4
+    },
+    {
+      "name": "stage1_n100_eval_0016",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0016.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0016_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0016_solve.json",
+      "root_conflicts_from_tree_metrics": 36,
+      "solve_conflicts": 15,
+      "num_nodes": 8
+    },
+    {
+      "name": "stage1_n100_eval_0017",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0017.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0017_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0017_solve.json",
+      "root_conflicts_from_tree_metrics": 31,
+      "solve_conflicts": 16,
+      "num_nodes": 3
+    },
+    {
+      "name": "stage1_n100_eval_0018",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0018.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0018_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0018_solve.json",
+      "root_conflicts_from_tree_metrics": 31,
+      "solve_conflicts": 28,
+      "num_nodes": 2
+    },
+    {
+      "name": "stage1_n100_eval_0019",
+      "tree": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0019.mcts_tree.json",
+      "narrative": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0019_narrative.json",
+      "solve_out": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/reports/stage1_n100_eval_0019_solve.json",
+      "root_conflicts_from_tree_metrics": 36,
+      "solve_conflicts": 22,
+      "num_nodes": 3
+    }
+  ]
+}

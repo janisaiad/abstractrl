@@ -1,0 +1,206 @@
+{
+  "n_input_candidates": 20,
+  "n_mcts_trees": 20,
+  "reports": [
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0000.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0000__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0000",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 4,
+      "max_depth": 3,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0001.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0001__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0001",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 2,
+      "max_depth": 1,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0002.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0002__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0002",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 2,
+      "max_depth": 1,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0003.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0003__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0003",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 2,
+      "max_depth": 1,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0004.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0004__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0004",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 3,
+      "max_depth": 2,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0005.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0005__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0005",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 3,
+      "max_depth": 2,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0006.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0006__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0006",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 4,
+      "max_depth": 3,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0007.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0007__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0007",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 2,
+      "max_depth": 1,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0008.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0008__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0008",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 2,
+      "max_depth": 1,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0009.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0009__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0009",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 2,
+      "max_depth": 1,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0010.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0010__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0010",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 3,
+      "max_depth": 2,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0011.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0011__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0011",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 5,
+      "max_depth": 4,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0012.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0012__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0012",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 2,
+      "max_depth": 1,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0013.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0013__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0013",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 5,
+      "max_depth": 4,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0014.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0014__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0014",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 2,
+      "max_depth": 1,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0015.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0015__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0015",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 4,
+      "max_depth": 3,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0016.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0016__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0016",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 8,
+      "max_depth": 7,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0017.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0017__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0017",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 3,
+      "max_depth": 2,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0018.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0018__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0018",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 2,
+      "max_depth": 1,
+      "tree_animation_error": null
+    },
+    {
+      "source": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/mcts_trees/stage1_n100_eval_0019.mcts_tree.json",
+      "out_dir": "/Data/janis.aiad/abstractrl/src/AbstractBeam/crossbeam/experiment/v5/runs/gcp_trm_mixed_curriculum_v5/reverse_eng_bigtrain_from_yesterday/plots_plot_mcts_trees/stage1_n100_eval_0019__reverse_eng_bigtrain_from_yesterday__mcts_trees",
+      "graph_name": "stage1_n100_eval_0019",
+      "budget": "reverse_eng_bigtrain_from_yesterday",
+      "method": "mcts_trees",
+      "num_nodes": 3,
+      "max_depth": 2,
+      "tree_animation_error": null
+    }
+  ]
+}
